@@ -1,6 +1,6 @@
 # Sources
 
-The guidance in this skill is distilled, in our own words, from the following works. They are not included in this repository; obtain them from their publishers or libraries. Several are open access.
+The guidance in this skill is distilled, in our own words, from the following works. Except for Lövei (2021), whose CC BY 4.0 text is included in `resources/open/` (see `resources/open/NOTICE.md`), they are not included in this repository; obtain them from their publishers or libraries. Several are open access. Users can add their own converted copies to `resources/guides/` and search them with `scripts/search_resources.py`.
 
 **Writing guides**
 - Ecarnot, F., Seronde, M.-F., Chopard, R., Schiele, F., & Meneveau, N. (2015). Writing a scientific article: A step-by-step guide for beginners. *European Geriatric Medicine*, 6, 573–579. https://doi.org/10.1016/j.eurger.2015.08.005
@@ -14,6 +14,10 @@ The guidance in this skill is distilled, in our own words, from the following wo
 **Vocabulary and style resources**
 - Coxhead, A. (2000). A new academic word list. *TESOL Quarterly*, 34(2), 213–238. https://doi.org/10.2307/3587951. Online sublists: Oxford Learner's Dictionaries, *The Academic Word List* (American English), https://www.oxfordlearnersdictionaries.com/wordlist/american_english/academic/sublist01/
 - WikiProject AI Cleanup. *Wikipedia: Signs of AI writing*. https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing (CC BY-SA 4.0; observations condensed and rewritten in our own words for research articles in `avoid-ai-signs.md`)
+
+**Tools**
+- Microsoft MarkItDown, https://github.com/microsoft/markitdown (used to convert the guides to Markdown); PyMuPDF and pypdf as alternatives in `scripts/convert_to_markdown.py`.
+- OpenAlex, https://openalex.org, and Crossref, https://www.crossref.org (reference checks in `scripts/check_citations.py`).
 
 **Genre studies of research articles**
 - Lin, L., & Evans, S. (2012). Structural patterns in empirical research articles: A cross-disciplinary study. *English for Specific Purposes*, 31, 150–160. https://doi.org/10.1016/j.esp.2011.10.002

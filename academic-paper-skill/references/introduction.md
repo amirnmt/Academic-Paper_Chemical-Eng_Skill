@@ -1,71 +1,126 @@
 # Introduction: from the broad field to your niche
 
-The Introduction must answer three questions in order: why does this field matter, what is already known, and what exactly is missing that this paper provides. Readers decide here whether to continue; reviewers decide here whether the work is new.
+The Introduction gives readers enough background to understand and evaluate your results without reading earlier papers, explains why the study was needed, and states what it does. Readers decide here whether to continue; reviewers decide here whether the work is new. If the problem is not stated clearly, nobody will care about the solution.
 
-## 1. Shape: the funnel
+Use with `paragraphs-and-sentences.md` (how to build each paragraph), `vocabulary-by-section.md` §2 (words) and `phrasebank.md` (sentence stems).
 
-Start general, narrow step by step, and end on your specific question. Each paragraph should be narrower than the one before it.
+## 1. What the Introduction must do
+
+1. State the nature and scope of the problem and why the field matters.
+2. Review the most relevant previous work briefly and selectively.
+3. Identify the gap the study addresses.
+4. State the objective (and, if appropriate, hypotheses or research questions).
+5. State the approach and, if needed, why this method was chosen.
+6. In many engineering journals: state the principal results and contributions, and outline the paper.
+
+Do not keep readers in suspense. A research article is not a detective story: readers want to know early what was found. Some overlap with the abstract is acceptable.
+
+## 2. Shape: the funnel (and its mirror)
+
+The paper has an hourglass shape. The Introduction narrows from the general field to your specific question; the Methods and Results are the narrow centre; the Discussion widens again. What the Introduction opens, the Discussion closes in reverse order:
+
+| Introduction | Discussion (mirror) |
+|---|---|
+| importance of the field (getting the reader in) | wider implications (getting the reader out) |
+| map of previous research | where your results sit on that map |
+| the gap or problem | to what extent the gap is closed |
+| the present work (interface into Methods) | restatement of your findings (interface out of Results) |
 
 Example narrowing (illustrative running example used throughout this skill: a fixed-bed methanol synthesis reactor):
 1. Methanol is a major chemical and energy carrier; its production is large-scale and energy-intensive.
 2. It is produced over Cu/ZnO/Al2O3 catalysts in multitubular fixed-bed reactors; heat removal governs conversion, selectivity and catalyst life.
 3. Reactor models are used for design, optimization and scale-up.
 4. Most models rely on wall heat-transfer correlations derived for large tube-to-particle diameter ratios, while industrial tubes often have small ratios.
-5. Gap: the accuracy of these correlations at low ratios has not been assessed against pilot-scale temperature profiles.
-6. This work: a two-dimensional model that compares several correlations against measured axial and radial temperature profiles.
+5. Gap: the accuracy of these correlations at low ratios has not been assessed against measured temperature profiles.
+6. This work: a two-dimensional model that compares several correlations against pilot-scale temperature profiles.
 
-## 2. The four-part model (general STEM)
+## 3. How to start: the first sentence
 
-Use all four parts, in this order. Parts 1 and 2 may alternate (cycle) before the gap.
+Most published introductions do **not** start with the problem or the aim. They start by establishing the importance of the field or with a key background fact.
 
-**Part 1 — Establish the importance of the field**
-- State the practical, industrial, environmental or economic relevance, with 2–4 strong citations.
-- Give background facts and define the key terms in the title.
-- Present the general problem area or current research focus.
+Good openings:
+- **Importance with a number and citation:** "Methanol is produced at a scale of about [value] Mt per year, mainly in multitubular fixed-bed reactors [1,2]."
+- **Role of the process or system:** "Fixed-bed reactors are the standard equipment for strongly exothermic gas–solid catalytic reactions [3]."
+- **Current focus of the field:** "The design of fixed-bed reactors increasingly relies on detailed two-dimensional models [4–6]."
+- **A key practical problem stated as a fact:** "Hot spots limit the conversion that can be reached in exothermic fixed-bed reactors [7]."
 
-**Part 2 — Previous and current research**
-- What has been done, what it achieved, grouped by approach.
-- Typical verbs: develop, propose, investigate, examine, model, simulate, measure, report, show, demonstrate, establish, identify, extend, apply, evaluate, compare, validate.
+Avoid:
+- vague universal truths ("Energy is important for modern society");
+- dramatic or promotional openings ("In today's rapidly evolving world …");
+- starting with your aim ("The aim of this paper is …") or your method;
+- a question as the first sentence.
 
-**Part 3 — Locate the gap**
-- What is unknown, contradictory, untested, oversimplified, or limited. Signal it with: however, although, while, despite, nevertheless, but.
+## 4. The four-part model (general STEM)
+
+Use all four parts in this order. Parts 1 and 2 often alternate before the gap.
+
+**Part 1. Establish the importance of the field**
+- Practical, industrial, environmental or economic relevance, with 2–4 strong citations.
+- Background facts the reader needs.
+- Definitions of key terms in the title.
+- The general problem area or current research focus.
+
+**Part 2. Previous and current research**
+- What has been done and what it achieved, grouped by approach rather than listed paper by paper.
+
+**Part 3. The gap**
+- What is unknown, contradictory, untested, oversimplified or limited. Signal it with: however, although, while, despite, nevertheless.
 - State the specific problem you address and, where useful, a prediction to be tested.
 
-**Part 4 — Describe the present paper**
-- Objective, approach, contributions, optionally main outcome and structure of the paper.
+**Part 4. The present paper**
+- Objective, approach and its justification, contributions; optionally the main finding and the paper outline.
 
-## 3. Engineering framework: problem → solution → evaluation (PSP-CaRS)
+## 5. Engineering framework: problem → solution → evaluation
 
-Engineering research is usually problem-solving and incremental. An introduction often reads better when Part 1 is written as a problem-solution cycle. Use this framework for applied, process or design papers.
+Engineering research is usually problem-solving and incremental. An introduction often reads better when Part 1 is written as a problem-solution cycle (from an analysis of 33 engineering introductions).
 
-**Move 1 — Establish the territory as a problem-solution cycle**
-- 1.1 Describe the situation: the process, material, technique or system and why it matters in practice.
-- 1.2 Describe the problem area: what goes wrong or is limited in that situation.
-- 1.3 Describe and evaluate previous solutions: what others proposed and how well it worked. Repeat 1.3 for each family of approaches (solution → evaluation → remaining issue → next solution → evaluation …).
+**Move 1. Establish the territory as a problem-solution cycle**
+- 1.1 Situation: the process, material, technique or system and why it matters in practice.
+- 1.2 Problem area: what goes wrong or is limited in that situation.
+- 1.3 Previous solutions and their evaluation: what others proposed and how well it worked. Repeat for each family of approaches: solution → evaluation → remaining issue → next solution → evaluation.
 
-**Move 2 — Establish the niche**
-- 2.1 Indicate the gap or the problem not yet solved (used in most engineering introductions).
-- 2.2 Optionally give positive justification: why solving it is worthwhile (rarely used, but strong when the benefit is concrete).
+**Move 2. Establish the niche**
+- 2.1 The gap or problem not yet solved (present in most engineering introductions).
+- 2.2 Positive justification: why solving it is worthwhile (rare, but strong when the benefit is concrete).
 
-**Move 3 — Present the study** (frequency in published engineering introductions in brackets)
-- 3.1 Announce the present study, descriptively or by purpose (almost always).
-- 3.4 Summarize the methods or give procedural justification: why this method over alternatives (almost always).
-- 3.5 Announce the principal outcomes (common, about two thirds).
-- 3.8 Outline the structure of the paper (common, about two thirds).
+**Move 3. Present the study** (approximate frequency in engineering introductions)
+- 3.1 Announce the study, descriptively or by purpose (always).
+- 3.4 Summarize the methods or justify the procedure: why this method over alternatives (almost always).
+- 3.5 Announce the principal outcomes (about two thirds).
+- 3.8 Outline the structure of the paper (about two thirds).
 - 3.6 State the value of the study (sometimes).
-- 3.2 Research questions or hypotheses (rare in engineering, but useful for model-validation papers).
-- 3.3 Definitions, 3.7 related works, 3.9 notation (rare in the introduction; move them to their own section if needed).
+- 3.2 Research questions or hypotheses (rare in engineering; useful for validation studies).
+- 3.3 Definitions, 3.7 related work, 3.9 notation (rare here; put them in their own section).
 
-## 4. Notes for chemical and process engineering
+**Chemical and process engineering** (move analysis of five engineering fields): introductions often give a short statement of established knowledge and then move quickly to previous research; background and literature review may alternate several times. Many papers have a separate literature review section; then the Introduction stays short.
 
-From move analyses of engineering articles:
-- Chemical engineering introductions often give a short reference to established knowledge and then move quickly to previous research. Background and literature review may alternate (cycle) several times.
-- Chemical engineering papers are fairly consistent in structure; follow the pattern of recent papers in the target journal.
-- Many engineering papers have a separate literature review section. Then the Introduction stays short (problem, short state of the art, gap, objective) and the detailed comparison goes into the review.
+## 6. Paragraph-by-paragraph plan
 
-## 5. The gap statement
+A typical engineering Introduction has 4–6 paragraphs (about 1–1.5 pages, or 300–700 words).
 
-The gap is the pivot of the paper. It must be specific and supported by the studies you just cited.
+**Paragraph 1. Importance and context**
+- First sentence: importance or key fact, with citation.
+- Develop: how the process works → what determines performance → the general problem area.
+- Last sentence: narrows towards the aspect your paper studies.
+
+**Paragraphs 2–3. What has been done (state of the art)**
+- First sentence: a claim about the group of studies ("Two modelling approaches dominate the literature on …").
+- Develop: what each group did and achieved, with citations placed where each applies; compare them; evaluate what each leaves open.
+- Last sentence: the remaining limitation that leads to the next paragraph or to the gap.
+- Tense: past for specific studies, present perfect for research up to now, present for accepted knowledge.
+
+**Paragraph 4. Gap**
+- First sentence: "However, …" + the specific gap, supported by the studies just cited.
+- Develop: why the gap matters (accuracy, safety, cost, design decisions, understanding).
+
+**Paragraph 5. The present work**
+- First sentence: "This study therefore …" / "To address this gap, we …" with the objective.
+- Develop: approach and why it suits the problem; contributions (2–4, specific and checkable); optionally main finding; optionally outline ("Section 2 describes …").
+- Last sentence: leads into the Methods.
+
+## 7. Writing the gap
+
+The gap is the pivot of the paper. It must be specific and supported by the studies you cited.
 
 Types of gap:
 - Not studied: "To date, no study has coupled X with Y under Z."
@@ -75,59 +130,80 @@ Types of gap:
 - Lack of validation: "Few models have been validated against pilot- or industrial-scale data."
 - Method limitation: "Purely data-driven models do not guarantee closure of mass and energy balances."
 
-Good gap statements name the studies, the limitation and the condition. Weak gap statements say "little is known" or "this topic is interesting". Interesting is not a justification; say why the gap matters (accuracy, safety, cost, design decisions, understanding).
+Good gap statements name the studies, the limitation and the condition. Weak ones say "little is known" or "this topic is interesting". Interesting is not a justification: say why the gap matters.
 
-## 6. Objective, hypotheses and contributions
+Tense matters here: "little attention **has been** paid to X" means the gap still exists now (and this paper addresses it). "Little attention **was** paid to X in 2015" means only then; the gap may have been closed since.
 
-- Formulate one objective with the exact property or parameter, the system, and the means. Example: "This study aims to quantify the error of five wall heat-transfer correlations in predicting the axial and radial temperature profiles of a pilot-scale methanol synthesis reactor with a tube-to-particle diameter ratio of [value], using a two-dimensional pseudo-homogeneous model."
-- Use the same wording of the objective in the abstract, Results, Discussion and Conclusion. Repetition here helps the reader.
-- Hypotheses: state what you expect and why, based on prior knowledge. Keep them few (no more than about five). Statistical testing works through a null hypothesis; keep the scientific hypothesis and its null form distinct.
-- Contributions: 2–4 specific, checkable bullets or sentences. Example: "(i) a transient model that … ; (ii) a coupling scheme that … ; (iii) validation against … over … days."
-- Justify the method choice briefly here (why 2D, why pseudo-homogeneous, why this data-driven model); the details belong in Methods.
-- Optionally end with the main finding: readers like to know where the paper arrives.
+## 8. Objective, hypotheses, contributions
 
-## 7. Citation in the introduction
+- One objective stating the exact property or parameter, the system, and the means. Example: "This study aims to quantify the error of five wall heat-transfer correlations in predicting the axial and radial temperature profiles of a pilot-scale methanol synthesis reactor with a tube-to-particle diameter ratio of [value], using a two-dimensional pseudo-homogeneous model."
+- Use the same wording of the objective in the abstract, Results, Discussion and Conclusion. This repetition helps the reader.
+- Hypotheses: state what you expect and why, based on prior knowledge; keep them few (no more than about five). Statistical testing works through a null hypothesis; keep the scientific hypothesis and its null form distinct.
+- Contributions: 2–4 specific, checkable items. "(i) a comparison of …; (ii) a validation against …; (iii) a recommendation for …".
+- Justify the method briefly (why 2D, why pseudo-homogeneous, why this data-driven model). Details belong in Methods.
+- If a preliminary version (conference paper) or closely related papers exist, cite them here, usually near the end.
 
-- Be selective: cite the most pertinent and the most recent strong work. The exhaustive review belongs in the literature review section.
-- Cite conflicting data where it shows genuine uncertainty.
+## 9. Citations in the Introduction
+
+- Be selective: the most relevant and the most recent strong work. The exhaustive review belongs in the literature review.
+- Tell the reader why each citation matters ("Smith et al. [4] showed that …"), not "see the elegant work of Smith [4]".
+- Place the citation where the claim it supports appears in the sentence, not all at the end.
 - Use review papers for broad background; cite original studies for specific findings.
-- Do not cite to show how much you read; cite because the finding matters for your argument.
+- Cite conflicting data where it shows genuine uncertainty.
 
-## 8. Tense
+## 10. Tense
 
 | Content | Tense | Example |
 |---|---|---|
-| Established facts | Present simple | "Methanol synthesis is strongly exothermic." |
-| A specific study's finding | Past simple | "Smith et al. [4] reported that …" |
-| A line of research up to now; an open gap | Present perfect | "Several studies have modelled …"; "It has not yet been determined whether …" |
-| What the paper does | Present simple | "This paper presents …" |
-| Your hypothesis | Past + present | "We hypothesized that wall heat transfer controls the hot-spot temperature …" |
-| Your objective, your findings | Past | "This study aimed to …" |
+| Established facts | present simple | "Methanol synthesis is strongly exothermic." |
+| A specific study's finding | past simple | "Smith et al. [4] reported that …" |
+| Research up to now; open gaps | present perfect | "Several studies have modelled …"; "No study has yet …" |
+| What this paper does | present simple | "This paper presents …" |
+| Your hypothesis | past + present | "We hypothesized that wall heat transfer controls the hot-spot temperature." |
+| Your objective; your findings | past simple | "This study aimed to …"; "We found that …" |
 
-Choosing present simple for a published finding treats it as established; past simple ties it to that one study. Choose deliberately.
+Present simple for a published finding treats it as established knowledge; past simple ties it to one study. Choose deliberately.
 
-## 9. Style and length
+## 11. Voice and terms
 
-- About 1–1.5 pages unless the journal specifies otherwise. Check the journal's guidelines.
-- Do not state the obvious ("Energy is important for society"). Every sentence moves toward the gap.
-- Define jargon and abbreviations; specialists in neighbouring fields will read it.
-- Draft the Introduction early, when context and references are fresh; finalize it after the Discussion so the promise matches the delivery.
+- "We" means the authors or research team, never people in general. For general statements use "It is known that …" or the fact itself.
+- A dummy subject ("This paper presents …", "The present study compares …") is clearer than an agentless passive ("A comparison is presented").
+- Define specialized terms and abbreviations at first use; readers from neighbouring fields will read the paper.
+- Mark your own work clearly: "here", "in this study", "the present model".
 
-## 10. Paragraph skeleton (adapt)
+## 12. Worked example (structure annotated; content illustrative)
 
-1. Importance: what the process/system is, why it matters, scale or impact [citations].
-2. Technical background: how it works, what controls performance [citations].
-3. State of research, approach A: what was done, what it achieved, what it leaves open [citations].
-4. State of research, approach B: same pattern [citations].
-5. Gap: what no study has done yet and why it matters.
-6. This work: objective, approach and justification, contributions, main result, structure of the paper.
+> [P1: importance → background → problem area] Methanol is one of the most widely produced chemicals, with an annual production of about [value] Mt [1]. Most of it is synthesized from syngas over Cu/ZnO/Al2O3 catalysts in multitubular fixed-bed reactors cooled by boiling water [2,3]. Because the reaction is strongly exothermic, the rate of heat removal through the tube wall determines the hot-spot temperature, which in turn limits conversion and catalyst life [4].
+>
+> [P2: previous research, approach 1 → evaluation] Reactor models are therefore widely used for design and scale-up. One-dimensional pseudo-homogeneous models predict outlet conversion at low computational cost [5–7], but they cannot resolve the radial temperature profile that controls the hot spot. Two-dimensional models resolve this profile [8–11]; their accuracy, however, depends on the effective radial conductivity and the wall heat-transfer coefficient, which are taken from correlations [12–14].
+>
+> [P3: previous research, approach 2 → remaining issue] Most of these correlations were derived for tube-to-particle diameter ratios above about 10 [12,13]. Industrial methanol reactors often operate at lower ratios, where wall effects and channelling become important [15]. Corrections for low ratios have been proposed [16,17], but they were validated mainly with non-reacting heat-transfer experiments.
+>
+> [P4: gap → why it matters] To date, the performance of these correlations has not been assessed against temperature profiles measured in a reacting methanol synthesis bed at low tube-to-particle ratios. Without such an assessment, the predicted hot-spot temperature, and therefore the safe operating window, remains uncertain.
+>
+> [P5: present work → approach → contributions → outline] This study therefore compares five wall heat-transfer correlations in a two-dimensional pseudo-homogeneous model against axial and radial temperature profiles measured in a pilot-scale reactor with a tube-to-particle ratio of [value]. The contributions are (i) a quantitative comparison of the correlations under reacting conditions, (ii) an identification of the conditions under which each correlation fails, and (iii) a recommendation for reactor design at low ratios. Section 2 describes the reactor and the model, Section 3 presents the comparison, and Section 4 discusses its implications.
 
-## 11. Checklist
+(Citations, authors and values in this example are placeholders, not real references.)
 
-- [ ] Funnel from broad to narrow; no paragraph broader than the one before.
-- [ ] Gap is specific, cited and justified (why it matters).
-- [ ] Objective states property, system and means; same wording as in abstract and conclusion.
-- [ ] Contributions are specific and checkable.
-- [ ] Method choice justified in one or two sentences.
-- [ ] Every claim about others' work cited; no unverified references.
-- [ ] Tense matches function; no obvious statements; within length.
+## 13. Common mistakes
+
+- Starting with the aim, a method, or a sweeping generalization.
+- A list of studies without grouping, comparison or evaluation.
+- A gap that is not supported by the cited literature, or a vague gap ("little research exists").
+- The objective stated differently in the abstract, introduction and conclusion.
+- Citing every paper read; citations not placed where they apply.
+- Undefined abbreviations; jargon from a narrow subfield.
+- Tense changes without reason (past ↔ present perfect changes meaning).
+- Holding back the main finding until the end of the paper.
+
+## 14. Checklist
+
+- [ ] Opens with importance or a key fact (with citation), not with the aim.
+- [ ] Funnel from broad to narrow; each paragraph narrower than the one before.
+- [ ] Previous work grouped, compared and evaluated; citations placed where they apply.
+- [ ] Gap specific, supported by cited studies, and justified (why it matters).
+- [ ] Objective states property, system and means; same wording in abstract and conclusion.
+- [ ] Method choice justified briefly; contributions specific and checkable.
+- [ ] Tense matches function; "we" used only for the authors.
+- [ ] Abbreviations and specialized terms defined; within length.
+- [ ] First sentences of the paragraphs, read alone, tell the argument.

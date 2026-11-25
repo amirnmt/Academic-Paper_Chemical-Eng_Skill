@@ -17,7 +17,7 @@ Figures and tables usually carry the main results. Design them so a reader can u
 - As simple as possible; every element must carry information.
 - No 3D effects, shadows, background shading, decorative images or unnecessary gridlines.
 - Maximize the data-to-ink ratio: data stand out, everything else recedes.
-- Fit the axis range to the data; do not leave large empty regions.
+- Fit the axis range to the data; do not extend axes far beyond the data (if values run from 0 to 78, end the axis at 80), and do not leave large empty regions.
 
 **Integrity**
 - Every axis has a label with quantity and unit, even when it seems obvious: "Temperature, T (K)" or "T / K" (follow the journal).
@@ -99,6 +99,14 @@ fig.savefig("fig_temperature_profile.pdf")
 - Number figures and tables separately, consecutively, in the order of first citation in the text (Figure 1, 2 …; Table 1, 2 …).
 - Cite each in the text before it appears; place it after its first mention (or as the journal requires).
 - Refer to them consistently ("Fig. 3" or "Figure 3", as the journal prefers).
+
+## 7a. Referring to figures and tables in the text
+
+- Make the finding the subject and cite the figure in brackets: "The hot spot moved downstream as the coolant temperature decreased (Fig. 5)." Avoid "It is clearly shown in Fig. 5 that …".
+- When the figure is the subject, use a precise verb: shows, compares, summarizes, plots, illustrates, lists.
+- Do not repeat in words what the figure shows; add what the reader cannot see at once: the main trend, its size, the exception, and its meaning.
+- Each figure and table must be discussed in the text; a figure that is never discussed should be removed or moved to supplementary material.
+- Figures and tables can also present methods: flowcharts of the procedure or workflow, diagrams of the apparatus or model domain, tables of operating conditions and parameters.
 
 ## 8. Common errors
 

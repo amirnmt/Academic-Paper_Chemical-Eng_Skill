@@ -1,0 +1,13 @@
+# Personal, usually copyrighted material: keep it local
+academic-paper-skill/resources/guides/*
+!academic-paper-skill/resources/guides/README.md
+academic-paper-skill/resources/journal-papers/*
+!academic-paper-skill/resources/journal-papers/README.md
+
+# Script outputs
+citation_report.md
+section_phrases.md
+
+# Python
+__pycache__/
+*.pyc

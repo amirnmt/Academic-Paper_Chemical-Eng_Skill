@@ -1,39 +1,64 @@
 # Methodology and LaTeX mathematics
 
-The Methods section must let an average expert with the same resources reproduce the work. Every result reported later needs a method here, and every method needs a result later. If a method is already published, summarize it and cite the source; describe only what you changed.
+The Methods section (also called Materials and Methods, Experimental, Procedure, Simulation, Model, or Methodology) must let a competent reader **repeat** the work and **judge** whether the methods were appropriate and how far the results can be generalized. Many readers skip it; reviewers read it closely. If a reviewer doubts that the work can be repeated, the paper is rejected however good the results are.
 
-## 1. Structure: a menu, not a fixed sequence
+Its message is: **this is exactly what we did, we did it carefully, and we had good reasons for doing it this way.**
 
-Choose the components that apply to your study and journal.
+Every result reported later needs a method here, and every method needs a result later. If a method is already published, summarize it and cite the original source; describe only what you changed.
 
-1. **Overview** — restate the purpose of the work; outline the overall approach (experimental, numerical, data-driven, hybrid); give the source of materials and equipment (supplier, model, city, country); give essential background.
-2. **Specific, precise details** — quantities, concentrations, temperatures, pressures, flow rates, durations, sequence, conditions, locations, dimensions. Justify non-obvious choices. Show that appropriate care was taken.
-3. **Relation to other studies** — what follows an established method (cite it) and what was modified.
-4. **Problems encountered** — difficulties, exclusions, and how they were handled. Omit if there were none.
+Use with `paragraphs-and-sentences.md`, `vocabulary-by-section.md` §4 and `phrasebank.md` (Methods).
 
-Engineering articles commonly cover (move analysis of five engineering fields):
-- Source of data and how it was collected: source, size, selection criteria, collection procedure, background on what is analysed.
-- Experimental or computational procedure: main apparatus or software, the process step by step, criteria for success. In chemical engineering, recounting the experimental process is close to obligatory, and some papers state the hypothesis being tested here.
-- Data analysis: terminology, how data were classified, analytical instruments or algorithms, modifications to standard procedures.
+## 1. Write it first
 
-## 2. Subsections
+Write the Methods first, ideally while the work is still in progress: details are fresh, equipment and co-authors are available, and routine steps that you no longer notice are easier to record. A common fault is missing detail, not because anything is hidden, but because repeated routine steps are forgotten.
 
-Use descriptive subheadings and reuse them in Results, in the same order. Example for a modelling paper:
-- 2.1 Reactor and catalyst
-- 2.2 Kinetic model
-- 2.3 Reactor model (balances, assumptions, boundary conditions)
-- 2.4 Physical properties and transport correlations
-- 2.5 Numerical solution
-- 2.6 Validation data and error metrics
-- 2.7 Data-driven model (if any)
+## 2. How to start, what to include, how to end
 
-## 3. Content checklists by study type
+**First sentence:** an overview of the approach or design, or the source of the materials or data.
+- "The study combined pilot-plant measurements with a two-dimensional reactor model."
+- "Temperature profiles were measured in a single-tube pilot reactor and compared with predictions of five model variants."
+- "Plant data covering [n] days of operation were taken from [source]."
+
+Do not start with a detailed step and no overview, and do not write in the imperative style of a recipe ("Heat the reactor to 250 °C").
+
+**Middle:** the components in §3, ordered as in §4.
+
+**Last part:** usually the data analysis, statistics and error metrics; or validation of the model; or a statement of the software and computing resources.
+
+## 3. Components (a menu; select what applies)
+
+1. **Overview and purpose:** restate the purpose of the work; outline the approach (experimental, numerical, data-driven, hybrid); give essential background.
+2. **Source of materials, data and equipment:** supplier, grade/purity, model, city and country where the quality matters; generic or chemical names rather than trade names (use a trade name with manufacturer only when products differ in a way that matters).
+3. **Specific and precise details:** quantities, concentrations, temperatures, pressures, flow rates, durations, sequence, frequency, locations, dimensions, conditions. Answer "how?" and "how much?" for every step.
+4. **Justification of choices:** why this method, correlation, solver, parameter value or data split.
+5. **Evidence that care was taken:** calibration, repeats, checks, controls, convergence and independence tests.
+6. **Relation to other studies:** which parts follow an established method (cite it, name it) and which are modified (state the modification).
+7. **Problems encountered:** missing samples, failed runs, excluded data, numerical difficulties, and how they were handled. Reporting them increases credibility.
+8. **Data analysis:** processing steps, error metrics, uncertainty estimation, statistical tests and their assumptions, software with version.
+
+Engineering articles typically contain three groups of moves here: identifying the data source and how it was collected (source, size, selection criteria, procedure); describing the experimental or computational procedure (apparatus, process, criteria for success); and describing the data analysis (terms, classification, instruments or algorithms, modifications). In chemical engineering, recounting the experimental or computational procedure step by step is close to obligatory, and some papers state the hypothesis being tested here.
+
+## 4. Order and subheadings
+
+- Order chronologically, but group related items: all sites/units, then materials, then procedures experiment by experiment, then analysis. An analysis method performed late in the project is still described with the other analysis methods.
+- Begin with an overview of the design when the study has several parts.
+- Use descriptive subheadings and reuse them in Results, in the same order. Example for a modelling paper:
+  - 2.1 Reactor and catalyst
+  - 2.2 Kinetic model
+  - 2.3 Reactor model (balances, assumptions, boundary conditions)
+  - 2.4 Physical properties and transport correlations
+  - 2.5 Numerical solution
+  - 2.6 Validation data and error metrics
+  - 2.7 Data-driven model (if any)
+- Tables and figures help: tables of operating conditions, parameters or materials; flowcharts of the procedure or workflow; diagrams of the apparatus or reactor; schematics of the model domain.
+
+## 5. Content checklists by study type
 
 **Experimental**
 - Equipment: make, model, supplier, accuracy, calibration.
 - Materials: purity, supplier, preparation, pretreatment.
 - Conditions: ranges, set points, control accuracy, sequence and timing.
-- Measurements: instruments, sampling, repetitions, how uncertainty was estimated.
+- Measurements: instruments, sampling locations and frequency, repetitions, uncertainty estimation.
 - Safety or ethics statements if the journal requires them.
 
 **Mechanistic model**
@@ -41,46 +66,88 @@ Use descriptive subheadings and reuse them in Results, in the same order. Exampl
 - Boundary and initial conditions.
 - Kinetics: rate expressions, parameters with units and sources, range of validity.
 - Thermodynamics and properties: equation of state, property sources, mixing rules.
-- Transport correlations: heat and mass transfer, pressure drop, with their validity ranges.
-- Numerical method: discretization (finite volume/difference/element), grid or mesh, time integration, solver, tolerances, convergence and grid-independence checks, software and version, computing time.
+- Transport correlations: heat and mass transfer, pressure drop, with validity ranges.
+- Numerical method: discretization (finite volume/difference/element), grid, time integration, solver, tolerances, convergence and grid-independence checks, software and version, computing time.
 
 **Data-driven or hybrid model**
-- Data source, size, time span, preprocessing (interpolation, filtering, outlier handling).
+- Data source, size, time span, preprocessing (interpolation, digitization, filtering, outlier handling); state clearly which data were measured and which were interpolated or digitized from figures.
 - Inputs, outputs, feature selection.
-- Data split and why (time-ordered splits for time series to avoid leakage from the future), scaling fitted on training data only.
-- Architecture and hyperparameters, how they were chosen (search space, validation scheme).
+- Data split and why (time-ordered splits for time series to avoid leakage from the future); scaling fitted on training data only.
+- Architecture and hyperparameters, and how they were chosen (search space, validation scheme).
 - Training: loss, optimizer, epochs, early stopping, random seeds, hardware.
 - Baselines for comparison.
 - Error metrics and on which data they are computed.
 
 **Statistics and error analysis**
-- How data are summarized (mean ± standard deviation, median [interquartile range]).
-- Tests used, significance level, software.
+- How data are summarized (mean ± standard deviation; median [interquartile range]).
+- Which test for which variable, significance level, how test assumptions were checked, software with version. Standard methods need only a name and citation; describe only unusual ones (avoid explaining textbook statistics).
 - Error metrics: RMSE, MAE, MAPE, R², maximum relative error; define each.
 - Uncertainty propagation or sensitivity analysis (local, Sobol), with sample sizes.
 
-## 4. Language that shows care and precision
+## 6. Tense and voice: making your own contribution visible
 
-Use specific verbs instead of "was done" or "was used": calibrated, prepared, pretreated, discretized, integrated, fitted, optimized, validated, averaged, filtered, interpolated, normalized, scaled, sampled, repeated, monitored, controlled, measured, recorded.
+- **Past simple** for what you did: "The bed was discretized into 200 axial cells."
+- **Present simple** for standard procedures, how standard equipment works, equations, and what tables and figures show: "In this reactor type, heat is removed by boiling water"; "Eq. (3) describes …"; "Table 2 lists …".
+- The switch between them tells the reader what is standard and what you did. If a description of a standard procedure in the present suddenly changes to the past ("The pulses were then split …"), readers understand that this step was yours.
+- **Past perfect** for events before the main procedure: "after the catalyst had been reduced, …".
+- The agentless passive is standard ("The samples were collected …"). Many journals accept "we" for decisions ("We chose …") and it is clearer when the actor matters.
+- **Separate your work from others'.** An agentless passive can describe your procedure or a cited one, so mark the difference:
+  - yours: "In this study, …", "In our experiments, …", "here", "in the present model", or a dummy subject ("This experiment …");
+  - others': "In [12], …", "Smith et al. [12] used …", "in their model".
+- Avoid dangling modifiers: "Using a thermocouple, the bed temperature was measured" says that the temperature used the thermocouple; write "The bed temperature was measured with a thermocouple". Avoid stating an action without a plausible agent: "To determine its activity, the catalyst was …" (the catalyst did not determine anything).
 
-Words that show care: carefully, accurately, precisely, consistently, independently, systematically, in triplicate, under identical conditions, to avoid, to ensure, to minimize, to prevent, in order to eliminate.
+## 7. Language for each component
 
-State precisely:
-- sequence and timing ("after reduction at [T] for [t] h, the feed was switched to …");
-- frequency ("each condition was repeated three times");
-- conditions ("at [p] bar and a gas hourly space velocity of [value] h⁻¹");
-- justification ("This correlation was chosen because it was derived for tube-to-particle ratios below 10 [14].").
+**Overview and source**
+- "Syngas of composition [x] was supplied by [company, city, country] and used as received."
+- "The kinetic parameters were taken from [n]."
+- "Operating data for [n] days were digitized from Fig. 4 of [n] using [software]."
 
-## 5. Tense and voice
+**Specific details**
+- Use precise verbs (calibrated, discretized, normalized, interpolated, fitted, validated …) instead of "done" or "used".
+- Give quantities with units and conditions: "The catalyst (2.5 kg, particle diameter 6 mm) was diluted 1:1 with inert alumina spheres."
+- State frequency: "Temperatures were recorded every 10 s at 12 axial positions."
+- State sequence and timing precisely: "After reduction at 513 K for 12 h, the feed was switched to syngas."
 
-- Past simple for what was done: "The bed was discretized into 200 axial cells."
-- Past perfect for events before the main procedure: "after the catalyst had been reduced, …".
-- Present simple for equations, the model as a description, and what tables and figures show: "Eq. (3) describes …"; "Table 2 lists the parameters."
-- Passive voice suits procedures; first person ("we") is acceptable in most engineering journals for decisions ("We chose …"). Follow the target journal.
+**Equipment and geometry**
+- Use exact spatial language: upstream/downstream of, at the centreline, near the wall, at axial positions of …, mounted on, aligned with, embedded in, equally spaced.
+- Precise proximity: "directly above", "flush with", "in contact with".
 
-## 6. Mathematics in LaTeX
+**Justification**
+- "This correlation was chosen because it was derived for tube-to-particle ratios below 10 [14]."
+- "A time-ordered split was used to avoid leakage of future information into the training set."
+- "For simplicity, the gas properties were evaluated at the mean bed temperature; Section 4.3 examines the effect of this assumption."
+- "By solving the cells sequentially, the computing time was reduced from [x] to [y] min."
 
-### 6.1 Preamble
+**Showing care**
+- "Each experiment was repeated three times."
+- "Grid independence was confirmed by halving the cell size, which changed the hot-spot temperature by less than 0.1 K."
+- "The thermocouples were calibrated against a reference thermometer to within ±0.5 K."
+
+**Relating to other studies**
+- Same: "The catalyst was reduced as described in [8]." (name the step even when citing)
+- Similar: "The model is based on that of [10], with the following modifications: …"
+- Different: "Unlike [10], the energy balance includes axial conduction."
+
+**Problems**
+- "Data for days 0–30 were excluded because the plant was operating in start-up mode."
+- "One thermocouple failed after day 40; its readings were replaced by interpolation between neighbouring positions."
+- "Future work will (your plan) / should (suggestion to others) …"
+
+## 8. Common mistakes
+
+- Results reported in Methods (or methods first described in Results).
+- Missing quantities, temperatures, durations, or the starting material (a colleague test catches these: ask a colleague whether they could repeat the work).
+- "As described previously [8]" without naming the method or giving the reader enough to follow.
+- Statistics described at textbook length; or the test named without its assumptions.
+- Trade names instead of generic names, without manufacturer.
+- Units not SI; "weight" when mass is meant.
+- Future tense copied from a proposal ("Samples will be collected").
+- Data that were interpolated, digitized or reconstructed presented as if measured.
+
+## 9. Mathematics in LaTeX
+
+### 9.1 Preamble
 
 ```latex
 \usepackage{amsmath,amssymb}   % equations, align, symbols
@@ -95,7 +162,7 @@ State precisely:
 
 Use the journal's template (for Elsevier, `elsarticle`) and check which packages it allows.
 
-### 6.2 Writing equations
+### 9.2 Writing equations
 
 - Introduce each equation in the sentence before it and punctuate it as part of the sentence (comma or full stop at the end of the equation).
 - Define every symbol directly after its first equation ("where …"), with units. Add a nomenclature table when there are many symbols.
@@ -107,7 +174,7 @@ Use the journal's template (for Elsevier, `elsarticle`) and check which packages
 - State assumptions next to the equation they simplify.
 - Use `align` for systems and multi-line equations, aligned at `=`; `cases` for piecewise definitions.
 
-### 6.3 Example: a reactor balance
+### 9.3 Example: a reactor balance
 
 ```latex
 Assuming plug flow and negligible axial dispersion, the steady-state mass
@@ -134,7 +201,7 @@ $d_\mathrm{t}$ the tube diameter (\si{\metre}) and $T_\mathrm{c}$ the coolant
 temperature (\si{\kelvin}).
 ```
 
-### 6.4 Units and numbers with siunitx
+### 9.4 Units and numbers with siunitx
 
 - `\SI{523}{\kelvin}`, `\SI{50}{\bar}`, `\SI{2.5e-3}{\metre}`, `\SI{12.3 +- 0.4}{\percent}`.
 - Ranges and lists: `\SIrange{473}{553}{\kelvin}`, `\SIlist{1;2;5}{\bar}`.
@@ -142,7 +209,7 @@ temperature (\si{\kelvin}).
 - SI units only; a space between number and unit (siunitx does this); no plural units.
 - In newer siunitx versions, `\qty{}{}`, `\qtyrange{}{}{}`, `\unit{}` replace `\SI`, `\SIrange`, `\si`.
 
-### 6.5 Chemistry with mhchem
+### 9.5 Chemistry with mhchem
 
 - Formulas: `\ce{CO2}`, `\ce{CH3OH}`, `\ce{Cu/ZnO/Al2O3}`.
 - Reactions:
@@ -155,7 +222,7 @@ temperature (\si{\kelvin}).
 \end{align}
 ```
 
-### 6.6 Nomenclature
+### 9.6 Nomenclature
 
 Group symbols: Latin letters, Greek letters, subscripts, superscripts, abbreviations. Give units for each. Example with `nomencl`:
 
@@ -167,7 +234,7 @@ Group symbols: Latin letters, Greek letters, subscripts, superscripts, abbreviat
 
 Many journals expect a plain table instead; follow the template.
 
-### 6.7 Parameter table (booktabs + siunitx)
+### 9.7 Parameter table (booktabs + siunitx)
 
 ```latex
 \begin{table}[t]
@@ -188,7 +255,7 @@ Many journals expect a plain table instead; follow the template.
 
 (Values are placeholders.) Caption above the table; three horizontal rules; no vertical rules; units in their own column or in the header.
 
-### 6.8 Common LaTeX mistakes
+### 9.8 Common LaTeX mistakes
 
 - Italic units or descriptive subscripts (`T_{wall}` instead of `T_\mathrm{w}`).
 - `*` for multiplication; use juxtaposition, `\cdot` or `\times`.
@@ -197,13 +264,16 @@ Many journals expect a plain table instead; follow the template.
 - `\frac` in running text that makes lines tall; use a slash or `\tfrac` there.
 - Inconsistent symbols between equations, tables and figures.
 
-## 7. Checklist
+## 10. Checklist
 
-- [ ] Every result in the paper has a method here, in the same order and with the same subheadings.
-- [ ] A competent reader could reproduce it: all conditions, parameters (with units and sources), and software versions given.
+- [ ] Starts with an overview of the approach or the source of materials/data.
+- [ ] A competent reader could repeat it: all conditions, quantities, parameters (with units and sources), software versions given.
 - [ ] Assumptions stated next to the equations; boundary and initial conditions complete.
-- [ ] Choices justified; published methods cited, modifications described.
-- [ ] Numerical accuracy shown (grid/time-step independence, tolerances); validation data and error metrics defined.
-- [ ] For data-driven models: split, leakage prevention, scaling, hyperparameters, seeds, baselines.
+- [ ] Every choice justified; published methods named and cited; modifications described.
+- [ ] Care shown: calibration, repeats, grid/time-step independence, tolerances.
+- [ ] Problems, exclusions and missing data reported with how they were handled.
+- [ ] Validation data and error metrics defined; for data-driven models: split, leakage prevention, scaling, hyperparameters, seeds, baselines.
+- [ ] Every result in the paper has a method here, in the same order and under the same subheadings.
+- [ ] Your own steps clearly distinguished from standard or cited procedures (tense and marker phrases).
 - [ ] All symbols defined with units; nomenclature consistent; SI units.
-- [ ] Past tense for procedures, present for equations and figure/table descriptions.
+- [ ] Past tense for what was done, present for equations and figure/table descriptions; no dangling modifiers.
