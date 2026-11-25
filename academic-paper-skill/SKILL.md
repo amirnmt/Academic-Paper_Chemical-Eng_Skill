@@ -46,7 +46,7 @@ This file is the core. Detailed guidance lives in `references/`; full texts that
 
 Read `style-grammar.md` and `avoid-ai-signs.md` once at the start of any drafting session.
 
-**For every section you draft, read four things:** the section file; its part of `paragraphs-and-sentences.md` (first sentence and paragraph template); its part of `vocabulary-by-section.md`; and its part of `phrasebank.md`. If the user has a phrase list built from the target journal (`section_phrases.md`, see below), use its openers and phrases first and the general phrase bank second.
+**For every section you draft, read four things:** the section file; its part of `paragraphs-and-sentences.md` (first sentence and paragraph template); its part of `vocabulary-by-section.md`; and its part of `phrasebank.md`. If a phrase list built from papers of the field or target journal exists (a `section_phrases*.md` file, for example in `resources/journal-papers/`), use its openers and phrases first and the general phrase bank second.
 
 ## Resources and helper scripts
 
