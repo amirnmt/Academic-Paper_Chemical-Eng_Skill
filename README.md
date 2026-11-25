@@ -1,23 +1,48 @@
 # Academic Paper Skill (STEM)
 
-A [Claude skill](https://docs.claude.com/en/docs/agents-and-tools/agent-skills/overview) for writing STEM and engineering journal articles, from a repository of reference papers and your own results.
+A [Claude skill](https://docs.claude.com/en/docs/agents-and-tools/agent-skills/overview) for writing STEM and engineering journal articles from a repository of reference papers and your own results.
 
-It guides Claude through the whole article:
+It guides Claude through the whole article and its publication:
 
-- **Evidence base** — turn a folder of papers into notes, a `refs.bib`, and a comparison matrix; cite only verified sources.
-- **Introduction** — funnel from the broad field to the research gap, including a problem → solution → evaluation model for engineering papers.
-- **Literature review** — thematic, synthesized and critical, not a list of summaries.
-- **Methodology** — reproducible detail, LaTeX equations, units with `siunitx`, nomenclature.
-- **Results** — report trends with numbers, compare with validation data, no interpretation.
-- **Figures and tables** — clear axes, consistent styling, `booktabs` tables.
-- **Discussion and conclusion** — interpret, compare with literature, state limitations, calibrated hedging.
-- **Abstract, title, keywords, academic style, phrase bank, references.**
+- **Evidence base:** turn a folder of papers into notes, a `refs.bib`, a theme map and a comparison matrix, and cite only verified sources.
+- **Introduction:** move from the broad field to the research gap. Includes a problem → solution → evaluation framework for engineering papers.
+- **Literature review:** thematic, synthesized and critical, with guidance for planning a large citation count honestly.
+- **Methodology:** content checklists for experimental, mechanistic-model and data-driven studies, plus LaTeX equations, `siunitx` units, `mhchem` chemistry and nomenclature.
+- **Results:** a reporting pattern and the language of sequence, frequency, quantity and causality, with rules for numbers and statistics.
+- **Figures and tables:** design rules, engineering chart types, a matplotlib style, captions and `booktabs` tables.
+- **Discussion and conclusion:** comparing with the literature, stance, hedging and modal verbs, and writing limitations.
+- **Abstract, title, keywords, highlights.**
+- **Style, paragraphs, tense, common non-native errors, and a phrase bank.**
+- **Revision, cover letter and point-by-point response to reviewers.**
 
-The rules are distilled from established writing guides and genre studies of engineering research articles (listed at the end of `SKILL.md`). Those sources are not included here.
+## Structure
+
+```
+academic-paper-skill/
+├── SKILL.md                      core rules, workflow, and which reference to read
+└── references/
+    ├── evidence-base.md
+    ├── introduction.md
+    ├── literature-review.md
+    ├── methods-latex.md
+    ├── results-language.md
+    ├── figures-tables.md
+    ├── discussion-hedging.md
+    ├── abstract-title-keywords.md
+    ├── style-grammar.md
+    ├── phrasebank.md
+    ├── submission-and-reviewers.md
+    ├── checklists.md
+    └── sources.md
+```
+
+`SKILL.md` stays short. Claude opens the detailed reference file only when it works on that section.
+
+The guidance is distilled, in our own words, from established writing guides and genre studies of engineering research articles (see `references/sources.md`). Those sources are not included here.
 
 ## Install
 
-**Claude apps (claude.ai / desktop):** download `academic-paper-skill/SKILL.md`, zip the `academic-paper-skill` folder, and upload it under *Settings → Capabilities → Skills*.
+**Claude apps (claude.ai / desktop):** download `academic-paper-skill.zip` from the [latest release](https://github.com/amirnmt/academic-paper-skill/releases/latest), or zip the `academic-paper-skill` folder yourself. Then upload it under *Settings → Capabilities → Skills*.
 
 **Claude Code:**
 
@@ -27,7 +52,7 @@ mkdir -p ~/.claude/skills
 cp -R academic-paper-skill/academic-paper-skill ~/.claude/skills/
 ```
 
-Then ask Claude, for example: *"Use the academic-paper-skill to draft the introduction of my paper from the papers in this folder."*
+Then ask Claude, for example: *"Use the academic-paper-skill to build the evidence base from the papers in this folder, then outline the introduction."*
 
 ## Author
 
