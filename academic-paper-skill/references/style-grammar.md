@@ -12,6 +12,7 @@ Scientific style is plain: state facts as simply as possible. Clarity and precis
 - **Nominalization:** processes expressed as nouns ("the reduction of the catalyst") make text compact, but stacking them makes it dense. Balance them with verbs.
 - **No contractions** (do not, it is), **no rhetorical questions**, no clichés, no emotive or promotional words (revolutionary, amazing, obviously, very unique).
 - **Unbiased, inclusive language.**
+- **Specific, not generic:** avoid inflated significance, decorative words and formulaic patterns (see `avoid-ai-signs.md`); for precise academic word choice see `academic-vocabulary.md`.
 
 ## 2. Paragraphs
 

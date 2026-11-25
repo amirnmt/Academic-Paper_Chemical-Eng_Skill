@@ -11,6 +11,10 @@ The guidance in this skill is distilled, in our own words, from the following wo
 - University of Hohenheim, Faculty of Agricultural Sciences. *Academic Writing: Practical Guidance and Tips* (Academic Writing Aid Series).
 - Chair in E-Business. *Guidelines for Academic Paper Writing* (formatting, captions, formulas, citation).
 
+**Vocabulary and style resources**
+- Coxhead, A. (2000). A new academic word list. *TESOL Quarterly*, 34(2), 213–238. https://doi.org/10.2307/3587951. Online sublists: Oxford Learner's Dictionaries, *The Academic Word List* (American English), https://www.oxfordlearnersdictionaries.com/wordlist/american_english/academic/sublist01/
+- WikiProject AI Cleanup. *Wikipedia: Signs of AI writing*. https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing (CC BY-SA 4.0; observations condensed and rewritten in our own words for research articles in `avoid-ai-signs.md`)
+
 **Genre studies of research articles**
 - Lin, L., & Evans, S. (2012). Structural patterns in empirical research articles: A cross-disciplinary study. *English for Specific Purposes*, 31, 150–160. https://doi.org/10.1016/j.esp.2011.10.002
 - Maswana, S., Kanamaru, T., & Tajino, A. (2015). Move analysis of research articles across five engineering fields: What they share and what they do not. *Ampersand*, 2, 1–11. https://doi.org/10.1016/j.amper.2014.12.002

@@ -1,6 +1,6 @@
 ---
 name: academic-paper-skill
-description: Write or revise a STEM/engineering journal article from the user's results and a repository of reference papers: evidence base, introduction, literature review, methods with LaTeX, results, figures, discussion, abstract, references, and reviewer responses.
+description: Write or revise a STEM/engineering journal article from the user's results and a repository of reference papers: evidence base, introduction, literature review, methods with LaTeX, results, figures, discussion, abstract, references, academic vocabulary, avoiding AI-typical prose, and reviewer responses.
 ---
 
 # Academic Paper Skill (STEM)
@@ -17,6 +17,7 @@ This file is the core. Detailed guidance lives in `references/`. Before working 
 4. **One objective, worded the same way** in the title, abstract, Introduction, Results, Discussion and Conclusion.
 5. **Claim exactly as much as the data support.** No overclaiming, and no hedging of measured facts.
 6. **Paraphrase, never copy** from sources or converted PDFs; check numbers and equations against the original PDF.
+7. **Specific, not generic.** Replace inflated or vague statements with facts, numbers and citations (`references/avoid-ai-signs.md`). Disclose AI assistance as the journal requires.
 
 ## Which reference to read
 
@@ -32,11 +33,13 @@ This file is the core. Detailed guidance lives in `references/`. Before working 
 | Abstract, title, keywords, highlights, graphical abstract | `references/abstract-title-keywords.md` |
 | Academic style, paragraphs, concision, tense map, linking words, common non-native errors | `references/style-grammar.md` |
 | Sentence stems by function | `references/phrasebank.md` |
+| Academic vocabulary (Academic Word List) and precise word choice | `references/academic-vocabulary.md` |
+| Avoiding generic, inflated or AI-typical prose; self-check | `references/avoid-ai-signs.md` and `scripts/check_ai_signs.py` |
 | Revising the draft, submission package, cover letter, decisions, response to reviewers | `references/submission-and-reviewers.md` |
 | Section and final checklists | `references/checklists.md` |
 | The guides and studies this skill is based on | `references/sources.md` |
 
-Read `style-grammar.md` once at the start of any drafting session, and `phrasebank.md` when drafting text.
+Read `style-grammar.md` and `avoid-ai-signs.md` once at the start of any drafting session, and `phrasebank.md` and `academic-vocabulary.md` when drafting text.
 
 ## Workflow
 
@@ -55,7 +58,7 @@ For each section, list the paragraphs with a one-line purpose and the citations 
 
 ### 4. Draft, section by section
 Recommended order: Methods → Results (with figures and tables) → Literature review → Discussion → Introduction → Conclusion → Abstract → Title, keywords, highlights.
-For each section: read its reference file → draft → run its checklist → hand to the user → revise.
+For each section: read its reference file → draft → run its checklist → run `python scripts/check_ai_signs.py <file>` and rewrite every flagged sentence with a specific fact, number or citation, or delete it → hand to the user → revise.
 
 ### 5. Final check and delivery
 - Run the final checklist in `references/checklists.md`.

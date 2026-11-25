@@ -13,6 +13,8 @@ It guides Claude through the whole article and its publication:
 - **Discussion and conclusion:** comparing with the literature, stance, hedging and modal verbs, and writing limitations.
 - **Abstract, title, keywords, highlights.**
 - **Style, paragraphs, tense, common non-native errors, and a phrase bank.**
+- **Academic vocabulary:** how to use the Academic Word List (with links to the Oxford sublists) for precise word choice.
+- **Avoiding generic, AI-typical prose:** patterns to avoid (inflated significance, decorative words, formulaic constructions, unverified citations) and a script, `scripts/check_ai_signs.py`, that flags them in a LaTeX, Markdown or text draft.
 - **Revision, cover letter and point-by-point response to reviewers.**
 
 ## Structure
@@ -20,20 +22,24 @@ It guides Claude through the whole article and its publication:
 ```
 academic-paper-skill/
 ├── SKILL.md                      core rules, workflow, and which reference to read
-└── references/
-    ├── evidence-base.md
-    ├── introduction.md
-    ├── literature-review.md
-    ├── methods-latex.md
-    ├── results-language.md
-    ├── figures-tables.md
-    ├── discussion-hedging.md
-    ├── abstract-title-keywords.md
-    ├── style-grammar.md
-    ├── phrasebank.md
-    ├── submission-and-reviewers.md
-    ├── checklists.md
-    └── sources.md
+├── references/
+│   ├── evidence-base.md
+│   ├── introduction.md
+│   ├── literature-review.md
+│   ├── methods-latex.md
+│   ├── results-language.md
+│   ├── figures-tables.md
+│   ├── discussion-hedging.md
+│   ├── abstract-title-keywords.md
+│   ├── style-grammar.md
+│   ├── phrasebank.md
+│   ├── academic-vocabulary.md
+│   ├── avoid-ai-signs.md
+│   ├── submission-and-reviewers.md
+│   ├── checklists.md
+│   └── sources.md
+└── scripts/
+    └── check_ai_signs.py         flags generic or AI-typical prose in a draft
 ```
 
 `SKILL.md` stays short. Claude opens the detailed reference file only when it works on that section.

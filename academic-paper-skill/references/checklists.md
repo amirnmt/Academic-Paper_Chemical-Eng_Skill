@@ -55,4 +55,7 @@ Use the section checklist after drafting each section and the final checklist be
 - [ ] Journal guidelines met: template, length, reference style, figure format, declarations.
 - [ ] Eight Cs checked: compliance, completeness, composition, correctness, clarity, conciseness, consistency, courtesy.
 - [ ] Likely reviewer objections answered in the text: novelty, validation, uncertainty, limitations, overclaiming.
+- [ ] `scripts/check_ai_signs.py` run on every section; each flag rewritten with a specific fact, number or citation, or deleted; no placeholders left.
+- [ ] Plain words where they are precise (is, has, used); academic words where they add precision; no decorative intensifiers.
+- [ ] AI assistance disclosed as the journal requires.
 - [ ] Read aloud once from beginning to end.
