@@ -16,7 +16,7 @@
 
 ## 3. Revising your own draft
 
-Leave the draft for a few days, then read it as a reader would. Read it aloud to find clumsy sentences. Revise in rounds, from large to small:
+Before submission, run the simulated peer review in `self-review.md`. Leave the draft for a few days, then read it as a reader would. Read it aloud to find clumsy sentences. Revise in rounds, from large to small:
 1. Structure and argument (does each section do its job; is the gap answered?).
 2. Paragraphs (one idea each; topic sentences tell the argument).
 3. Sentences and words (clarity, concision, terminology).

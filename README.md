@@ -15,6 +15,8 @@ It guides Claude through the whole article and its publication:
 - **Style, paragraphs, tense, common non-native errors, and a phrase bank.**
 - **Academic vocabulary:** how to use the Academic Word List (with links to the Oxford sublists) for precise word choice.
 - **Avoiding generic, AI-typical prose:** patterns to avoid (inflated significance, decorative words, formulaic constructions, unverified citations) and a script, `scripts/check_ai_signs.py`, that flags them in a LaTeX, Markdown or text draft.
+- **Simulated peer review:** review the full draft as an editor, a methods reviewer, a domain expert, a devil's advocate and a readability reviewer; triage the comments and revise.
+- **Citation checking:** `scripts/check_citations.py` checks `refs.bib` against OpenAlex and Crossref (DOI resolves; title, first author and year match; retractions) and against the `\cite` keys in the LaTeX files.
 - **Revision, cover letter and point-by-point response to reviewers.**
 
 ## Structure
@@ -35,11 +37,13 @@ academic-paper-skill/
 │   ├── phrasebank.md
 │   ├── academic-vocabulary.md
 │   ├── avoid-ai-signs.md
+│   ├── self-review.md
 │   ├── submission-and-reviewers.md
 │   ├── checklists.md
 │   └── sources.md
 └── scripts/
-    └── check_ai_signs.py         flags generic or AI-typical prose in a draft
+    ├── check_ai_signs.py         flags generic or AI-typical prose in a draft
+    └── check_citations.py        checks refs.bib against OpenAlex/Crossref and the .tex citations
 ```
 
 `SKILL.md` stays short. Claude opens the detailed reference file only when it works on that section.

@@ -1,6 +1,6 @@
 ---
 name: academic-paper-skill
-description: Write or revise a STEM/engineering journal article from the user's results and a repository of reference papers: evidence base, introduction, literature review, methods with LaTeX, results, figures, discussion, abstract, references, academic vocabulary, avoiding AI-typical prose, and reviewer responses.
+description: Write or revise a STEM/engineering journal article from the user's results and a repository of reference papers: evidence base, introduction, literature review, methods with LaTeX, results, figures, discussion, abstract, references, academic vocabulary, avoiding AI-typical prose, simulated peer review, citation checking, and reviewer responses.
 ---
 
 # Academic Paper Skill (STEM)
@@ -35,6 +35,8 @@ This file is the core. Detailed guidance lives in `references/`. Before working 
 | Sentence stems by function | `references/phrasebank.md` |
 | Academic vocabulary (Academic Word List) and precise word choice | `references/academic-vocabulary.md` |
 | Avoiding generic, inflated or AI-typical prose; self-check | `references/avoid-ai-signs.md` and `scripts/check_ai_signs.py` |
+| Simulated peer review before submission: editor, methods, domain, devil's advocate, readability; triage | `references/self-review.md` |
+| Checking `refs.bib` against OpenAlex/Crossref and the LaTeX citations | `scripts/check_citations.py` |
 | Revising the draft, submission package, cover letter, decisions, response to reviewers | `references/submission-and-reviewers.md` |
 | Section and final checklists | `references/checklists.md` |
 | The guides and studies this skill is based on | `references/sources.md` |
@@ -60,9 +62,13 @@ For each section, list the paragraphs with a one-line purpose and the citations 
 Recommended order: Methods → Results (with figures and tables) → Literature review → Discussion → Introduction → Conclusion → Abstract → Title, keywords, highlights.
 For each section: read its reference file → draft → run its checklist → run `python scripts/check_ai_signs.py <file>` and rewrite every flagged sentence with a specific fact, number or citation, or delete it → hand to the user → revise.
 
-### 5. Final check and delivery
+### 5. Self-review
+Follow `references/self-review.md`: review the complete draft in five independent roles (editor, methods, domain expert, devil's advocate, readability), collect the comments in a triage table, revise, and re-review the changed parts.
+
+### 6. Final check and delivery
+- Run `python scripts/check_citations.py refs.bib --tex *.tex --out citation_report.md` and resolve every RETRACTED, DOI NOT FOUND, MISMATCH and missing-key item. It needs internet access; if this environment cannot reach OpenAlex or Crossref, run it on the user's computer or verify the DOIs with another tool.
 - Run the final checklist in `references/checklists.md`.
-- Verify every citation (resolve DOIs); report open `[CHECK]` items and unused repository papers.
+- Report open `[CHECK]` items and unused repository papers.
 - Deliver: LaTeX source in the journal template, `refs.bib`, figure scripts and figures, compiled PDF; plus a short list of weak points a reviewer may attack (novelty, validation, uncertainty, limitations, overclaiming).
 - On request: cover letter and point-by-point response to reviewers (`references/submission-and-reviewers.md`).
 

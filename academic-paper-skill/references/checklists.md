@@ -51,7 +51,8 @@ Use the section checklist after drafting each section and the final checklist be
 - [ ] Each method has a result and each result a method.
 - [ ] Numbers identical wherever they appear (abstract, text, tables, figures, conclusion).
 - [ ] All symbols defined, units SI, significant figures consistent, abbreviations defined once.
-- [ ] Every citation verified (DOI resolved); in-text citations and reference list match; no duplicates; no open `[CHECK]` items.
+- [ ] `scripts/check_citations.py` run: no RETRACTED, DOI NOT FOUND or MISMATCH entries; no cited keys missing; uncited entries removed or justified; no open `[CHECK]` items.
+- [ ] Self-review done in all five roles (`self-review.md`); every major comment fixed, acknowledged as a limitation, or answered with evidence.
 - [ ] Journal guidelines met: template, length, reference style, figure format, declarations.
 - [ ] Eight Cs checked: compliance, completeness, composition, correctness, clarity, conciseness, consistency, courtesy.
 - [ ] Likely reviewer objections answered in the text: novelty, validation, uncertainty, limitations, overclaiming.

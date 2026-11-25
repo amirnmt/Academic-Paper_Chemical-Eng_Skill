@@ -75,6 +75,9 @@ Read the matrix by column. A gap usually appears as a column where most cells ar
 
 ## 7. Verification before submission
 
+Run `scripts/check_citations.py refs.bib --tex <files>`: it resolves each DOI in OpenAlex and Crossref, compares title, first author and year, flags retracted papers, suggests DOIs for entries without one, and lists duplicates, missing fields, cited keys missing from the .bib file and uncited entries. Then check by hand what no script can: that each source supports the sentence that cites it.
+
+
 - Resolve every DOI (OpenAlex, Crossref or the publisher site) and compare title, authors, year, journal, volume, pages.
 - Check that every in-text citation has a reference entry and every entry is cited.
 - Search for duplicates (the same paper under two keys, preprint and published version).
