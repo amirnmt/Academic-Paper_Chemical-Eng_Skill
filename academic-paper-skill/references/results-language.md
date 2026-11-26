@@ -1,5 +1,7 @@
 # Results: reporting, comparing and the language of findings
 
+For modelling, simulation, optimization and data-driven papers, see also `results-discussion-writing.md` (paragraph frameworks, quantitative description, interpretation, validation, metrics, computational performance, ML and hybrid results, traceability).
+
 The Results are the reason the paper exists: the new knowledge you contribute. The Introduction and Methods say why and how you obtained them; the Discussion says what they mean. The whole paper stands or falls on the Results, so they must be presented with complete clarity. The section is often short when the Methods and Discussion are well written.
 
 Use with `paragraphs-and-sentences.md`, `figures-tables.md`, `vocabulary-by-section.md` §5 and `phrasebank.md` (Results).

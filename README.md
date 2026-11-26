@@ -13,7 +13,7 @@ It guides Claude through the whole article and its publication:
   - Literature review (thematic synthesis, critical comparison, reporting verbs, planning a large citation count honestly),
   - Methods (content checklists for experimental, mechanistic-model and data-driven studies; LaTeX equations, `siunitx`, `mhchem`, nomenclature) and a pattern-by-pattern Methodology guide for modelling, simulation, optimization and data-driven papers: structures by type of research, physical foundations, assumptions, equations in the narrative, numerics, algorithms, ML and hybrid models, parameter origin, verification and validation, a reproducibility checklist and journal benchmarks,
   - Results (reporting pattern; language of sequence, frequency, quantity and causality; numbers and statistics),
-  - Combined Results and discussion (subsection pattern and paragraph templates, based on an analysis of recent *Computers & Chemical Engineering* papers),
+  - Combined Results and discussion (subsection pattern and paragraph templates) and a pattern-by-pattern Results-and-Discussion guide: six kinds of evidence and integrity rules, paragraph frameworks for validation, physical interpretation, numerical performance, sensitivity, ML and hybrid results, literature comparison, unexpected results, limitations and implications; quantitative description; cause language matched to evidence; certainty ladder; a traceability matrix from gap to contribution; journal benchmarks,
   - Figures and tables (design rules, chart types, matplotlib style, captions, `booktabs`, referring to them in the text),
   - Discussion and Conclusion (explaining, comparing with the literature, hedging and modal verbs, limitations),
   - Abstract (including the patterns of process-systems abstracts), title, keywords, highlights.
@@ -41,6 +41,7 @@ academic-paper-skill/
 │   ├── methodology-writing.md       Methodology patterns, equations, numerics, ML/hybrid, reproducibility
 │   ├── results-language.md
 │   ├── results-and-discussion-combined.md   one-section Results and discussion
+│   ├── results-discussion-writing.md        evidence, interpretation, validation, metrics, traceability
 │   ├── figures-tables.md
 │   ├── discussion-hedging.md        Discussion and Conclusion
 │   ├── abstract-title-keywords.md
@@ -69,7 +70,7 @@ academic-paper-skill/
     ├── build_section_phrases.py     section-by-section phrase list from papers
     ├── check_ai_signs.py            flags generic or AI-typical prose in a draft
     ├── check_citations.py           checks refs.bib against OpenAlex/Crossref and the .tex citations
-    └── citation_density.py          citation density of the Introduction or Methods vs. the journal; uncited claims
+    └── citation_density.py          citation density of Introduction, Methods or Results vs. the journal; uncited or unsupported claims
 ```
 
 `SKILL.md` stays short. Claude opens the detailed reference files only when it works on that section, and searches `resources/` only when it needs more.

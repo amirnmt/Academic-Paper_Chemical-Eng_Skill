@@ -76,6 +76,13 @@ How to self-edit: let the draft rest for at least a day, print it or change the 
 - [ ] Negative and unexpected results reported; outliers and exclusions explained.
 - [ ] Uncertainty given with every compared value; significant figures match the uncertainty.
 - [ ] Measurement and interpretation separated.
+- [ ] Validation before use: calibration fit and independent validation reported separately; the model used only within its validated range.
+- [ ] Every comparison of methods made under equal inputs, data, metric, hardware and tolerance; variability across seeds or runs reported; speed claims accompanied by accuracy.
+- [ ] Each interpretation labelled by its evidence (own result, equation, principle, literature, hypothesis); causal words only with controlled evidence (`results-discussion-writing.md` §0, §4.2).
+- [ ] "Significant" only with a statistical test; no promotional adjectives; numbers instead.
+- [ ] Parametric effects isolated; no effect attributed to one parameter when several changed.
+- [ ] Traceability matrix gap → objective → method → result → interpretation → claim complete (`results-discussion-writing.md` §22); numbers identical in text, tables, figures, abstract and conclusion.
+- [ ] Literature-based explanations and comparisons cited from the user's papers; unexplained observations stated as open (`citation-practice.md` §13).
 
 ## Figures and tables
 - [ ] Each one earns its place; the form (graph, table, schematic) fits the message.

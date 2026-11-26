@@ -1,5 +1,7 @@
 # Discussion and conclusion: interpreting findings with the right strength
 
+See also `results-discussion-writing.md` §0 (six kinds of evidence), §4 (cause language matched to evidence), §19 (certainty ladder) and §22 (traceability from gap to contribution).
+
 The Discussion answers one question: **what do the data mean?** It is the hardest section to write and the most common reason for rejection, even when the data are valid and interesting. A faulty interpretation can hide the true meaning of good data. Many discussions are also too long: authors unsure of their facts or reasoning hide behind a cloud of words.
 
 Use with `paragraphs-and-sentences.md`, `vocabulary-by-section.md` §6–7 and `phrasebank.md` (Discussion, Conclusion).

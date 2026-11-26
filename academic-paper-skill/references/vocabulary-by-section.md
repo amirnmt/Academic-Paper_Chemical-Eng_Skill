@@ -166,6 +166,13 @@ Pair every such word with the number.
 - Partial: reproduces the trend but, agrees qualitatively, agrees within [x] % except, is of the same order as.
 - Poor: deviates from, overpredicts, underpredicts, overestimates, underestimates, departs from, is inconsistent with, contradicts.
 
+**Certainty and scope** (see `results-discussion-writing.md` §19): shows, demonstrates (controlled evidence); indicates, confirms within, is consistent with (strong); suggests, is likely to, can be attributed to (moderate); may, might, a possible explanation is (weak); within the investigated range, under the considered assumptions, for this data set (scope); does not establish, does not show (negative).
+- "Significant" only with a statistical test and its level; otherwise large, substantial, clear, or the number. In 20 C&CE papers, "significant(ly)" appeared in 62 sentences, only one of which reported a statistical quantity [J-obs].
+
+**Validation and benchmarking:** fits (calibration data), predicts (independent data), reproduces, captures the trend, underpredicts, overpredicts, bias, scatter, maximum deviation, under identical inputs, on the same split, against the nominal model, held-out, independent campaign.
+
+**Computational performance:** per evaluation, wall-clock time, speed-up, -fold, scales with, bottleneck, at equal tolerance, on the same hardware.
+
 **Problems with results**
 - small number of outliers, a slight mismatch, within the measurement uncertainty, scatter, noise, drift, numerical artefact, possible source of error, could not be resolved, beyond the scope of this study.
 

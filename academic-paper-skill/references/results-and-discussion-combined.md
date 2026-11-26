@@ -1,6 +1,6 @@
 # Combined Results and Discussion
 
-Many engineering journals, and most computational ones, use one section, "Results and discussion", instead of separate Results and Discussion sections. This file describes how that section is built. It is based on an analysis of 20 research articles in *Computers & Chemical Engineering* (2006–2026) and of 90 papers on reactor modelling and surrogate models, in which about half of the papers used a combined section and a separate Discussion was rare. For reporting language see `results-language.md`; for explanation, hedging and limitations see `discussion-hedging.md`.
+Many engineering journals, and most computational ones, use one section, "Results and discussion", instead of separate Results and Discussion sections. This file describes how that section is built. It is based on an analysis of 20 research articles in *Computers & Chemical Engineering* (2006–2026) and of 90 papers on reactor modelling and surrogate models, in which about half of the papers used a combined section and a separate Discussion was rare. For reporting language see `results-language.md`; for explanation, hedging and limitations see `discussion-hedging.md`; for the full pattern-by-pattern guide (paragraph frameworks for validation, physical interpretation, numerical performance, sensitivity, ML, literature comparison, unexpected results, limitations and implications; evidence types; certainty ladder; traceability matrix; journal benchmarks) see `results-discussion-writing.md`.
 
 ## 1. When to combine
 
@@ -37,8 +37,8 @@ Not every subsection needs all seven steps, but R1, R3 and R7 are almost always 
 
 ## 4. What distinguishes this genre
 
-- **Figures carry the argument.** In the papers analysed, typically 15–30 % of sentences in this section refer to a figure or table. Write the sentence about what the figure shows, then the sentence about what it means.
-- **Comparison is mostly internal.** Literature citations are rare in the section (often below 5 % of sentences). Comparisons are with baselines, ablations, alternative methods and the nominal case. Literature appears for benchmark values, for validation data and to justify a method choice. If your field expects comparison with published results, put it in the validation subsection and in a dedicated comparison table.
+- **Figures carry the argument.** In the 20 papers analysed, a median of 12 % of sentences in this section refer to a figure or table (IQR 9–19 %, up to 28 %), and nearly every paper opens some subsections with a figure. Write the sentence about what the figure shows, then the sentence about what it means.
+- **Comparison is mostly internal.** Literature citations are rare in the section (median 4.5 % of sentences; comparisons with published results in about 1 %, in 12 of 20 papers). Comparisons are with baselines, ablations, alternative methods and the nominal case. Literature appears for benchmark values, for validation data and to justify a method choice. If your field expects comparison with published results, put it in the validation subsection and in a dedicated comparison table.
 - **Bounded claims.** Strong papers state the range of validity in the text: the data set, operating range, simulator or test conditions under which a conclusion holds.
 - **Explanations are short and specific.** One mechanism per result, linked to physics or to the model structure; alternatives mentioned when plausible.
 - **Numbers are repeated where they matter.** The headline metrics appear in the subsection, in the summary table, in the abstract and in the Conclusion: keep them identical.

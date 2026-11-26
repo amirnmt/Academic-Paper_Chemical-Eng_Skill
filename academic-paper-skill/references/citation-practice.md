@@ -162,3 +162,23 @@ The Methodology mixes material from others with the authors' own work, and citat
 For a method developed or modified in the paper, state which components come from the literature, which were modified and why, which are new, and how the whole differs from published approaches (`methodology-writing.md` §3.3).
 
 Observed in 20 *Computers & Chemical Engineering* Methodology sections [J-obs]: a median of 10 % of sentences carry a citation (IQR 3–14 %), 0.13 citations per sentence, 9 unique references (6–15). Of 256 cited sentences, about 41 % cite a fact or the justification of a choice, 18 % a parameter, property or correlation, 14 % an adopted model or framework, 14 % a dataset or data source, 12 % a named method or algorithm, 2 % software. Density was highest in system and case descriptions (14 % of sentences) and lowest in numerics and solution (6 %). Low density is normal here because most sentences describe the authors' own work; what matters is that no external element is uncited. `citation_density.py audit --section methods` lists sentences that name external elements without a citation.
+
+## 13. Citations in the Results and Discussion [Rule, J-obs]
+
+Results produced in the study need no citation. Everything else that is not the authors' own evidence does.
+
+| Statement | Citation |
+|---|---|
+| A number, trend or figure from the present study (E1) | none |
+| An interpretation that follows from the present results (E2) | none; point to the figure, table or test |
+| An explanation from the model's equations (E3) | the equation number; the source of the equation if adopted |
+| An established mechanism or principle (E4) | a textbook or review |
+| A comparison with published values, models or data; agreement or disagreement (E5) | the publication, with its conditions |
+| An explanation of a discrepancy with industrial or experimental data that relies on known behaviour | the source of that knowledge |
+| A statement about the limits or merits of other methods | the works concerned |
+| An industrial implication that relies on published practice or economics | the source |
+| A hypothesis (E6) | sources that make it plausible, if any; marked as unconfirmed |
+
+When the user names directories of papers, literature-based interpretations are written from them; when no paper supports an explanation and the results and equations do not establish it, say that the cause remains open instead of supplying a mechanism.
+
+Observed in 20 *Computers & Chemical Engineering* Results-and-Discussion parts [J-obs]: a median of 4.5 % of sentences cited (IQR 2–9 %), 8.5 citation instances in 6.5 citation groups to 5 unique references; comparisons with published results in about 1 % of sentences, present in 12 of 20 papers. Physics-based papers cite most (about 8 % of sentences), data-driven papers least (about 2 %). Typical cited statements: a published value or range against which a result is compared, the source of a benchmark dataset or method compared against, a guideline used to set a threshold, and the published kinetic studies with which estimated parameters are consistent.

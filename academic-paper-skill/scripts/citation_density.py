@@ -10,6 +10,8 @@ Two modes:
                    With --section methods (or any heading text), analyses that section instead
                    and lists uncited sentences that name an external element (correlation,
                    model of others, dataset, named method, solver) or give a value without origin.
+                   With --section results, lists "significant" without a statistical test,
+                   promotional words, causal wording to check, and uncited mentions of published work.
 
   benchmark DIR    Build a benchmark from sample papers of a journal that were converted to
                    Markdown (for example with convert_to_markdown.py or journal_profile.py init).
@@ -332,13 +334,17 @@ METRICS = ["sentences", "paragraphs", "words", "cit_instances", "unique_refs", "
 
 def build_benchmark(folder, out):
     papers = sorted(Path(folder).glob("*.md"))
-    per, roles, meth = {}, {r: [] for r in ROLES}, {}
+    per, roles, meth, resd = {}, {r: [] for r in ROLES}, {}, {}
     for p in papers:
         text = p.read_text(encoding="utf-8", errors="replace")
         mp = md_section(text, "methods")
         mrows = [{"s": s, "refs": refs_in(s), "n": len(refs_in(s)), "narr": 0} for q in mp for s in sentences(q)]
         if len(mrows) >= 20:
             meth[p.stem] = summary(mrows, len(mp))
+        rp = md_section(text, "results")
+        rrows = [{"s": s, "refs": refs_in(s), "n": len(refs_in(s)), "narr": 0} for q in rp for s in sentences(q)]
+        if len(rrows) >= 20:
+            resd[p.stem] = summary(rrows, len(rp))
         ab, paras = md_parts(text)
         rows = analyse(paras)
         if len(rows) < 10:
@@ -357,7 +363,9 @@ def build_benchmark(folder, out):
                          for r, L in roles.items() if L},
              "per_paper": per,
              "methods": {"papers": len(meth), "overall": {m: quartiles([v[m] for v in meth.values()]) for m in
-                         ("sentences", "words", "cit_instances", "unique_refs", "share_cited", "cit_per_sentence")} if meth else {}}}
+                         ("sentences", "words", "cit_instances", "unique_refs", "share_cited", "cit_per_sentence")} if meth else {}},
+             "results_discussion": {"papers": len(resd), "overall": {m: quartiles([v[m] for v in resd.values()]) for m in
+                         ("sentences", "words", "cit_instances", "unique_refs", "share_cited", "cit_per_sentence")} if resd else {}}}
     Path(out).write_text(json.dumps(bench, indent=1), encoding="utf-8")
     print(f"wrote {out} ({len(per)} papers)")
     for m in ("share_cited", "cit_per_sentence", "cit_per_cited_sentence", "multi_ref_share", "cit_per_100_words"):
@@ -403,7 +411,44 @@ def audit_section(path, section, bench, list_n):
         print(f"  [P{r['p'] + 1}] {r['s'][:220]}")
 
 
+SIGNIF = re.compile(r"\bsignifican\w*", re.I)
+STATS = re.compile(r"\b(p\s?[<=>]|p-value|confidence interval|t-test|χ|chi-square|ANOVA|Wilcoxon|bootstrap|significance level|α\s?=)", re.I)
+PROMO = re.compile(r"\b(highly accurate|superior|remarkabl\w+|excellent|outstanding|state-of-the-art|unprecedented|revolution\w*|perfect\w*|dramatic\w*|clearly|obviously)\b", re.I)
+CAUSAL = re.compile(r"\b(causes?|caused by|due to|results? from|leads? to|because|attributed to)\b", re.I)
+LITMENTION = re.compile(r"\b(reported (by|in)|previous (studies|work)|in the literature|literature values?|published|other authors|earlier studies)\b", re.I)
+
+
+def audit_results(path, section, bench, list_n):
+    ab, paras = read_parts(Path(path), section)
+    rows = []
+    for pi, p in enumerate(paras):
+        for s in sentences(p):
+            ks = refs_in(s)
+            rows.append({"p": pi, "s": s, "refs": ks, "n": len(ks), "narr": narrative_count(s), "group": max_group(s)})
+    if not rows:
+        sys.exit(f"no '{section}' section found")
+    s = summary(rows, len(paras))
+    b = (bench or {}).get("results_discussion", {}).get("overall")
+    print(f"Section '{section}': {s['sentences']} sentences, {s['paragraphs']} paragraphs, {s['words']} words\n")
+    for m in ("sentences", "words", "cit_instances", "unique_refs", "share_cited", "cit_per_sentence"):
+        line = f"{m:26s} {s[m]:8.2f}" if isinstance(s[m], float) else f"{m:26s} {s[m]:8d}"
+        if b and m in b:
+            q = b[m]; line += f"   {q['median']:.2f} ({q['q1']:.2f}-{q['q3']:.2f})"
+        print(line)
+    checks = [("'Significant' without a statistical test in the sentence (use the number or a test)", [r for r in rows if SIGNIF.search(r["s"]) and not STATS.search(r["s"])]),
+              ("Promotional or absolute words (replace by numbers and comparisons)", [r for r in rows if PROMO.search(r["s"])]),
+              ("Causal wording (check that the evidence is a controlled comparison, an equation or a cited mechanism)", [r for r in rows if CAUSAL.search(r["s"]) and r["n"] == 0]),
+              ("Mentions of published work without a citation", [r for r in rows if LITMENTION.search(r["s"]) and r["n"] == 0])]
+    for title, L in checks:
+        print(f"\n{title} ({len(L)}):")
+        for r in L[:list_n]:
+            print(f"  [P{r['p'] + 1}] {r['s'][:220]}")
+
+
 def audit(path, bench_path, list_n, section=None):
+    if section and re.match(r"result|discussion", section, re.I):
+        bench = json.loads(Path(bench_path).read_text(encoding="utf-8")) if bench_path else None
+        return audit_results(path, section, bench, list_n)
     if section and section.lower() != "introduction":
         bench = json.loads(Path(bench_path).read_text(encoding="utf-8")) if bench_path else None
         return audit_section(path, section, bench, list_n)

@@ -5,8 +5,33 @@ A move analysis of 21 papers from the journal (2006–2026), made to model a man
 ## 0. What was analysed
 
 - 21 papers: 4 on ethylene and ethylene oxide plants (…0433, …2326, …3434 and an ANN model of an industrial EO plant, 2022) and 17 recent papers from 2026 on various topics. The review on kinetic Monte Carlo (…4187) was left out of the section analysis because reviews are organized differently, which leaves 20 research articles.
-- Method: top-level and second-level headings of all 20 papers; sentence-by-sentence analysis of all 20 abstracts and Introductions up to the methods (citations counted per sentence and per part, §3) and of their Methodology parts (§4); subsection-level reading of the Results and Discussion of 6 papers on modelling and data-driven methods (…4321 hybrid GNN, …4448 data-augmented MPC, …4436 industrial propylene reactor model, …4357 robustness benchmarking of data-driven models, …4497 industrial soft sensing, and the EO-plant ANN paper); abstracts and conclusions of 8 papers; and phrase counts from `scripts/build_section_phrases.py`.
+- Method: top-level and second-level headings of all 20 papers; sentence-by-sentence analysis of all 20 abstracts and Introductions up to the methods (citations counted per sentence and per part, §3), of their Methodology parts (§4) and of their Results and Discussion parts (§5); subsection-level reading of the Results and Discussion of 6 papers on modelling and data-driven methods (…4321 hybrid GNN, …4448 data-augmented MPC, …4436 industrial propylene reactor model, …4357 robustness benchmarking of data-driven models, …4497 industrial soft sensing, and the EO-plant ANN paper); abstracts and conclusions of 8 papers; and phrase counts from `scripts/build_section_phrases.py`.
 - Counts below refer to these papers. With 20 papers they show conventions, not rules.
+- The papers, for traceability (the review on kinetic Monte Carlo is not listed):
+
+| ID | Topic | DOI |
+|---|---|---|
+| …0433 | EO plant security, dynamic simulation | 10.1016/j.compchemeng.2006.02.011 |
+| …2326 | Shale gas to ethylene (OCM, MTO) | 10.1016/j.compchemeng.2017.05.023 |
+| …3434 | Surrogate-based superstructure optimization, ethylene plant | 10.1016/j.compchemeng.2020.107015 |
+| …sgbs4 | Superstructure ANN, industrial EO plant | 10.1016/j.compchemeng.2022.107850 |
+| …4217 | Thermochemical storage in eco-industrial parks (Part 2) | 10.1016/j.compchemeng.2026.109969 |
+| …431X | MBDoE-SINDy kinetic model discovery | 10.1016/j.compchemeng.2026.109979 |
+| …4321 | Hybrid GNN for mixture viscosity | 10.1016/j.compchemeng.2026.109980 |
+| …4357 | Robustness benchmarking of data-driven forecasts | 10.1016/j.compchemeng.2026.109983 |
+| …4369 | Dynamic-aware scheduling of integrated energy systems | 10.1016/j.compchemeng.2026.109984 |
+| …4370 | ML sorting of retired Li-ion cells | 10.1016/j.compchemeng.2026.109985 |
+| …4382 | Reactive scheduling under disruptions | 10.1016/j.compchemeng.2026.109986 |
+| …4394 | Fault-tolerant control with time delays | 10.1016/j.compchemeng.2026.109987 |
+| …4400 | Per-burner fuel prediction, reheating furnace | 10.1016/j.compchemeng.2026.109988 |
+| …4412 | Adaptive open-set fault diagnosis | 10.1016/j.compchemeng.2026.109989 |
+| …4424 | Palm-oil supply chain LCA fronts | 10.1016/j.compchemeng.2026.109990 |
+| …4436 | Industrial propylene reactor, parameter estimability | 10.1016/j.compchemeng.2026.109991 |
+| …4448 | TimeGAN-augmented MPC of crystallization | 10.1016/j.compchemeng.2026.109992 |
+| …4473 | Parameterized cryogenic refrigeration cost | 10.1016/j.compchemeng.2026.109995 |
+| …4485 | National SAF supply chain MILP | 10.1016/j.compchemeng.2026.109996 |
+| …4497 | Delay-aware soft sensing, copper smelting | 10.1016/j.compchemeng.2026.109997 |
+
 
 ## 1. Architecture of the paper
 
@@ -19,7 +44,7 @@ Typical order of top-level sections:
 | 2–3 | Methodology / Modelling framework / Mathematical model (often several sections) | 20/20 |
 | (3) | Evaluation metrics as a separate section | occasionally |
 | 3–5 | Case study (applies the method to a defined system) | 7/20 |
-| 4–7 | Results and discussion (combined) | 10/20; separate Results in most others, separate Discussion rare |
+| 4–7 | Results and discussion (combined) | titled so in 11/20; "Results" in 2; case studies or experiments in 7; no separate top-level Discussion (§5.1) |
 | (end of R&D) | Implications; Limitations (subsection or own section) | a few, but limitations appear in most conclusions |
 | last | Conclusion(s) | nearly all |
 
@@ -181,31 +206,53 @@ By type: first-principles and process simulation (…0433, …2326, …4217, …
 - **Language:** present tense for the model and framework, past for data collection and runs; passive in about half of the sentences; "we" rare except in a few papers.
 - **Citations:** of 256 cited sentences, about 41 % support a fact or justification, 18 % parameters, properties or correlations, 14 % adopted models, 14 % datasets, 12 % named methods, 2 % software.
 
-## 5. Results and Discussion (combined)
+## 5. Results and Discussion [J-obs]
+
+Not prescribed by the guide [J-req: none beyond figures, tables, equations and data rules]. What was analysed: the Results and Discussion part of all 20 research articles, from the first results section to the Conclusion (case-study and experiment sections included; their set-up paragraphs were read but not counted as findings). Layout-aware extraction with page numbers; every sentence coded for numbers, explanation, comparison, hedging, limitation, implication, figure/table/equation references and citations; reading of structure, subsection openings and samples of each kind of sentence. Guidance distilled from it: `references/results-discussion-writing.md`; numbers: `citation_benchmarks.json` → `results_discussion`.
 
 ### 5.1 Section level
-- Opening: either a short orientation paragraph (what is evaluated, on which data, where the summary table is) or directly the first subsection. Some papers open with implementation details and computing times.
-- Subsections follow the order of the method or of the questions in the Introduction (accuracy → extrapolation → application; or model → optimization → control).
-- Final subsections, where present: computational performance, implications, limitations.
+
+- **Titles:** "Results and discussion" in 11 of 20; "Results" in 2; case studies or experiments in 7. No paper has a separate top-level Discussion; some end with synthesis subsections: a discussion of the results together (…431X 4.3, …4424 7.8), positioning against prior work (…4400 3.8, with a comparison table), generality (…4400 3.9), implications (…4357 3.5), limitations (…4357 3.6; …4424 Section 8).
+- **Opening:** orientation (what is evaluated, on which data, how reported: …4321, …4370), implementation details (software, solver, hardware, time step: …4436), the scenario and its data (…4369, …4382), the headline result (…4400), or an organizing claim (…4357).
+- **Order:** credibility first, then analysis, then use: validation or accuracy → behaviour, sensitivity, interpretation → optimization, control, scenarios, decisions → computational performance → positioning and limitations (…4436, …4321, …4448, …4497, …3434).
+- **Subsections:** median 3.5 (0–16); several papers state the finding in the subsection title (…4400: "Individual slab tokens exceed zone aggregation under the same inputs"; "A one-hour thermal lag links slab load to burner fuel").
 
 ### 5.2 Subsection level
 
-| Step | Content | Typical wording (paraphrased) |
-|---|---|---|
-| R1 Purpose or link | What this subsection tests, linked to the previous one | "We first assess …", "This section evaluates …", "Having established …, we now examine whether …", "Following …, … was further …", "Based on the above analysis, …" |
-| R2 Setup | Data set, case or condition used | "To address this, the models are evaluated on …" |
-| R3 Headline result | Main metric(s) with numbers | "Model X achieves an RMSE of …, a MAPE of … and an R² of …" |
-| R4 Figure-led detail | Trends shown in figures and tables | "Fig. 5a presents …", "As shown in Fig. …", "Table 3 summarizes …" |
-| R5 Comparison | With baselines, alternative models or the nominal case; occasionally with published values | "outperforms", "compared with", "lower than that of", "comparable to"; "in close agreement with the values reported by …" |
-| R6 Explanation | Why the result occurs | "This is due to …", "can be attributed to …", "because …" |
-| R7 Consequence | What the result means for the next step, for operation or for validity | "This establishes the basis for …", "These results indicate that …", "These patterns hold within the investigated data range and do not …" |
+The R1–R7 pattern holds across the sample (purpose or link → set-up → headline result with numbers → figure-led detail → comparison → explanation → consequence or bound); typical wording and paragraph frameworks are in `references/results-and-discussion-combined.md` §3 and `references/results-discussion-writing.md` §2. Openers: "To further evaluate …", "To assess …", "Having established …, we now examine whether …", "Based on the above analysis, …", "As shown in Fig. …", "Table … summarizes …".
 
 ### 5.3 What the numbers say
-In the six closely read papers:
-- In five of them, 15–31 % of sentences refer to a figure or table: the discussion is built around figures. (The benchmarking paper, …4357, argues mostly in text.)
-- Only 0–6 % of sentences contain a literature citation. Comparison is mostly **with baselines and alternatives inside the study**, not with other papers. Where literature appears, it is a benchmark value or a method justification.
-- Up to about 20 % of sentences compare, and up to about 18 % hedge; explanations are explicit but short.
-- Claims are bounded: several papers state that conclusions hold within the investigated range, data set or simulator.
+
+| Measure (per paper) | Median | IQR | Range |
+|---|---|---|---|
+| Words | 2,865 | 2,065–3,984 | 379–6,617 |
+| Sentences | 140 | 90–184 | 16–279 |
+| Words per sentence | 22.2 | 20.2–24.3 | 16.7–31.6 |
+| Figures / tables referred to | 4.5 / 4 | 3.8–9.3 / 2–7.5 | 0–14 / 0–12 |
+| Sentences referring to a figure or table | 0.12 | 0.09–0.19 | 0.03–0.28 |
+| Sentences referring to an equation | 0 | 0–0.01 | 0–0.02 |
+| Citation instances / groups / unique references | 8.5 / 6.5 / 5 | 2–18 / 2–12 / 1–8 | 0–55 / 0–55 / 0–17 |
+| Sentences with a citation | 0.045 | 0.02–0.09 | 0–0.16 |
+| Sentences comparing with published results | 0.011 | 0–0.024 | 0–0.06 (in 12 of 20 papers) |
+| Sentences with a number | 0.35 | 0.30–0.41 | 0.16–0.60 |
+| Sentences with an explanation marker | 0.18 | 0.14–0.22 | 0.09–0.25 |
+| Sentences comparing within the study | 0.26 | 0.19–0.29 | 0.11–0.39 |
+| Sentences with a hedge | 0.06 | 0.04–0.08 | 0.01–0.12 |
+| Sentences with a limitation or scope | 0.03 | 0.02–0.05 | 0–0.10 |
+| Sentences with an implication | 0.05 | 0.03–0.07 | 0–0.18 |
+| Sentences with present / past markers / passive | 0.53 / 0.29 / 0.36 | – | – |
+
+By type (medians): physics-based papers cite most (8 % of sentences); data-driven papers refer to figures most (10 %) and cite least (2 %); hybrid papers hedge most (12 %) and state limitations most (6 %); optimization papers quantify most (38 % of sentences with a number).
+
+### 5.4 Practices observed
+
+- **Validation:** training, testing and a fully independent campaign reported separately, against an unestimated nominal model, with Pearson, MSE and relative bias, and the choice of metrics justified (…4436 p12–13); held-out test sets with ensemble predictions (…4321); unseen cells (…4370).
+- **Benchmarking:** baselines with the same inputs, data split and metric (…4400); state-of-the-art methods re-run on public benchmark datasets (…4412); comparisons with three published controllers (…4394); ablations removing one component at a time (…4394, …4400, …4412).
+- **Variability and statistics:** seeds (…4400 four, …4357 three to five), Monte Carlo runs with different random seeds (…4394, 50 runs), paired bootstrap intervals (…4357). "Significant(ly)" appears in 62 sentences in 15 papers, almost always without a test.
+- **Computational performance:** problem size, CPU time per iteration and hardware (…3434); runtime by module with bottlenecks, and the explicit statement that two cases do not establish a scaling law (…431X); a time index relative to the scheduling period (…4369); fewer optimization variables by move blocking (…4448).
+- **Physical interpretation:** temperature zones from the rate constants of desired and combustion reactions (…0433 p7); mechanism chains for trade-offs (…4448 p9); patterns attributed to the process because they appear also in the nominal model (…4436 p12); results explained by the structure of the model, with the limit stated (…4424 p11).
+- **Literature comparison:** published ranges and values (…3434 p11–14: production cost within 1 %, energy against a range, a different optimum attributed to a different problem definition), earlier dataset results with different partitions noted (…4321 p6), parameter values consistent with published kinetic studies (…4436 p15); a positioning table (…4400 Table 6).
+- **Unexpected results and limits:** physically paradoxical measurements flagged (…4321 p6); augmented data worse than real data (…4448 p7); observational association not read as causal (…4400 p14); conclusions conditional on simulators and choices (…4357 p8); what a small effect does not show (…4424 p15); confidential units handled by standardized outputs and relative bias (…4436 p11–13).
 
 ## 6. Conclusion
 
@@ -226,5 +273,5 @@ Conclusions rarely cite literature and are usually written as continuous prose, 
 - Cite every factual and literature-based sentence [Rule]; expect about 35–55 unique references in an Introduction of 1,200–1,800 words, and check the draft with `scripts/citation_density.py audit … --benchmarks citation_benchmarks.json`.
 - If the method is applied to a real or industrial system, add a description section (process, plant, data) before the methodology and a "Case study" section, or a case-study subsection in the results.
 - Methodology: choose the structure by the type of work (§4.1); describe the physical picture before the balances; list the assumptions with their sources and justifications; give every closure, parameter and dataset its origin; give more numerical detail (discretization, solver, tolerances, independence checks, versions) than the journal average; check with `citation_density.py audit … --section methods` and `references/methodology-writing.md` §15.
-- Use a combined Results and discussion with the R1–R7 pattern in every subsection (see `references/results-and-discussion-combined.md`); compare mainly with your own baselines and alternatives; use literature for validation data and benchmark values; state the range of validity; end with computational performance, implications and limitations where relevant.
+- Use a combined Results and discussion with the R1–R7 pattern in every subsection (see `references/results-and-discussion-combined.md` and `references/results-discussion-writing.md`): validation before use, then analysis, then application; compare with your own baselines under equal conditions and, for a reactor model, with published data and models wherever they exist; report variability; label each interpretation by its evidence; end with computational performance, positioning against prior work, implications and limitations; check with `citation_density.py audit … --section results`.
 - Conclusion: C1–C6, with the same key numbers as the abstract.
