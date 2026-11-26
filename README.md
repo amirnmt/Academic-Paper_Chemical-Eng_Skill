@@ -4,18 +4,19 @@ A [Claude skill](https://docs.claude.com/en/docs/agents-and-tools/agent-skills/o
 
 It guides Claude through the whole article and its publication:
 
-- **Any target journal:** send the journal's Guide for Authors at the start (and, if possible, 10–20 recent papers from it). The skill turns it into a journal profile (limits, structure, reference style, figures, required statements, and how the journal's papers are built) that overrides its defaults. Without a guide it uses a default profile and tells you which defaults apply. One profile per journal, so you can switch journals for the next paper.
+- **Any target journal:** send the journal's Guide for Authors at the start (and, if possible, 10–20 recent papers from it). The skill turns it into a journal profile (limits, structure, reference style, figures, required statements, and how the journal's papers are built) that overrides its defaults. Guidance is labelled by level: general writing [G], chemical and process engineering [D], patterns observed in the journal [J-obs], and the journal's explicit requirements [J-req]. Without a guide it uses a default profile and tells you which defaults apply. One profile per journal, so you can switch journals for the next paper.
 - **Writing process:** choosing the journal first, the order in which to write the sections, drafting without blocking, revising in rounds, working with co-authors, using AI responsibly.
 - **Evidence base:** search for missing papers, read papers rather than abstracts, turn a folder of papers into notes, a `refs.bib`, a theme map and a comparison matrix, and cite only verified sources at the strength they support.
+- **Citation rule and citation density:** every scientific or literature-based statement in the Introduction carries a citation from your own paper folders (written through a claim–evidence map, never from memory); how many sources per claim, where they go, how to synthesize several sources in one sentence; benchmarks of citation density per part of the Introduction from a target journal's papers; `scripts/citation_density.py` audits a draft against them and lists every uncited background or literature sentence.
 - **Every section, from first sentence to last:** what the section does, how it starts, which moves it makes and in what order, how its paragraphs are built, its tenses, and worked examples:
-  - Introduction (problem → solution → evaluation framework, gap types, objective and contributions),
+  - Introduction (problem → solution → evaluation framework; introducing concepts; seven paragraph patterns for the literature part; gap types and gap sentences; from gap to aim, contributions and scope),
   - Literature review (thematic synthesis, critical comparison, reporting verbs, planning a large citation count honestly),
   - Methods (content checklists for experimental, mechanistic-model and data-driven studies; LaTeX equations, `siunitx`, `mhchem`, nomenclature),
   - Results (reporting pattern; language of sequence, frequency, quantity and causality; numbers and statistics),
   - Combined Results and discussion (subsection pattern and paragraph templates, based on an analysis of recent *Computers & Chemical Engineering* papers),
   - Figures and tables (design rules, chart types, matplotlib style, captions, `booktabs`, referring to them in the text),
   - Discussion and Conclusion (explaining, comparing with the literature, hedging and modal verbs, limitations),
-  - Abstract, title, keywords, highlights.
+  - Abstract (including the patterns of process-systems abstracts), title, keywords, highlights.
 - **Paragraphs and sentences:** topic sentences, development patterns, linking sentences, old → new information, the first and last sentence of each section, paragraph templates per section.
 - **Language:** a large phrase bank of sentence stems by section and move, vocabulary per section, linking words, words to replace, confused words, the Academic Word List, tense and voice, concision, articles, numbers, common non-native errors.
 - **Your field's own phrasing:** `scripts/build_section_phrases.py` reads converted papers from your target journal and lists, for each section, how the section begins, frequent sentence openers, phrases typical of that section, and recurring terms, counted by the number of papers that use them.
@@ -33,6 +34,7 @@ academic-paper-skill/
 ├── references/
 │   ├── writing-process.md           planning, order of writing, drafting, revising
 │   ├── evidence-base.md             finding, reading, noting and citing papers
+│   ├── citation-practice.md         the citation rule, sources per claim, placement, density benchmarks, audit
 │   ├── introduction.md
 │   ├── literature-review.md
 │   ├── methods-latex.md
@@ -65,7 +67,8 @@ academic-paper-skill/
     ├── search_resources.py          search the full texts in resources/
     ├── build_section_phrases.py     section-by-section phrase list from papers
     ├── check_ai_signs.py            flags generic or AI-typical prose in a draft
-    └── check_citations.py           checks refs.bib against OpenAlex/Crossref and the .tex citations
+    ├── check_citations.py           checks refs.bib against OpenAlex/Crossref and the .tex citations
+    └── citation_density.py          citation density of an Introduction vs. the journal; uncited claims
 ```
 
 `SKILL.md` stays short. Claude opens the detailed reference files only when it works on that section, and searches `resources/` only when it needs more.

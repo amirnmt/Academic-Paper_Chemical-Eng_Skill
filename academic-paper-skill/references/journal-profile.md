@@ -2,6 +2,21 @@
 
 Every journal has its own rules for length, abstract, highlights, reference style, figures and declarations, and its own habits for structuring papers. The skill therefore works with a **journal profile**: one folder per journal that records those rules and habits. When no profile exists, the skill uses the **default profile** in §4 and says so.
 
+## 0. Four levels of guidance, and which one wins
+
+The references and profiles distinguish four levels. Label statements with them when writing a profile or advising the user, so that a habit is never presented as a rule.
+
+| Label | Level | Where it is recorded | Status |
+|---|---|---|---|
+| **[G]** | General scientific and academic writing | `references/*.md` | Default for any paper |
+| **[D]** | Chemical and process engineering conventions | `references/*.md`, marked [D] | Default within the discipline |
+| **[J-obs]** | Patterns observed in the target journal's published papers | `section_models.md`, `section_phrases.md`, `citation_benchmarks.json` of the profile | Convention inferred from a sample, with counts; not binding |
+| **[J-req]** | Explicit requirements of the target journal | `journal_requirements.md` (from the Guide for Authors) | Binding for submission |
+
+Standing rules of this skill marked **[Rule]** (for example the citation rule in `citation-practice.md` §1) and the user's explicit instructions apply alongside [J-req].
+
+Precedence when they disagree: [J-req] and [Rule] first; then [J-obs] (follow the journal's habits unless they conflict with a rule: a habit of leaving background sentences uncited does not override the citation rule); then [D]; then [G]. When a [J-obs] pattern is based on few papers or varies widely, say so and keep the [G] or [D] default.
+
 ## 1. Workflow
 
 1. **At intake, ask for the target journal and its Guide for Authors** (a PDF or Word file, a saved web page, or a link). Also ask for 10–20 recent research articles from the journal, ideally close to the user's topic (optional but strongly recommended).
@@ -13,10 +28,10 @@ Every journal has its own rules for length, abstract, highlights, reference styl
    This creates `resources/journals/<journal-slug>/` with
    - `guide.md`: the converted guide (kept local, not committed);
    - `requirements_draft.md`: the guide's lines for each field of the template in §3, with line numbers;
-   - with `--papers`: `papers/` (converted sample papers, kept local) and `section_phrases.md`.
+   - with `--papers`: `papers/` (converted sample papers, kept local), `section_phrases.md` and `citation_benchmarks.json` (citation density of the sample Introductions, from `scripts/citation_density.py benchmark`).
    If the guide is a link, open it, save its text to a file, and pass that file. If nothing can be converted, ask the user for the text.
 4. **Write `journal_requirements.md`** from the draft and the guide, using the template in §3: every field filled, paraphrased, with the guide's date and the source line numbers for the hard limits. Where the guide is silent, write "not specified" and keep the default from §4, marked "(default)".
-5. **If sample papers were given, write `section_models.md`**: the journal's typical section order, the moves of the Introduction and of the (combined) Results and discussion, abstract and conclusion patterns, with counts. Use `introduction.md` §5a and `results-and-discussion-combined.md` as the frame; see the example profile for *Computers & Chemical Engineering* in `resources/journals/`.
+5. **If sample papers were given, write `section_models.md`**: the journal's typical section order, the moves of the Introduction and of the (combined) Results and discussion, abstract and conclusion patterns, citation density by part of the Introduction, with counts, each statement labelled [J-obs] (or [J-req] where the guide prescribes it). Use `introduction.md` §5a and `results-and-discussion-combined.md` as the frame; see the example profile for *Computers & Chemical Engineering* in `resources/journals/`.
 6. **Check:** `python scripts/journal_profile.py check "Journal Name"` reports empty fields and leftover TODOs.
 7. **From then on, the profile overrides the defaults** everywhere: outline, section names, abstract and highlight limits, reference style (and the LaTeX bibliography style), figure formats, required statements, final checklist.
 
@@ -113,6 +128,7 @@ When sample papers are available, they show what the guide does not: how long In
 
 - Convert and analyse: `journal_profile.py init … --papers <dir>` (or `convert_to_markdown.py` and `build_section_phrases.py` separately).
 - List the top-level headings of every paper and count the section patterns.
-- Read the Introductions and the Results-and-discussion sections of the 6–10 papers closest to the user's topic; record the moves and their order.
+- Read the abstracts, Introductions and Results-and-discussion sections of the 6–10 papers closest to the user's topic; record the moves and their order, how concepts are introduced, how the literature is grouped, how limitations and the gap are stated, and how the gap leads to the aim and contributions.
+- Check `citation_benchmarks.json` against a few papers read by hand: conversions of two-column PDFs can lose superscript citation numbers or mix in page headers. Correct the numbers in `section_models.md` if needed.
 - Write `section_models.md`: architecture table with counts; abstract, Introduction, Methods, Results-and-discussion and Conclusion models; typical wording paraphrased; lengths; anything unusual about the journal.
 - Paraphrase everything; identify papers by their DOI or PII, not by copying their sentences.

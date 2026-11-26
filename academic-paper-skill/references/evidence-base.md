@@ -90,7 +90,8 @@ Rules:
 - If unsure, write `[CHECK: key — what to verify]` instead of citing.
 - Keep a citation map in the notes: claim → key → page/table/figure.
 - Cite the original source of any named model, correlation, kinetic scheme, equation of state, dataset or criterion (e.g. Peng–Robinson, Ergun, a specific rate law).
-- Common knowledge needs no citation; anything specific, numerical, recent or contestable does.
+- Every sentence that states a fact about the world or about other work needs a citation; only your own work and textbook common knowledge are exempt (the rule and the details: `citation-practice.md`). Anything specific, numerical, recent, industrial or contestable always does.
+- When the user names directories of papers, write the Introduction from them through a claim–evidence map and mark unsupported claims `[CITATION NEEDED]` (`citation-practice.md` §3).
 - A reference list is a selection, not an inventory of everything read. Cite what the argument needs.
 - Avoid unpublished data, manuscripts in preparation and personal communication. If unavoidable, follow the journal's rule (often in the text only, with the person's full name and affiliation, and a written record kept by you).
 - "In press" means accepted. A submitted paper is not "in press".

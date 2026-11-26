@@ -16,7 +16,7 @@ Two models of informative abstract (the journal usually decides):
 - **Focused model:** concentrates on two or three components, usually method and results, often combined in one sentence. Common in narrow fields where readers know the background. Methods come before results.
 
 ### 1.2 Rules
-- Self-contained: no references (rare exception: a paper that directly replies to another), no figure or table citations, no undefined abbreviations (define a long term only if it is used several times).
+- Self-contained: no references (rare exceptions: a paper that directly replies to another, or one that extends a named earlier study, cited by author and year), no figure or table citations, no undefined abbreviations (define a long term only if it is used several times).
 - Every statement and conclusion in the abstract must also appear in the body of the paper.
 - Concentrate on results, with numbers; do not list what was done.
 - No evaluative or judgemental remarks ("surprisingly …").
@@ -35,7 +35,7 @@ Two models of informative abstract (the journal usually decides):
 5. Applications (if any).
 6. Limitations or future work (rarely, and briefly).
 
-Engineering abstracts typically state background, purpose, methods, results and conclusion. Chemical engineering abstracts emphasize the methods and state the purpose less often than other engineering fields, so a clearly stated purpose helps the abstract stand out.
+Engineering abstracts typically state background, purpose, methods, results and conclusion. Chemical engineering abstracts emphasize the methods and state the purpose less often than other engineering fields [D], so a clearly stated purpose helps the abstract stand out. In process-systems papers the purpose is almost always explicit (§1.9).
 
 ### 1.4 Word budget (for about 250 words)
 - Background and gap: 40–50 words.
@@ -61,6 +61,34 @@ Write the first draft freely, including everything that seems important; then cu
 
 ### 1.8 Skeleton (placeholders)
 > [Process/system] is [importance]. [Current models/methods] rely on [assumption/limitation], which [consequence]. This study [aim] by [approach]. [Method details: model, data, validation]. [Main result with number]. [Second result with number]. [Comparison or validation metric]. These results [implication for design, operation or modelling].
+
+Focused variant (aim first):
+> This work proposes [method] for [task] in [system]. [Method] combines [component A] with [component B] so that [capability]. It is applied to [case, data size]. [Main result with number, compared with baseline]. [Second result]. [Scope or limitation in one clause]. [Implication].
+
+### 1.9 Abstracts in process-systems papers [J-obs]
+From 19 readable abstracts of *Computers & Chemical Engineering* research articles (one abstract could not be read from its PDF):
+
+| Feature | Observed |
+|---|---|
+| Length | median 184 words (157–244), 9 sentences (7–9; 3–12); sentences of about 26 words |
+| Opening | background (often with the difficulty) 12; a problem or a pointed claim 2; the aim itself 5 |
+| Problem or gap stated | 12 of 19: in the same sentence as the background ("X is important for …, yet …"; 5), as a "However, existing …" sentence (3), or as "Existing [models] [assume / neglect] …" (2) |
+| Aim sentence | 18 of 19; subject "This work" (6), "This paper" (4), "This study" (3), "We" (4), passive (1); verb mostly *propose(s)* (7) or *present(s)* (4) |
+| Method | 2–5 sentences; detail introduced with "Specifically, …"; names the methods, the data and its size |
+| Results with numbers | 11 of 19 (percent changes, R², errors, cost or time reductions, data sizes) |
+| Closing | an implication or conclusion in 13 of 19 ("These results demonstrate …", "… provide guidance for …", "Overall, …"); the others end on the last result or on a limitation |
+| Limitation or scope | 6 of 19, mostly in the most recent papers ("…, despite limited data informativeness, …"; "… needs a simulator") |
+| Citations | 3 of 20, each to the earlier study the paper extends |
+| Tense | present for method and results in most; past for what was done and found in 3; consistent within each abstract |
+| "We" | 6 of 20 |
+
+How these abstracts stay short [G]:
+- **Importance and difficulty in one sentence:** "[X] is critical for [use], yet its [prediction / control] remains difficult because [reason]."
+- **Aim and method in one sentence:** "This work proposes [name], a [type] that integrates [A] with [B] for [task]."
+- **Method components as one list:** "The framework combines [A], [B], [C] and [D]."
+- **Result, metric and comparison in one sentence:** "Compared with [baseline], [method] reduces [metric] by [value] and [metric 2] by [value]."
+- **A clause for scope**, not a sentence: "…, within the investigated operating range, …".
+- **No meta-sentences** ("The results are discussed", "Conclusions are drawn").
 
 ## 2. Title
 

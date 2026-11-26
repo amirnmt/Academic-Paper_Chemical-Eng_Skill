@@ -4,7 +4,7 @@ Many engineering papers have a separate literature review section between the In
 
 In computational and process-systems chemical engineering the review usually sits inside the Introduction. In 20 recent *Computers & Chemical Engineering* papers, only two had a separate "Related work" part, and only 2–4 of 90 reactor-modelling and surrogate-modelling papers had a separate literature review section. Their Introductions are correspondingly long (often 1,000–2,500 words) and organized by families of approaches (see `introduction.md` §5a). Everything in this file still applies; the review then forms the middle of the Introduction instead of its own section.
 
-The review shows the state of knowledge, compares approaches, and makes the gap inevitable.
+The review shows the state of knowledge, compares approaches, and makes the gap inevitable. Every sentence in it that says something about other work carries a citation (`citation-practice.md` §1–2); when the user names directories of papers, write it from those papers through a claim–evidence map (`citation-practice.md` §3).
 
 ## 1. What a literature review is and is not
 
@@ -66,6 +66,10 @@ Example (structure; replace with verified content):
 - **Classify:** "Three modelling strategies can be distinguished: …, … and …"
 - **Trace development:** "Early models assumed …[2]; later studies added … [5,6]; recent work has … [9]."
 - **Generalize carefully:** "Taken together, these studies indicate that …"
+- **Taxonomy with a citation group per class:** "… has been addressed by A [3,4], B [5,6] and C [7–9]"; then one sentence per class.
+- **Chain of named studies:** "X et al. (2019) fitted …, Y and Z (2021) extended … to …, and W et al. (2023) validated … against plant data." Keep to three or four studies, then synthesize.
+- **Problem → remedy → residual limitation:** a practical difficulty, the methods proposed for it [refs], and what they still assume [refs].
+- More paragraph patterns: `introduction.md` §6a; sentence patterns with several sources: `citation-practice.md` §7.
 - **Tabulate:** a summary table of the closest 10–20 studies (method, system, regime, key assumption, validation, metric, result). Refer to it in the text and discuss the pattern it shows, not each row.
 
 ## 6. Citing within the review
@@ -75,6 +79,7 @@ Example (structure; replace with verified content):
 - Put names or dates into the sentence only when they matter: "The first two-dimensional model was proposed in 1965 [3]."
 - Place each citation where its claim is, not all at the end of a long sentence: "We compared the model of Smith [4] with the correlation of Lee [9]" rather than "We compared the model and the correlation [4,9]."
 - Order multiple citations as the journal requires (numerical, chronological or alphabetical).
+- How many per sentence: one for a specific finding, two or three for a general statement, more only for "widely studied" claims (`citation-practice.md` §5). In *Computers & Chemical Engineering* papers [J-obs], a cited sentence carries a median of 1.8 sources and half of the literature sentences are cited; under the rule of this skill, all sentences about other work are.
 - Tell the reader what each cited work found and how it relates to yours. A "handwaving reference" ("see the excellent work of Smith [4]") tells the reader nothing.
 
 ## 7. Reporting verbs and their strength
@@ -118,6 +123,12 @@ Close with a short paragraph that:
 Example structure:
 > In summary, … has been established for … [refs]. However, … remains untested under … conditions, which limits … . The present study addresses this gap by …
 
+Other closing forms:
+- "These models are effective for …, yet they share one limitation: … [refs]."
+- "Despite these advances, … remains [limited / unaddressed] [refs]: first, …; second, …"
+- "Taken together, these studies show that … [refs], but none of them …"
+The closing paragraph cites the closest studies again where it names their limitation.
+
 ## 12. Planning a large citation count (e.g. 70+)
 
 - Allocate citations per theme from the theme map (`evidence-base.md` §3), not per paragraph.
@@ -139,6 +150,6 @@ Example structure:
 - [ ] Disagreeing results included and explained.
 - [ ] Your evaluation present in every paragraph; criticism constructive.
 - [ ] Reporting verbs match the sources' certainty; tenses consistent.
-- [ ] Citations placed where their claims are; no handwaving references; no unseen papers.
+- [ ] Every sentence about other work cited; limitations attributed to the works; citations placed where their claims are; no handwaving references; no unseen papers.
 - [ ] Ends with a gap that the Introduction's objective answers.
 - [ ] All citations verified; thin themes reported, not padded.

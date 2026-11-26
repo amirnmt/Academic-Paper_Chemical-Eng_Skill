@@ -17,6 +17,7 @@ The guidance in this skill is distilled, in our own words, from the following wo
 
 **Own analyses used in the skill**
 - Section structure, Introduction moves and Results-and-discussion patterns of 20 research articles in *Computers & Chemical Engineering* (2006–2026) and section structure of 90 papers on reactor modelling and surrogate models; analysed with `scripts/build_section_phrases.py` and by reading. The papers themselves are not included.
+- Abstracts and Introductions (up to the first methods section) of the same 20 *Computers & Chemical Engineering* articles: sentence-by-sentence move coding and automatic citation counts per sentence, paragraph and part of the Introduction (layout-aware PDF extraction, spot-checked); results in `resources/journals/computers-and-chemical-engineering/section_models.md` §2–3 and `citation_benchmarks.json`, and in `references/citation-practice.md`.
 
 **Tools**
 - Microsoft MarkItDown, https://github.com/microsoft/markitdown (used to convert the guides to Markdown); PyMuPDF and pypdf as alternatives in `scripts/convert_to_markdown.py`.

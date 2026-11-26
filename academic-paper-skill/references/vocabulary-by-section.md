@@ -41,6 +41,7 @@ Best practice: build your own list from your field. For each section, collect th
 - Tentative (the source was cautious): suggest, propose, indicate, hypothesize, argue.
 - Distancing (you may disagree): claim, assume, assert.
 - Tense: past simple for a specific study ("Smith et al. [4] measured …"); present perfect for a line of research continuing now ("Several authors have modelled …"); present simple for accepted findings ("Cu/ZnO catalysts deactivate by sintering [7]").
+- Most frequent after named studies in *Computers & Chemical Engineering* Introductions [J-obs]: used, proposed, developed, indicated, suggested, improved, introduced, showed, combined, found, employed; also built, examined, addressed, analysed, applied, compared, derived, highlighted, extended.
 
 **Identifying the gap or problem**
 - Signals: however, although, while, despite, nevertheless, but, yet.
@@ -49,6 +50,10 @@ Best practice: build your own list from your field. For each section, collect th
 - Verbs: neglect, overlook, ignore (use carefully), fail to account for, be restricted to, remain unclear, remain unknown, require further investigation, has not been examined/validated/reported.
 - Quantifiers: few, little (= almost none), only a few, no study, to our knowledge no.
   Note: "a little" means "some"; "little" means "almost none".
+
+**Linking the gap to the present work:** to address these limitations, to this end, accordingly, therefore, against this background, in this context, these limitations motivate, building on.
+
+**Stating scope:** is limited to, lies beyond the scope of, within the investigated range, does not describe, is not intended to, is left for future work.
 
 **Presenting the present work**
 - Nouns: aim, objective, purpose, goal, contribution, approach, scope, focus.

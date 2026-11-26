@@ -2,7 +2,9 @@
 
 The Introduction gives readers enough background to understand and evaluate your results without reading earlier papers, explains why the study was needed, and states what it does. Readers decide here whether to continue; reviewers decide here whether the work is new. If the problem is not stated clearly, nobody will care about the solution.
 
-Use with `paragraphs-and-sentences.md` (how to build each paragraph), `vocabulary-by-section.md` §2 (words) and `phrasebank.md` (sentence stems).
+Use with `citation-practice.md` (which sentences need a citation, and how many), `paragraphs-and-sentences.md` (how to build each paragraph), `vocabulary-by-section.md` §2 (words) and `phrasebank.md` (sentence stems). For the target journal's own habits, read its `section_models.md` and `citation_benchmarks.json` in `resources/journals/<journal>/`.
+
+Levels: **[Rule]** standing rule of this skill; **[G]** general; **[D]** chemical and process engineering; **[J-obs]** observed in published papers of one journal (here *Computers & Chemical Engineering*, 20 research articles). See `journal-profile.md` §0.
 
 ## 1. What the Introduction must do
 
@@ -44,11 +46,29 @@ Good openings:
 - **Current focus of the field:** "The design of fixed-bed reactors increasingly relies on detailed two-dimensional models [4–6]."
 - **A key practical problem stated as a fact:** "Hot spots limit the conversion that can be reached in exothermic fixed-bed reactors [7]."
 
+In 20 *Computers & Chemical Engineering* papers [J-obs], 17 opened with the importance of the process, product or property, two with the importance of a class of methods, and one with a pointed claim about current practice. Several combined importance and difficulty in the first one or two sentences ("X governs …, yet its prediction remains difficult because …"). Only 6 of the 20 first sentences carried a citation. **Under the rule of this skill, the first sentence is a factual claim and is cited** [Rule].
+
 Avoid:
 - vague universal truths ("Energy is important for modern society");
 - dramatic or promotional openings ("In today's rapidly evolving world …");
 - starting with your aim ("The aim of this paper is …") or your method;
 - a question as the first sentence.
+
+## 3a. Introducing concepts and terms
+
+A term from the title, a method or a quantity the argument depends on is introduced once, where it first matters, and then used consistently.
+
+| Device | Pattern (placeholders) | Use |
+|---|---|---|
+| Acronym at first use | "model predictive control (MPC)" | Only for terms used again; define again in the abstract if used there |
+| Definition sentence | "[Term] is a [class] that [distinguishing function] [ref]." | A method or concept the reader may not know |
+| Appositive definition | "[Term], a [class] that [function], has been applied to … [refs]." | Defines and makes a claim in one sentence |
+| Fixed short name | "[Full term], hereafter [short term], …" | When a longer term is shortened for the rest of the paper |
+| Gloss in brackets | "(i.e., …)", "(e.g., …, …)" | Clarifies one word or gives examples without a new sentence |
+| Definition attributed to a source | "[Author] (year) defines [term] as …" | When the exact definition matters; rare in engineering |
+| Classification | "[Property] can be static (…) or dynamic (…) [refs]." | Introduces the categories the review will use |
+
+Order inside a paragraph [G]: define the concept → state why it matters for the problem (cited) → state its limitation (attributed to the works that show it) → lead to the next concept or approach. Definitions of methods carry a citation to the original or a standard source [Rule].
 
 ## 4. The four-part model (general STEM)
 
@@ -92,7 +112,7 @@ Engineering research is usually problem-solving and incremental. An introduction
 - 3.2 Research questions or hypotheses (rare in engineering; useful for validation studies).
 - 3.3 Definitions, 3.7 related work, 3.9 notation (rare here; put them in their own section).
 
-**Chemical and process engineering** (move analysis of five engineering fields): introductions often give a short statement of established knowledge and then move quickly to previous research; background and literature review may alternate several times. Many papers have a separate literature review section; then the Introduction stays short.
+**Chemical and process engineering** [D] (move analysis of five engineering fields): introductions often give a short statement of established knowledge and then move quickly to previous research; background and literature review may alternate several times. Many papers have a separate literature review section; then the Introduction stays short. Computational and process-systems journals are an exception: there the review sits inside the Introduction (§5a).
 
 ## 5a. Computational and process-systems papers
 
@@ -102,20 +122,22 @@ Based on 20 recent research articles in *Computers & Chemical Engineering* (meth
 |---|---|---|
 | I1 Territory | Importance of the process, product or property (scale, uses, energy, cost, safety) | Opening move in most papers; a few open with the method or with a striking claim |
 | I2 Problem | Why modelling, prediction or control of this system is hard (coupled phenomena, unknown parameters, scarce data, delays) | Nearly all |
-| I3 Literature by approach family | First-principles → data-driven → hybrid, or "Regarding A … Regarding B …"; chronological within a family; mostly narrative citations, one study per sentence with its method and result | All |
+| I3 Literature by approach family | First-principles → data-driven → hybrid, or "Regarding A … Regarding B …"; chronological within a family; mostly citation groups in brackets (narrative citations under 5 % in most papers), with a few papers writing the review as a chain of named studies, each with its method and result | All |
 | I4 Evaluation | Strength and limit of each family, closing each group | Common |
 | I5 Gap | Focus mismatch (A studied, not B); scale gap (no industrial data); combination gap (no approach handles A, B and C together); integration gap; enumerated limitations ("First … Second … Finally …") | All |
 | I6 Present work | "In this work, we …"; "To address these challenges, this paper proposes …" | All |
 | I7 Approach in steps | "First, … Second, … Finally, … is compared with …" | Common in method papers |
-| I8 Contributions | Numbered list, often 3–4 items | About half |
+| I8 Contributions | Numbered or "First … Second … Third" list, often 3–4 items, each answering one stated limitation | 12 of 20 enumerate objectives or contributions |
 | I9 Scope | What is and is not claimed: virtual plant vs. real plant, operating range, validation data | Several industrial and data-driven papers |
-| I10 Roadmap | "The remainder of this paper is organized as follows …" | About half |
+| I10 Roadmap | "The remainder of this paper is organized as follows …" | 11 of 20 |
+
+Length and citation density [J-obs]: median 9 paragraphs (7–13), 1,364 words (1,037–1,704), 36 unique references (25–43); 38 % of all sentences cited, falling from about 54 % in the opening and 44 % in the literature part to 4 % in the present-work part (`citation-practice.md` §6). Three of the 20 used subheadings inside the Introduction, and one placed the review in a separate "Related works" section.
 
 The usual section order that follows is: Introduction → process, system or data description → methodology (one or more sections) → case study → Results and discussion (combined in about half) → Conclusions.
 
 ## 6. Paragraph-by-paragraph plan
 
-A typical engineering Introduction has 4–6 paragraphs (about 1–1.5 pages, or 300–700 words).
+A typical engineering Introduction with a separate literature review has 4–6 paragraphs (about 1–1.5 pages, or 300–700 words) [G]. When the review sits inside the Introduction, paragraphs 2–3 below expand into one paragraph per approach family or sub-problem, and the Introduction grows to 8–14 paragraphs (C&CE median 9; §5a) [J-obs].
 
 **Paragraph 1. Importance and context**
 - First sentence: importance or key fact, with citation.
@@ -137,6 +159,25 @@ A typical engineering Introduction has 4–6 paragraphs (about 1–1.5 pages, or
 - Develop: approach and why it suits the problem; contributions (2–4, specific and checkable); optionally main finding; optionally outline ("Section 2 describes …").
 - Last sentence: leads into the Methods.
 
+## 6a. The literature part: paragraph patterns
+
+Seven ways of building the paragraphs between the background and the gap [G, J-obs]. Most Introductions combine two or three.
+
+1. **Approach family.** Topic sentence naming the family → what its members do, with citation groups → strongest study in more detail → limitation relative to your problem. One paragraph per family, ordered toward the approach closest to yours.
+2. **Taxonomy sentence.** One sentence that classifies the field, with a citation group after each class ("… have been addressed by decomposition [refs], surrogate-based [refs] and … [refs] methods"); the following sentences take the classes one by one.
+3. **Limitation chain.** Every paragraph ends with the same kind of limitation, measured against the capability your work provides ("… does not represent the closed-loop response of the equipment"). The gap paragraph then collects these limitations, numbered. Strong when the contribution is one missing capability.
+4. **Problem → remedy → residual limitation.** "Another challenge is [problem]. To address it, [remedies] have been proposed [refs]. These methods, however, assume [assumption] [refs]." One paragraph per practical difficulty (scarce labels, changing conditions, delays).
+5. **Lineage.** "Early models … [ref]. Building on this, … [ref] … More recently, … [refs]." Within one family, when the development itself explains the gap.
+6. **Chain of named studies.** Author-prominent sentences, one or two studies each, with what they did and found; then a synthesis sentence ("These models are effective for …, but all represent … as …"). Use when the specific studies are few and close to yours.
+7. **Position of the authors' own earlier work.** "In previous work (ref), we … This showed … but left … open." Placed last before the gap, because it is the closest study.
+
+Close the literature part with a synthesis sentence that states what the reviewed work shares and what it lacks, attributed to the works ("In summary, … [refs]; however, none of these … ").
+
+Limitations of earlier work [G, Rule]:
+- State them where the work is described, not in a separate list of complaints.
+- Attribute them: a limitation of specific studies cites those studies; a limitation of a whole family cites representative members or a review. In the analysed papers [J-obs], sentences stating limitations were cited less often (42 %) than other background and literature sentences (52 %); under the rule they are claims about other work and are cited.
+- Describe what the work does not cover or assumes ("assumes full state measurement", "was validated only with pilot-plant data"), not that it is poor.
+
 ## 7. Writing the gap
 
 The gap is the pivot of the paper. It must be specific and supported by the studies you cited.
@@ -151,9 +192,32 @@ Types of gap:
 
 Good gap statements name the studies, the limitation and the condition. Weak ones say "little is known" or "this topic is interesting". Interesting is not a justification: say why the gap matters.
 
+Forms of the gap sentence seen in process-systems papers [J-obs; templates in `phrasebank.md` §1.6; a paper may use more than one]:
+- **Integration gap** (most frequent, 6 of 20): "No existing approach combines A, B and C within one framework." / "These methods were developed separately and lack …"
+- **Assumption or representation gap** (5 of 20): "Existing models assume … / represent … only as …, which …"
+- **Scale or realism gap** (3 of 20): "Few studies use industrial data / address … at plant scale."
+- **Enumerated limitations** (4 of 20): "Although these studies have …, several limitations remain. First, … Second, … Third, …", each limitation with its citations, followed by "These limitations motivate …".
+- **Focus mismatch:** "These studies focus on A, whereas B has received little attention."
+- **Closest-work gap:** "To our knowledge, no study has …; the closest are [refs], which …"
+
+Justify the gap [G]: say what it costs (accuracy, safety margin, design decision, operating cost, computation) and for whom. In the analysed papers the justification is usually one sentence directly after the gap or folded into it ("…, so a prediction that cannot be explained is difficult to turn into an operating decision").
+
+Cite in the gap paragraph [Rule]: the few studies that exist, the closest studies and their limitation, or the review that supports a "widely assumed" claim. In the analysed papers about 40 % of gap sentences carried a citation.
+
 Tense matters here: "little attention **has been** paid to X" means the gap still exists now (and this paper addresses it). "Little attention **was** paid to X in 2015" means only then; the gap may have been closed since.
 
 ## 8. Objective, hypotheses, contributions
+
+From gap to objective [G, J-obs]: the sentence that states the present work begins by pointing back at the gap ("To address these limitations, …", "To this end, …", "Accordingly, …", "Against this background, …", "These limitations motivate …"). Use the gap's own key terms in the objective so that the link is visible.
+
+Mirror the limitations [J-obs]: in papers with enumerated limitations, the contributions are listed in the same order and answer them one by one. Write the contributions list from the gap list, then check that every contribution answers a limitation and every limitation is answered or declared out of scope.
+
+Novelty, stated with care [G]:
+- Say exactly what is new and relative to what: "To our knowledge, this is the first … that both … and …"; "The novelty lies in combining … with …"; "The methods are established; what is new is their use on …". Overstated novelty invites the reviewer to find the counterexample.
+- "Novel" in every second sentence weakens the claim; state the new element instead.
+- A preview of the main finding ("The analysis shows that …") is common in recent papers and helps the reader.
+
+Scope [J-obs: 6 of 20 recent papers]: state what the study does not claim or cover ("The models describe associations within the observed operating range, not the mechanism"; "Environmental and safety constraints are outside the scope"; "A simulated plant is used; experimental validation is future work"). Put it after the approach or after the contributions.
 
 - One objective stating the exact property or parameter, the system, and the means. Example: "This study aims to quantify the error of five wall heat-transfer correlations in predicting the axial and radial temperature profiles of a pilot-scale methanol synthesis reactor with a tube-to-particle diameter ratio of [value], using a two-dimensional pseudo-homogeneous model."
 - Use the same wording of the objective in the abstract, Results, Discussion and Conclusion. This repetition helps the reader.
@@ -164,6 +228,10 @@ Tense matters here: "little attention **has been** paid to X" means the gap stil
 
 ## 9. Citations in the Introduction
 
+The full guidance is in `citation-practice.md`. The essentials:
+- **Every sentence that states a fact about the world or about other work carries a citation** [Rule]; exempt are your own objectives, methods, contributions, findings and outline, and inferences drawn visibly from sources cited in the same paragraph.
+- When the user gives directories of papers, write from them through a claim–evidence map; mark `[CITATION NEEDED]` where they do not support a claim. Never fill the gap from memory.
+- Density falls across the Introduction: high in the background and literature parts, some in the gap, almost none in the present work and roadmap. Check with `scripts/citation_density.py audit`.
 - Be selective: the most relevant and the most recent strong work. The exhaustive review belongs in the literature review.
 - Tell the reader why each citation matters ("Smith et al. [4] showed that …"), not "see the elegant work of Smith [4]".
 - Place the citation where the claim it supports appears in the sentence, not all at the end.
@@ -194,11 +262,11 @@ Present simple for a published finding treats it as established knowledge; past 
 
 > [P1: importance → background → problem area] Methanol is one of the most widely produced chemicals, with an annual production of about [value] Mt [1]. Most of it is synthesized from syngas over Cu/ZnO/Al2O3 catalysts in multitubular fixed-bed reactors cooled by boiling water [2,3]. Because the reaction is strongly exothermic, the rate of heat removal through the tube wall determines the hot-spot temperature, which in turn limits conversion and catalyst life [4].
 >
-> [P2: previous research, approach 1 → evaluation] Reactor models are therefore widely used for design and scale-up. One-dimensional pseudo-homogeneous models predict outlet conversion at low computational cost [5–7], but they cannot resolve the radial temperature profile that controls the hot spot. Two-dimensional models resolve this profile [8–11]; their accuracy, however, depends on the effective radial conductivity and the wall heat-transfer coefficient, which are taken from correlations [12–14].
+> [P2: previous research, approach 1 → evaluation] Reactor models are therefore widely used for design and scale-up [5,8]. One-dimensional pseudo-homogeneous models predict outlet conversion at low computational cost [5–7], but they cannot resolve the radial temperature profile that controls the hot spot. Two-dimensional models resolve this profile [8–11]; their accuracy, however, depends on the effective radial conductivity and the wall heat-transfer coefficient, which are taken from correlations [12–14].
 >
 > [P3: previous research, approach 2 → remaining issue] Most of these correlations were derived for tube-to-particle diameter ratios above about 10 [12,13]. Industrial methanol reactors often operate at lower ratios, where wall effects and channelling become important [15]. Corrections for low ratios have been proposed [16,17], but they were validated mainly with non-reacting heat-transfer experiments.
 >
-> [P4: gap → why it matters] To date, the performance of these correlations has not been assessed against temperature profiles measured in a reacting methanol synthesis bed at low tube-to-particle ratios. Without such an assessment, the predicted hot-spot temperature, and therefore the safe operating window, remains uncertain.
+> [P4: gap → why it matters] To date, the performance of these correlations has not been assessed against temperature profiles measured in a reacting methanol synthesis bed at low tube-to-particle ratios; the closest studies used non-reacting beds [16,17] or compared only outlet conversion [8,9]. Without such an assessment, the predicted hot-spot temperature, and therefore the safe operating window, remains uncertain.
 >
 > [P5: present work → approach → contributions → outline] This study therefore compares five wall heat-transfer correlations in a two-dimensional pseudo-homogeneous model against axial and radial temperature profiles measured in a pilot-scale reactor with a tube-to-particle ratio of [value]. The contributions are (i) a quantitative comparison of the correlations under reacting conditions, (ii) an identification of the conditions under which each correlation fails, and (iii) a recommendation for reactor design at low ratios. Section 2 describes the reactor and the model, Section 3 presents the comparison, and Section 4 discusses its implications.
 
@@ -211,6 +279,9 @@ Present simple for a published finding treats it as established knowledge; past 
 - A gap that is not supported by the cited literature, or a vague gap ("little research exists").
 - The objective stated differently in the abstract, introduction and conclusion.
 - Citing every paper read; citations not placed where they apply.
+- Factual sentences without a citation, especially the first sentence and the limitations of earlier work.
+- Citation dumps: six or more sources after one sentence that none of them supports entirely.
+- A gap paragraph that cites nothing, so the reader cannot check that the closest work was considered.
 - Undefined abbreviations; jargon from a narrow subfield.
 - Tense changes without reason (past ↔ present perfect changes meaning).
 - Holding back the main finding until the end of the paper.
@@ -220,6 +291,9 @@ Present simple for a published finding treats it as established knowledge; past 
 - [ ] Opens with importance or a key fact (with citation), not with the aim.
 - [ ] Funnel from broad to narrow; each paragraph narrower than the one before.
 - [ ] Previous work grouped, compared and evaluated; citations placed where they apply.
+- [ ] Every factual or literature-based sentence cited (`citation_density.py audit` lists the exceptions); each source supports its sentence; no `[CITATION NEEDED]` left unreported.
+- [ ] Limitations of earlier work attributed to the works; the gap paragraph cites the closest studies.
+- [ ] Contributions answer the stated limitations one by one; scope stated.
 - [ ] Gap specific, supported by cited studies, and justified (why it matters).
 - [ ] Objective states property, system and means; same wording in abstract and conclusion.
 - [ ] Method choice justified briefly; contributions specific and checkable.

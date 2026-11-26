@@ -8,6 +8,7 @@ journals/
     ├── journal_requirements.md   rules from the Guide for Authors (template in references/journal-profile.md §3)
     ├── section_models.md         how the journal's papers are built (optional, from sample papers)
     ├── section_phrases.md        openers and phrases per section (optional, from sample papers)
+    ├── citation_benchmarks.json  citation density of the sample Introductions (optional, from sample papers)
     ├── guide.md                  converted Guide for Authors        (local only, git-ignored)
     ├── requirements_draft.md     guide lines sorted by field         (local only, git-ignored)
     └── papers/                   converted sample papers             (local only, git-ignored)
@@ -21,6 +22,6 @@ python scripts/journal_profile.py check "Journal Name"
 python scripts/journal_profile.py list
 ```
 
-Then ask Claude to write `journal_requirements.md` (and `section_models.md` if you gave sample papers) from the draft. To write for another journal later, create another profile; the old one stays.
+Then ask Claude to write `journal_requirements.md` (and `section_models.md` if you gave sample papers) from the draft. `citation_benchmarks.json` is written automatically from the papers; `scripts/citation_density.py audit` compares a draft Introduction with it. To write for another journal later, create another profile; the old one stays.
 
 `computers-and-chemical-engineering/` is an example profile (guide saved November 2026; check the current guide before submitting).

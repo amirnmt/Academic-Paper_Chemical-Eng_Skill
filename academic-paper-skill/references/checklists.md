@@ -9,6 +9,7 @@ How to self-edit: let the draft rest for at least a day, print it or change the 
 - [ ] Repository checked against a structured database search; search strings recorded.
 - [ ] Theme map and comparison matrix built; gap visible in the matrix.
 - [ ] `refs.bib` keys stable and matching the notes; no paper cited that you have not read.
+- [ ] When the user named directories of papers: a claim–evidence map links each planned claim to its source(s) (`citation-practice.md` §3).
 
 ## Paragraphs (any section)
 - [ ] Each paragraph has one job, stated or clearly implied in its first sentence.
@@ -27,11 +28,16 @@ How to self-edit: let the draft rest for at least a day, print it or change the 
 ## Abstract
 - [ ] Context, aim, method, main results with numbers, conclusion; in that order.
 - [ ] Self-contained: no citations, figure references, undefined abbreviations or new information.
-- [ ] Tense by component: present for context and conclusion, past for method and results.
+- [ ] Tense by component: present for context and conclusion, past for method and results; or present throughout, as many process-systems abstracts do; consistent either way.
+- [ ] Main results with numbers and the comparison they beat; scope in a clause if needed.
 - [ ] Within the word limit and in the journal's structure (single paragraph or headings).
 
 ## Introduction
 - [ ] Moves from the field to the problem to the gap, each step cited.
+- [ ] Every factual or literature-based sentence carries a citation, the first sentence included; `citation_density.py audit` run and every listed sentence supported, rewritten as an inference or removed.
+- [ ] Citations placed after the clause they support; no sentence with six or more sources that do not all support it.
+- [ ] Limitations of earlier work attributed to those works; the gap paragraph cites the closest studies.
+- [ ] Contributions answer the stated limitations one by one; the link from gap to aim is explicit.
 - [ ] The first sentence is specific to the field, not a generic statement about the world.
 - [ ] Gap specific (what is unknown or unsolved, for which system or conditions) and justified (why it matters).
 - [ ] Objective states property, system and means, in the same words used later.
@@ -44,6 +50,7 @@ How to self-edit: let the draft rest for at least a day, print it or change the 
 - [ ] Closest studies summarized in a comparison table.
 - [ ] Criticism is about the work and is constructive.
 - [ ] Ends at the gap that this paper fills.
+- [ ] Every sentence about other work cited; no unsupported claim and no `[CITATION NEEDED]` left unreported.
 
 ## Methods
 - [ ] Enough detail to repeat the work and to judge whether it was done properly.

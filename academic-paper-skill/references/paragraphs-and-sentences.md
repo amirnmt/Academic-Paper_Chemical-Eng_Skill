@@ -118,6 +118,16 @@ Examples:
 - **End of Discussion/Conclusion:** a clear, specific statement of what the work contributes, not a general wish for future research.
 - **Between sections and subsections:** short transition statements: "Having established …, we now examine …"; "The next section compares …".
 
+### 7a. Moving from one paragraph to the next in a long Introduction
+
+In the 20 *Computers & Chemical Engineering* Introductions analysed [J-obs], 64 % of paragraphs began with a topic noun phrase ("Generative models …", "Hybrid modelling …", "Studies of estimability …"), not with a connector; only about 6 % began with a contrast word and 5 % each with an addition word or a back-reference ("These …"). The link to the previous paragraph is carried mainly in three ways [G]:
+
+1. **The last sentence of a paragraph opens the next topic.** The paragraph ends with the limitation or open question; the next one starts with the approach that addresses it ("… but these models need large training sets. *Data augmentation* offers …").
+2. **The topic noun repeats or narrows a term from the previous paragraph** (data-driven models → *neural network models* → *their training data*).
+3. **A connector inside the first sentence**, after the topic: "Hybrid modelling has *therefore* …", "Generative models provide *an alternative* by …", "*Beyond* the energy-systems literature, …".
+
+Contrast words ("However", "Despite …", "Although …") appear mostly inside paragraphs, closing a group of studies, and at the start of the gap paragraph. Summary and position phrases ("In summary, …", "Against this background, …", "To this end, …") mark the turn from the literature to the gap and from the gap to the present work. The sentence-level openers across all Introduction sentences were similar: 69 % topic noun phrase, 9 % back-reference, 7 % contrast.
+
 ## 8. Paragraph templates by section
 
 **Introduction, importance paragraph:** importance (topic sentence with number and citation) → how the process/system works → what determines performance → the general problem area.

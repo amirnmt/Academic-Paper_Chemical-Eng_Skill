@@ -13,6 +13,7 @@ init   creates resources/journals/<slug>/ and writes
        and, with --papers (a folder of PDFs and/or Markdown files of sample papers),
          papers/                the papers as Markdown
          section_phrases.md     openers and phrases per section (build_section_phrases.py)
+         citation_benchmarks.json  citation density of the sample Introductions (citation_density.py)
        The draft is raw material: journal_requirements.md is then written from it
        (template in references/journal-profile.md, section 3).
 check  reports missing sections, empty fields and TODOs in journal_requirements.md.
@@ -200,6 +201,9 @@ def cmd_init(args):
         res = subprocess.run([sys.executable, "-I", str(HERE / "build_section_phrases.py"), str(pdir),
                               "--out", str(folder / "section_phrases.md")], capture_output=True, text=True)
         print("  " + (res.stdout.strip() or res.stderr.strip()))
+        res = subprocess.run([sys.executable, "-I", str(HERE / "citation_density.py"), "benchmark", str(pdir),
+                              "--out", str(folder / "citation_benchmarks.json")], capture_output=True, text=True)
+        print("  " + (res.stdout.strip().splitlines() or res.stderr.strip().splitlines() or [""])[0])
     req = folder / "journal_requirements.md"
     print("Next: write" if not req.exists() else "Next: update", req.name,
           "from requirements_draft.md (template: references/journal-profile.md section 3)"
@@ -243,8 +247,8 @@ def cmd_list(args):
     if not root.exists():
         print(f"No profiles yet ({root} does not exist).")
         return
-    names = ["journal_requirements.md", "section_models.md", "section_phrases.md", "guide.md",
-             "requirements_draft.md", "papers"]
+    names = ["journal_requirements.md", "section_models.md", "section_phrases.md", "citation_benchmarks.json",
+             "guide.md", "requirements_draft.md", "papers"]
     rows = [d for d in sorted(root.iterdir()) if d.is_dir()]
     if not rows:
         print("No profiles yet.")

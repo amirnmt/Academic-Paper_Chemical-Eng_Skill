@@ -12,12 +12,13 @@ This file is the core. Detailed guidance lives in `references/`; full texts that
 ## Golden rules
 
 1. **Never invent a fact, number or reference.** Every claim about other work traces to a paper in the repository or a verified DOI. If unsure, write `[CHECK: key — what to verify]`.
-2. **Every result has a method and every method has a result**, in the same order and under the same subheadings.
-3. **Results report; the Discussion interprets.** Keep them distinct, even inside a combined Results and Discussion section.
-4. **One objective, worded the same way** in the title, abstract, Introduction, Results, Discussion and Conclusion.
-5. **Claim exactly as much as the data support.** No overclaiming, and no hedging of measured facts.
-6. **Paraphrase, never copy** from sources, guides or converted PDFs; check numbers and equations against the original PDF.
-7. **Specific, not generic.** Replace inflated or vague statements with facts, numbers and citations (`references/avoid-ai-signs.md`). Disclose AI assistance as the journal requires.
+2. **Every scientific or literature-based statement carries a citation** (Introduction, literature review, and wherever else such statements appear); only the authors' own objectives, methods, contributions and findings are exempt. When the user names directories of papers, write from them through a claim–evidence map and mark unsupported claims `[CITATION NEEDED]`; cite for relevance, not for count (`references/citation-practice.md`).
+3. **Every result has a method and every method has a result**, in the same order and under the same subheadings.
+4. **Results report; the Discussion interprets.** Keep them distinct, even inside a combined Results and Discussion section.
+5. **One objective, worded the same way** in the title, abstract, Introduction, Results, Discussion and Conclusion.
+6. **Claim exactly as much as the data support.** No overclaiming, and no hedging of measured facts.
+7. **Paraphrase, never copy** from sources, guides or converted PDFs; check numbers and equations against the original PDF.
+8. **Specific, not generic.** Replace inflated or vague statements with facts, numbers and citations (`references/avoid-ai-signs.md`). Disclose AI assistance as the journal requires.
 
 ## Which reference to read
 
@@ -27,6 +28,7 @@ This file is the core. Detailed guidance lives in `references/`; full texts that
 | Searching for missing papers, reading them, notes, theme map, comparison matrix, what and how to cite | `references/evidence-base.md` |
 | Introduction: functions, first sentence, moves, gap, objective, contributions, worked example; the long, literature-rich Introduction of computational journals (§5a) | `references/introduction.md` |
 | Literature review: organization, synthesis, critical comparison, reporting verbs, planning a large citation count | `references/literature-review.md` |
+| **Citations:** the citation rule, which sentences need a source, writing from the user's paper directories, sources per claim, placement, synthesis sentences, density benchmarks by part of the Introduction, audit | `references/citation-practice.md` and `scripts/citation_density.py` |
 | Methods: content by study type, order, language that shows care, LaTeX equations, units, chemistry, nomenclature | `references/methods-latex.md` |
 | Results: structure, reporting pattern, language of sequence, frequency, quantity and causality, numbers and statistics | `references/results-language.md` |
 | Combined Results and Discussion: section and subsection pattern (R1–R7), paragraph templates for validation, model comparison, sensitivity, case studies, optimization, computational performance, limitations | `references/results-and-discussion-combined.md` |
@@ -48,7 +50,7 @@ This file is the core. Detailed guidance lives in `references/`; full texts that
 
 Read `style-grammar.md` and `avoid-ai-signs.md` once at the start of any drafting session.
 
-**For every section you draft, read four things:** the section file (for a combined Results and discussion, `results-and-discussion-combined.md` plus `results-language.md`); its part of `paragraphs-and-sentences.md` (first sentence and paragraph template); its part of `vocabulary-by-section.md`; and its part of `phrasebank.md`. Follow the active journal profile (below) for structure and limits. If a phrase list exists for the target journal (`resources/journals/<journal>/section_phrases.md`) or the field (`resources/field-papers/*section_phrases*.md`), use its openers and phrases first and the general phrase bank second.
+**For every section you draft, read four things:** the section file (for a combined Results and discussion, `results-and-discussion-combined.md` plus `results-language.md`); its part of `paragraphs-and-sentences.md` (first sentence and paragraph template); its part of `vocabulary-by-section.md`; and its part of `phrasebank.md`. For the Introduction and the literature review, also read `citation-practice.md`. Follow the active journal profile (below) for structure and limits; its `section_models.md` labels observed habits [J-obs] and its `journal_requirements.md` holds the binding rules [J-req] (`journal-profile.md` §0). If a phrase list exists for the target journal (`resources/journals/<journal>/section_phrases.md`) or the field (`resources/field-papers/*section_phrases*.md`), use its openers and phrases first and the general phrase bank second.
 
 ## Resources and helper scripts
 
@@ -66,6 +68,7 @@ Read `style-grammar.md` and `avoid-ai-signs.md` once at the start of any draftin
 | `python scripts/build_section_phrases.py <papers_dir> --out section_phrases.md` | For each section of the papers: how the section begins, frequent sentence openers, phrases typical of the section, common phrases and recurring terms, counted by number of papers. |
 | `python scripts/check_ai_signs.py <draft>` | Flag generic and AI-typical prose. |
 | `python scripts/check_citations.py refs.bib --tex *.tex` | Verify references and citation keys. |
+| `python scripts/citation_density.py audit <draft> --benchmarks resources/journals/<journal>/citation_benchmarks.json` | Citation density of the Introduction by part, compared with the journal; lists uncited background, literature and gap sentences and oversized citation groups. `benchmark <papers_dir>` builds the benchmark from sample papers. |
 
 When the summaries in `references/` do not answer a question, or the user asks what a guide says, search `resources/` and report the findings in your own words with file and line. Never paste passages from the guides or papers into the manuscript.
 
@@ -90,7 +93,7 @@ For each section, list the paragraphs with a one-line purpose (its topic sentenc
 
 ### 4. Draft, section by section
 Recommended order (`writing-process.md`): Methods → Results (with figures and tables) → Literature review → Discussion → Introduction → Conclusion → Abstract → Title, keywords, highlights.
-For each section: read the four files listed above → draft paragraph by paragraph from the outline → run the section checklist → run `python scripts/check_ai_signs.py <file>` and rewrite every flagged sentence with a specific fact, number or citation, or delete it → hand to the user → revise.
+For each section: read the four files listed above → draft paragraph by paragraph from the outline (Introduction and literature review: from the claim–evidence map, citing as each sentence is written) → run the section checklist → for the Introduction, run `python scripts/citation_density.py audit <file> --benchmarks …` and support, rewrite or delete every listed sentence → run `python scripts/check_ai_signs.py <file>` and rewrite every flagged sentence with a specific fact, number or citation, or delete it → hand to the user → revise.
 
 ### 5. Self-review
 Follow `references/self-review.md`: review the complete draft in five independent roles (editor, methods, domain expert, devil's advocate, readability), collect the comments in a triage table, revise, and re-review the changed parts.
