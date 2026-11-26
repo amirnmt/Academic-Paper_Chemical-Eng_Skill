@@ -21,7 +21,7 @@ It guides Claude through the whole article and its publication:
 - **Language:** a large phrase bank of sentence stems by section and move, vocabulary per section, linking words, words to replace, confused words, the Academic Word List, tense and voice, concision, articles, numbers, common non-native errors.
 - **Your field's own phrasing:** `scripts/build_section_phrases.py` reads converted papers from your target journal and lists, for each section, how the section begins, frequent sentence openers, phrases typical of that section, and recurring terms, counted by the number of papers that use them.
 - **Searchable full texts:** `scripts/search_resources.py` searches the writing guides and papers in `resources/` so Claude can look up what the guides say when the summaries are not enough. An open-access guide (Lövei 2021, CC BY 4.0) is included; add your own guides and papers locally.
-- **Avoiding generic, AI-typical prose:** patterns to avoid and `scripts/check_ai_signs.py`, which flags them in a LaTeX, Markdown or text draft.
+- **Avoiding generic, AI-typical prose:** word-level patterns, plus 33 discourse-level patterns from the StoryScope study of 61,608 human and AI texts (Russell et al., COLM 2026), each turned into a rule and a check for research articles, with model fingerprints. `scripts/check_ai_signs.py --structure` flags what can be detected automatically.
 - **Simulated peer review:** review the full draft as an editor, a methods reviewer, a domain expert, a devil's advocate and a readability reviewer; triage the comments and revise.
 - **Citation checking:** `scripts/check_citations.py` checks `refs.bib` against OpenAlex and Crossref (DOI resolves; title, first author and year match; retractions) and against the `\cite` keys in the LaTeX files.
 - **Revision, cover letter and point-by-point response to reviewers.**
@@ -68,7 +68,7 @@ academic-paper-skill/
     ├── convert_to_markdown.py       PDFs → Markdown (MarkItDown, PyMuPDF or pypdf)
     ├── search_resources.py          search the full texts in resources/
     ├── build_section_phrases.py     section-by-section phrase list from papers
-    ├── check_ai_signs.py            flags generic or AI-typical prose in a draft
+    ├── check_ai_signs.py            flags generic or AI-typical prose (--structure: discourse level)
     ├── check_citations.py           checks refs.bib against OpenAlex/Crossref and the .tex citations
     └── citation_density.py          citation density of Introduction, Methods or Results vs. the journal; uncited or unsupported claims
 ```

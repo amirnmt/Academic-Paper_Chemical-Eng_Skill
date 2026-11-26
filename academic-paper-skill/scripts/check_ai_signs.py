@@ -4,6 +4,14 @@
 Usage:
     python check_ai_signs.py draft.tex [more files ...]
     python check_ai_signs.py --summary draft.md
+    python check_ai_signs.py --structure draft.md   # adds the discourse-level checks
+
+--structure adds the checks of avoid-ai-signs.md §8 (StoryScope, Russell et
+al. 2026) that can be found automatically: paragraph endings that state a
+lesson without a number or citation (A1-A2), "insight"-type conclusions (C4),
+vague or hearsay attribution (A6, D1), anthropomorphic verbs (B1, B2, B7),
+formulaic and retrospective openings (C6), alarm framing, diary-style
+sequences (F2), and counts of limitation and trade-off statements (A4, C2, G4).
 
 Works on plain text, Markdown and LaTeX. Every flag is a prompt to check the
 sentence, not proof of a problem: replace generic statements with specific
@@ -55,6 +63,66 @@ PATTERNS = {
 SENTENCE_STARTERS = r"(?:^|(?<=[.!?]\s))(Additionally|Furthermore|Moreover|Notably|Importantly|Consequently),"
 
 
+# Discourse-level patterns (avoid-ai-signs.md §8). Rule IDs in brackets.
+STRUCTURE_PATTERNS = {
+    "[C4] insight-type conclusion": r"\b(?:provides?|offers?|yields?|gives?) (?:valuable |new |important |key |deeper |novel )?insights?\b|\bsheds? (?:new )?light on\b|\bpav(?:e|es|ed|ing) the way\b|\b(?:deepens?|enhances?|advances?) (?:our |the )?understanding\b|\bdeeper appreciation\b",
+    "[A1] moralizing statement": r"\b(?:this|these|which|it) (?:highlights?|underscores?|emphasi[sz]es?|demonstrates?|illustrates?|reinforces?) the (?:importance|need|value|significance|potential|critical role)\b|\bserves? as a (?:reminder|testament)\b|\b(?:ultimately|in essence|in the end),",
+    "[A6/D1] hearsay or unnamed source": r"\bit is (?:widely |well |generally |commonly )?(?:known|believed|accepted|recognized|acknowledged|reported)\b|\b(?:many|several|numerous|various|previous|recent|prior) (?:studies|researchers|works|authors|reports) (?:have )?(?:shown|demonstrated|suggested|reported|found|indicated)\b|\bresearchers have long\b|\b(?:popular|well-known|state-of-the-art|commercial) (?:model|method|software|tool|approach)s?\b",
+    "[B7] anthropomorphic verb": r"\b(?:the |this |our )?(?:model|network|algorithm|surrogate|agent|optimizer|method|framework|field)s? (?:learns? to understand|understands?|knows?|believes?|decides?|wants?|tries|seeks?|struggles?|suffers?|prefers?)\b|\bthe field (?:has )?(?:sought|seeks|wants)\b",
+    "[B1] figurative technical noun": r"\b(?:heart|backbone|cornerstone|linchpin|beating heart) of (?:the |this |modern )?\w+|\bjourney\b|\becosystem\b",
+    "[C6] formulaic or retrospective opening": r"\bin today'?s (?:rapidly )?(?:evolving|changing|modern)\b|\bin recent years,|\bover the (?:past|last) (?:few |several |two |three )?decades?,?|\bhas (?:attracted|gained|received|garnered) (?:increasing|growing|considerable|significant) attention\b",
+    "[B3] alarm framing": r"\b(?:pressing|daunting|urgent|grand|critical|formidable) (?:challenges?|needs?|issues?|problems?)\b|\bincreasingly (?:challenging|complex|uncertain)\b",
+    "[B4] decorative sustainability": r"\b(?:sustainable|greener|cleaner|brighter) future\b|\bnet-zero (?:world|future)\b",
+    "[F2] diary-style sequence": r"\b(?:first|then|next|after that|subsequently|finally), we\b",
+}
+# Counted, not flagged: their absence is the warning sign (A4, C2, G4).
+COMPLICATION_MARKERS = r"\b(?:limitation|limited to|does not|did not|cannot|fails?|failed|deviat\w+|discrepanc\w+|underestimat\w+|overestimat\w+|trade-?off|at the cost of|disadvantage|drawback|outside the (?:range|training)|unexpected(?:ly)?|contrary to|in contrast to|whereas|however)\b"
+EVIDENCE = re.compile(r"\d|\\cite|\\ref|\[\d|\([A-Z][A-Za-z-]+(?: et al\.)?,? \d{4}|Fig\.|Figure|Table|Eq\.", re.I)
+
+
+def structure(text: str, summary_only: bool) -> Counter:
+    """Discourse-level checks from avoid-ai-signs.md §8."""
+    counts: Counter = Counter()
+    findings = []
+    compiled = {n: re.compile(p, re.I) for n, p in STRUCTURE_PATTERNS.items()}
+    for no, line in enumerate(text.splitlines(), 1):
+        for name, rx in compiled.items():
+            for m in rx.finditer(line):
+                counts[name] += 1
+                findings.append((no, name, m.group(0).strip()))
+    # A1/A2: last sentence of each paragraph that evaluates without evidence.
+    paras = [p for p in re.split(r"\n\s*\n", text) if len(re.findall(r"[A-Za-z]+", p)) >= 40
+             and not p.lstrip().startswith(("#", "\\section", "\\begin", "|"))]
+    evaluative = re.compile(r"\b(?:important|importance|significant|crucial|essential|valuable|promising|robust|effective|insight|understanding|potential|demonstrates?|highlights?|underscores?|shows? that|overall|thus|therefore|in summary|ultimately)\b", re.I)
+    unsupported = 0
+    for p in paras:
+        sents = re.split(r"(?<=[.!?])\s+(?=[A-Z\\])", p.strip())
+        last = sents[-1] if sents else ""
+        if evaluative.search(last) and not EVIDENCE.search(last):
+            unsupported += 1
+            findings.append((text[:text.find(p)].count("\n") + 1 + p[:p.find(last)].count("\n"),
+                             "[A1/A2] lesson-type paragraph end", last[:90] + ("…" if len(last) > 90 else "")))
+    if unsupported:
+        counts["[A1/A2] lesson-type paragraph end"] = unsupported
+    words = len(re.findall(r"[A-Za-z]+", text))
+    comp = len(re.findall(COMPLICATION_MARKERS, text, re.I))
+    print("  -- discourse-level checks (avoid-ai-signs.md §8) --")
+    if not summary_only:
+        for no, name, match in sorted(findings):
+            print(f"  line {no:>5}  {name:<38} {match}")
+    for name, n in counts.most_common():
+        print(f"  {n:>4}  {name}")
+    print(f"  paragraphs checked: {len(paras)}; lesson-type endings without evidence: {unsupported}"
+          + (f" ({100 * unsupported / len(paras):.0f} %)" if paras else ""))
+    if words:
+        rate = 1000 * comp / words
+        print(f"  limitation / trade-off / contrast markers: {comp} ({rate:.1f} per 1000 words)")
+        if words > 800 and rate < 2:
+            print("  WARNING: few complications reported. Check A4, C2, C3, G4: are limitations,"
+                  " failures, trade-offs and disagreements with the literature stated?")
+    return counts
+
+
 def strip_latex(text: str) -> str:
     """Remove LaTeX comments and math so equations do not trigger flags."""
     text = re.sub(r"(?<!\\)%.*", "", text)
@@ -63,7 +131,7 @@ def strip_latex(text: str) -> str:
     return text
 
 
-def check(path: str, summary_only: bool) -> Counter:
+def check(path: str, summary_only: bool, struct: bool = False) -> Counter:
     raw = open(path, encoding="utf-8", errors="replace").read()
     text = strip_latex(raw) if path.endswith(".tex") else raw
     lines = text.splitlines()
@@ -102,6 +170,8 @@ def check(path: str, summary_only: bool) -> Counter:
     if words:
         print(f"  watch-words per 1000 words: {1000 * watch_total / words:.1f} "
               "(a few is normal; clusters in one paragraph are the problem)")
+    if struct:
+        counts.update(structure(text, summary_only))
     return counts
 
 
@@ -109,9 +179,11 @@ def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("files", nargs="+")
     ap.add_argument("--summary", action="store_true", help="print only the summary counts")
+    ap.add_argument("--structure", action="store_true",
+                    help="add the discourse-level checks of avoid-ai-signs.md §8")
     args = ap.parse_args()
     for f in args.files:
-        check(f, args.summary)
+        check(f, args.summary, args.structure)
     return 0
 
 

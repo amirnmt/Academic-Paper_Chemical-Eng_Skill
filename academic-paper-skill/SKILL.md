@@ -18,7 +18,7 @@ This file is the core. Detailed guidance lives in `references/`; full texts that
 5. **One objective, worded the same way** in the title, abstract, Introduction, Results, Discussion and Conclusion.
 6. **Claim exactly as much as the data support.** No overclaiming, and no hedging of measured facts.
 7. **Paraphrase, never copy** from sources, guides or converted PDFs; check numbers and equations against the original PDF.
-8. **Specific, not generic.** Replace inflated or vague statements with facts, numbers and citations (`references/avoid-ai-signs.md`). Disclose AI assistance as the journal requires.
+8. **Specific, not generic.** Replace inflated or vague statements with facts, numbers and citations (`references/avoid-ai-signs.md`). Check structure as well as wording: what the text explains, omits and emphasizes (`avoid-ai-signs.md` §8). Disclose AI assistance as the journal requires.
 
 ## Which reference to read
 
@@ -42,7 +42,7 @@ This file is the core. Detailed guidance lives in `references/`; full texts that
 | **Sentence stems** by section and move, and for general functions (defining, comparing, cause and effect, trends, caution) | `references/phrasebank.md` |
 | Academic style, tense map, voice, concision, articles, numbers, abbreviations, common non-native errors | `references/style-grammar.md` |
 | Academic Word List and precise word choice | `references/academic-vocabulary.md` |
-| Avoiding generic, inflated or AI-typical prose; self-check | `references/avoid-ai-signs.md` and `scripts/check_ai_signs.py` |
+| Avoiding generic, inflated or AI-typical prose, word-level and discourse-level (33 StoryScope patterns, model fingerprints); self-check | `references/avoid-ai-signs.md` and `scripts/check_ai_signs.py` |
 | Simulated peer review: editor, methods, domain, devil's advocate, readability; triage | `references/self-review.md` |
 | Checking `refs.bib` against OpenAlex/Crossref and the LaTeX citations | `scripts/check_citations.py` |
 | Revising, submission package, cover letter, decisions, response to reviewers | `references/submission-and-reviewers.md` |
@@ -68,7 +68,7 @@ Read `style-grammar.md` and `avoid-ai-signs.md` once at the start of any draftin
 | `python scripts/convert_to_markdown.py <pdf_dir> <out_dir>` | Convert PDFs to Markdown (MarkItDown, PyMuPDF or pypdf, whichever is installed). |
 | `python scripts/search_resources.py "term" [more terms] [--dir DIR]` | Find what the guides or papers say about a topic, with file, line and nearest heading. `--list`, `--headings` show what is available. |
 | `python scripts/build_section_phrases.py <papers_dir> --out section_phrases.md` | For each section of the papers: how the section begins, frequent sentence openers, phrases typical of the section, common phrases and recurring terms, counted by number of papers. |
-| `python scripts/check_ai_signs.py <draft>` | Flag generic and AI-typical prose. |
+| `python scripts/check_ai_signs.py <draft> [--structure]` | Flag generic and AI-typical prose; `--structure` adds the discourse-level checks (lesson-type paragraph endings, insight-type conclusions, hearsay, anthropomorphism, diary sequences, missing limitations). |
 | `python scripts/check_citations.py refs.bib --tex *.tex` | Verify references and citation keys. |
 | `python scripts/citation_density.py audit <draft> --benchmarks resources/journals/<journal>/citation_benchmarks.json` | Citation density of the Introduction by part, compared with the journal; lists uncited background, literature and gap sentences and oversized citation groups. `--section methods`: lists uncited external elements and values without origin in the Methodology. `--section results`: lists "significant" without statistics, promotional words, causal words, and mentions of published work without a citation. `benchmark <papers_dir>` builds the benchmark from sample papers. |
 
@@ -95,7 +95,7 @@ For each section, list the paragraphs with a one-line purpose (its topic sentenc
 
 ### 4. Draft, section by section
 Recommended order (`writing-process.md`): Methods → Results (with figures and tables) → Literature review → Discussion → Introduction → Conclusion → Abstract → Title, keywords, highlights.
-For each section: read the four files listed above → draft paragraph by paragraph from the outline (Introduction and literature review: from the claim–evidence map, citing as each sentence is written) → run the section checklist → for the Introduction, run `python scripts/citation_density.py audit <file> --benchmarks …` and support, rewrite or delete every listed sentence → run `python scripts/check_ai_signs.py <file>` and rewrite every flagged sentence with a specific fact, number or citation, or delete it → hand to the user → revise.
+For each section: read the four files listed above → draft paragraph by paragraph from the outline (Introduction and literature review: from the claim–evidence map, citing as each sentence is written) → run the section checklist → for the Introduction, run `python scripts/citation_density.py audit <file> --benchmarks …` and support, rewrite or delete every listed sentence → run `python scripts/check_ai_signs.py <file> --structure` and rewrite every flagged sentence with a specific fact, number or citation, or delete it → hand to the user → revise.
 
 ### 5. Self-review
 Follow `references/self-review.md`: review the complete draft in five independent roles (editor, methods, domain expert, devil's advocate, readability), collect the comments in a triage table, revise, and re-review the changed parts.

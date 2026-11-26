@@ -14,6 +14,7 @@ The guidance in this skill is distilled, in our own words, from the following wo
 **Vocabulary and style resources**
 - Coxhead, A. (2000). A new academic word list. *TESOL Quarterly*, 34(2), 213–238. https://doi.org/10.2307/3587951. Online sublists: Oxford Learner's Dictionaries, *The Academic Word List* (American English), https://www.oxfordlearnersdictionaries.com/wordlist/american_english/academic/sublist01/
 - WikiProject AI Cleanup. *Wikipedia: Signs of AI writing*. https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing (CC BY-SA 4.0; observations condensed and rewritten in our own words for research articles in `avoid-ai-signs.md`)
+- Russell, J., Rajendhran, R., Pham, C. M., Iyyer, M., Wieting, J. (2026). *StoryScope: Investigating idiosyncrasies in AI fiction*. COLM 2026. arXiv:2604.03136v6. https://arxiv.org/abs/2604.03136 (numbers from Tables 16–17 and §§4–5 reported in `avoid-ai-signs.md` §8; the translation of each pattern into a rule for research articles is ours)
 
 **Own analyses used in the skill**
 - Section structure, Introduction moves and Results-and-discussion patterns of 20 research articles in *Computers & Chemical Engineering* (2006–2026) and section structure of 90 papers on reactor modelling and surrogate models; analysed with `scripts/build_section_phrases.py` and by reading. The papers themselves are not included.
