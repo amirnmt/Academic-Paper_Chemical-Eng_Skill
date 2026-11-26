@@ -5,7 +5,7 @@ A move analysis of 21 papers from the journal (2006–2026), made to model a man
 ## 0. What was analysed
 
 - 21 papers: 4 on ethylene and ethylene oxide plants (…0433, …2326, …3434 and an ANN model of an industrial EO plant, 2022) and 17 recent papers from 2026 on various topics. The review on kinetic Monte Carlo (…4187) was left out of the section analysis because reviews are organized differently, which leaves 20 research articles.
-- Method: top-level and second-level headings of all 20 papers; sentence-by-sentence analysis of all 20 abstracts and Introductions up to the methods (citations counted per sentence and per part, §3), of their Methodology parts (§4) and of their Results and Discussion parts (§5); subsection-level reading of the Results and Discussion of 6 papers on modelling and data-driven methods (…4321 hybrid GNN, …4448 data-augmented MPC, …4436 industrial propylene reactor model, …4357 robustness benchmarking of data-driven models, …4497 industrial soft sensing, and the EO-plant ANN paper); abstracts and conclusions of 8 papers; and phrase counts from `scripts/build_section_phrases.py`.
+- Method: top-level and second-level headings of all 20 papers; sentence-by-sentence analysis of all 20 abstracts and Introductions up to the methods (citations counted per sentence and per part, §3), of their Methodology parts (§4) and of their Results and Discussion parts (§5); subsection-level reading of the Results and Discussion of 6 papers on modelling and data-driven methods (…4321 hybrid GNN, …4448 data-augmented MPC, …4436 industrial propylene reactor model, …4357 robustness benchmarking of data-driven models, …4497 industrial soft sensing, and the EO-plant ANN paper); sentence-by-sentence coding of all 20 abstracts and all conclusions (19; the short communication …4473 has none) (§2, §6); titles and keywords of all 20 (§2a); all 181 figure and 138 table captions and every in-text reference to them (§8); all 418 numbered equations, with the equation pages of 13 papers read from the rendered PDF (§9); and phrase counts from `scripts/build_section_phrases.py`. Where the Markdown conversion lost or scrambled text (one abstract, captions of one paper, all equations), the PDF page itself was read.
 - Counts below refer to these papers. With 20 papers they show conventions, not rules.
 - The papers, for traceability (the review on kinetic Monte Carlo is not listed):
 
@@ -51,26 +51,40 @@ Typical order of top-level sections:
 Other observations:
 - A separate literature-review section is rare. One paper has "Related works" as Section 2, and one has a "Related work" subsection (1.1) inside the Introduction; all others review the literature inside the Introduction.
 - A Nomenclature list appears in 6 of 20 papers; mostly in model-heavy papers.
-- Median numbers: about 8–9 figures and 5–6 tables per paper.
-- Lengths (words): abstract 86–260 (median about 190; limit 250); Introduction usually 1,000–2,500; Conclusion 140–1,250 (median about 340).
+- Median numbers: 8.5 figures (2–16) and 5.5 tables (0–16) per paper, about 0.9 figures and tables per page; 18 numbered equations (0–80) (§8, §9).
+- Lengths (words): abstract 86–260 (median about 190; limit 250); Introduction usually 1,000–2,500; Conclusion 140–1,000 (median about 330).
 - Method-and-application papers often use the pattern **method section(s) → "Case study" section → results**. The case study names the industrial system and its data.
 
 ## 2. Abstract [J-req, J-obs]
 
 Required [J-req, `journal_requirements.md`]: at most 250 words; purpose, procedure, main findings, principal conclusions; stand-alone; references avoided (author and year if essential).
 
-Observed in 19 readable abstracts [J-obs]:
+Observed in all 20 research abstracts [J-obs] (one abstract, scrambled in the conversion, was read from the PDF page):
 
-| Step | Content | Observed |
+| Step | Content | Observed (n = 20) |
 |---|---|---|
-| A1 Context and problem | Importance of the process or task, often with its difficulty in the same sentence ("X is critical for …, yet …"); or a separate "However, existing …" sentence | Background first in 12; problem or pointed claim first in 2; problem stated explicitly in 12 |
-| A2 What this work does | "This work / paper / study proposes …", "We propose / present …" | 18 of 19; 5 open with it (focused model) |
-| A3 How | Components of the method and the data, 2–5 sentences; "Specifically, …" introduces the detail | All |
-| A4 Main results | Metrics with numbers (R², RMSE, % change, NPV, time) and the baseline they are compared with | With numbers in 11 of 19 |
-| A5 Significance | "These results demonstrate …", "… provide guidance for …", "Overall, …" | 13 of 19; the others end on a result or a limitation |
-| (A6) Scope or limitation | One sentence or clause | 6 of 19, mostly 2026 papers |
+| A1 Context | Importance of the process, property or task, often in the same sentence as its difficulty ("X is critical for …, yet …") | First sentence in 13; 2 open with a pointed claim or finding (…4357, …4424); 5 open directly with A3 |
+| A2 Problem or gap | "However, existing …", "Existing … are tied to …", "…, but is often hindered by …" | Explicit in 11 |
+| A3 This work | "This work proposes / presents / estimates", "This paper proposes / measures", "This study investigates", "We propose / present"; once "The aim of this work is …" | 19 of 20; …4400 describes its method without such a sentence |
+| A4 How | Components of the method and the data, 1–5 sentences; "Specifically, …" introduces the detail (2) | All |
+| A5 Validation or application | "validated on …", "applied to …", "Simulation results … verify …" | 7 |
+| A6 Results | Metric values with the baseline they are compared with | Numerical metrics in 10; only data sizes or scenario levels in 2; qualitative only in 8 ("outperforms", "reasonable") |
+| A7 Scope or limitation | One sentence or clause on what was not covered or what the method requires (e.g. interactions only partly explored; a simulator needed) | 6 |
+| A8 Final sentence | Significance or contribution ("These findings provide …", "Overall, …", "In summary, …") in 11; a result in 7; a recommendation (1); a scope statement (1) | |
 
-Length median 184 words (157–244; 86–261), 9 sentences, about 26 words per sentence. Present tense dominates; three abstracts report what was done and found in the past tense. "We" in 6 of 20. Citations in 3 of 20, each to the earlier study the paper extends.
+- **Length:** median 184 words (86 to about 250); median 8–9 sentences (3–13).
+- **Numbers:** papers that report a comparison with a baseline name the baseline in the abstract (9 of 20). The strongest abstracts give the metric, its value, the baseline and the condition in one sentence (…3434, …4369, …4400).
+- **Voice and tense:** present tense for what the work does and what the results show; past tense in 4 abstracts that narrate the steps (…4485, …4497). "We" in 6.
+- **Citations:** 2 of 20, each to the study the paper builds on or contrasts with; one abstract quotes an external statistic with its source named in the sentence.
+- **Abbreviations:** defined at first use inside the abstract (full term, then the abbreviation in brackets).
+
+## 2a. Title and keywords [J-req, J-obs]
+
+**Titles** (n = 20): median 13 words (10–17). Mostly a noun phrase naming the method and the system ("A … framework for …", "… of an industrial … reactor"); 8 contain "framework" or "protocol"; 5 use a colon (name or topic before it, description after it); one is a full statement of the finding (…4424). Ten name the concrete industrial system or material (ethylene oxide plant, propylene polymerization reactor, reheating furnace, copper smelting).
+
+**Keywords** (n = 20, 104 keywords): median 5 (2–7) [J-req: 1–7]. 41 of 104 only repeat title words, 23 overlap partly, 40 add terms that are not in the title. Typical mix per paper: one or two method terms (e.g. "Parameter estimation", "Model predictive control"), the system or process ("Industrial polymerization reactor", "Reheating furnace") and one application or task term ("Process monitoring"). Capitalization varies (sentence case in 18, lower case in 2).
+
+**Highlights** [J-req]: required, 3–5 bullets of at most 85 characters each. They are published on the article web page and are not part of the PDFs, so they could not be analysed here; follow the requirement and `references/abstract-title-keywords.md` §4.
 
 ## 3. Introduction (up to the first methods section) [J-obs]
 
@@ -215,7 +229,7 @@ Not prescribed by the guide [J-req: none beyond figures, tables, equations and d
 - **Titles:** "Results and discussion" in 11 of 20; "Results" in 2; case studies or experiments in 7. No paper has a separate top-level Discussion; some end with synthesis subsections: a discussion of the results together (…431X 4.3, …4424 7.8), positioning against prior work (…4400 3.8, with a comparison table), generality (…4400 3.9), implications (…4357 3.5), limitations (…4357 3.6; …4424 Section 8).
 - **Opening:** orientation (what is evaluated, on which data, how reported: …4321, …4370), implementation details (software, solver, hardware, time step: …4436), the scenario and its data (…4369, …4382), the headline result (…4400), or an organizing claim (…4357).
 - **Order:** credibility first, then analysis, then use: validation or accuracy → behaviour, sensitivity, interpretation → optimization, control, scenarios, decisions → computational performance → positioning and limitations (…4436, …4321, …4448, …4497, …3434).
-- **Subsections:** median 3.5 (0–16); several papers state the finding in the subsection title (…4400: "Individual slab tokens exceed zone aggregation under the same inputs"; "A one-hour thermal lag links slab load to burner fuel").
+- **Subsections:** median 3.5 (0–16); several papers state the finding in the subsection title (…4400 phrases each results subsection as a short claim, e.g. that individual slab inputs beat zone averages at equal inputs, or that a lag of about an hour connects slab load and burner fuel).
 
 ### 5.2 Subsection level
 
@@ -254,18 +268,33 @@ By type (medians): physics-based papers cite most (8 % of sentences); data-drive
 - **Literature comparison:** published ranges and values (…3434 p11–14: production cost within 1 %, energy against a range, a different optimum attributed to a different problem definition), earlier dataset results with different partitions noted (…4321 p6), parameter values consistent with published kinetic studies (…4436 p15); a positioning table (…4400 Table 6).
 - **Unexpected results and limits:** physically paradoxical measurements flagged (…4321 p6); augmented data worse than real data (…4448 p7); observational association not read as causal (…4400 p14); conclusions conditional on simulators and choices (…4357 p8); what a small effect does not show (…4424 p15); confidential units handled by standardized outputs and relative bias (…4436 p11–13).
 
-## 6. Conclusion
+## 6. Conclusion [J-obs]
 
-| Step | Content |
-|---|---|
-| C1 | "This work developed / presented …" or "To address …, this study …" (one sentence restating the aim and method) |
-| C2 | Method recap in 1–4 sentences (components, data) |
-| C3 | Key results with numbers (often the same metrics as the abstract) |
-| C4 | Significance: "These results demonstrate / highlight …"; sometimes a "first" claim |
-| C5 | Limitations: "Nevertheless, several limitations remain …", "These results should be interpreted in light of …" (5 of 8 conclusions read) |
-| C6 | Future work, specific |
+All 19 conclusions were coded sentence by sentence (the short communication …4473 has none; the review …4187 is excluded). Heading: "Conclusions" in 11, "Conclusion" in 8; never combined with "Outlook" or "Future work".
 
-Conclusions rarely cite literature and are usually written as continuous prose, sometimes with numbered findings.
+**Size:** median about 330 words (140–1,000), median 3 paragraphs (1–9). Five are long (760–1,000 words) and work through the findings one by one; five are short (140–240 words), a single paragraph or a few one-sentence paragraphs.
+
+| Step | Content | Observed (n = 19) |
+|---|---|---|
+| C1 Restatement | What the work did, in one sentence: "This work presented / developed …", "We present …", "This paper proposes …"; or the aim: "To address …, this study …", "We set out to …" | First sentence in 16; 2 open with the problem context (older papers), 1 with the main finding stated as a general claim (…4424) |
+| C2 Method recap | Components and data, 1–4 sentences | 15 |
+| C3 Link back to the Introduction | The objectives or challenges stated in the Introduction, named again and answered one by one | 5 |
+| C4 Findings | Main results; with the same metrics as the abstract | Numerical in 11; qualitative only in 8 |
+| C5 Comparison | Against the baseline or the alternative technology | 11 |
+| C6 Explanation or condition | Why a result holds, or under which conditions ("under the tested conditions", "within the examined …") | 9 |
+| C7 Significance | "These results demonstrate …", "This study offers …", "… provides a promising foundation for …"; practical implication for operators or designers | 16 |
+| C8 Novelty claim | "To the best of our knowledge, this is the first …", "Its main novelty lies in …" | 5 |
+| C9 Limitations | Explicit, introduced by a signal sentence ("Nevertheless, several limitations remain …" and similar) and then listed | Explicit in 8; a scope or validity condition only in 4; none in 7 |
+| C10 Future work | Specific: names the extension, data or validation still needed ("validation on real industrial data", "a multi-plant study") | Specific in 12; vague in 1; none in 6 |
+
+Further observations:
+- **Order:** C1 → C2 → C4/C5 → C7, then C9 → C10 at the end. Limitations usually come in the last or second-to-last paragraph and lead into the future work in the same paragraph; one paper places its main limitation first, as a frame for reading the findings (…4217).
+- **Enumeration:** findings are listed with numbers in 1 conclusion ((1), (2), (3) after an introductory "… shows that:"), counted in the prose in 3 (a sentence announcing the number of conclusions, then "First, … Second, …"), and written as continuous prose in the rest.
+- **Numbers:** the most informative conclusions repeat the key metric values with their baseline and condition (…4321, …4400, …4497); qualitative conclusions use "outperforms", "effective", "reasonable".
+- **Citations:** 2 of 19 cite literature (one to an industrial demonstration, one to the published example used for comparison); 2 refer to their own sections.
+- **Tense:** restatement in the past ("presented", "developed") in 8 and in the present ("proposes", "focuses") in 9; findings in the present or past.
+- **Strength of claims:** most significance sentences are bounded by the tested system or data; three make unbounded claims (that the method is proven or powerful in general), and one ends with an instruction to the reader.
+- **Data or validation limits stated as limitations:** simulation-only validation, a single plant, benchmark datasets only, no industrial experiment.
 
 ## 7. Applying this to a manuscript
 
@@ -274,4 +303,69 @@ Conclusions rarely cite literature and are usually written as continuous prose, 
 - If the method is applied to a real or industrial system, add a description section (process, plant, data) before the methodology and a "Case study" section, or a case-study subsection in the results.
 - Methodology: choose the structure by the type of work (§4.1); describe the physical picture before the balances; list the assumptions with their sources and justifications; give every closure, parameter and dataset its origin; give more numerical detail (discretization, solver, tolerances, independence checks, versions) than the journal average; check with `citation_density.py audit … --section methods` and `references/methodology-writing.md` §15.
 - Use a combined Results and discussion with the R1–R7 pattern in every subsection (see `references/results-and-discussion-combined.md` and `references/results-discussion-writing.md`): validation before use, then analysis, then application; compare with your own baselines under equal conditions and, for a reactor model, with published data and models wherever they exist; report variability; label each interpretation by its evidence; end with computational performance, positioning against prior work, implications and limitations; check with `citation_density.py audit … --section results`.
-- Conclusion: C1–C6, with the same key numbers as the abstract.
+- Conclusion: C1–C10 (§6): restate, recap, link back to the stated objectives, give the key numbers with their baseline (the same as the abstract), significance bounded by the tested system, explicit limitations and specific future work.
+- Title, keywords, highlights: §2a. Figures and tables: §8. Equations: §9.
+
+## 8. Figures and tables [J-obs]
+
+All captions (181 figures, 138 tables) and all in-text references of the 20 papers. The captions of one older paper, split in the conversion, were taken from the PDF text.
+
+**Number and size**
+- Figures: median 8.5 per paper (2–16); tables: median 5.5 (0–16); together about 0.9 per page. Modelling and optimization papers have more tables (parameters, results); data-driven papers more figures.
+- In two-column papers, 81 of 171 figure captions span both columns (full-width figures), 90 sit in one column.
+
+**What the figures show** (keywords in the caption; one figure can match more than one type)
+
+| Type | Share of figures |
+|---|---|
+| Scheme of the method, framework, flowsheet, superstructure or process | 29 % |
+| Predicted versus measured, comparison with a baseline, validation | 28 % |
+| Profiles, trajectories, time series, dynamic responses | 14 % |
+| Distributions, errors, uncertainty, residuals | 13 % |
+| Sensitivity, importance, ablation (Sobol, SHAP, effect of a parameter) | 12 % |
+| Optimal solutions, Pareto fronts, costs | 10 % |
+| Maps | 2 % |
+
+Nearly every paper has one framework or process scheme early (Fig. 1 or 2) and its first results figure is a comparison with data or a baseline.
+
+**What the tables show:** parameters, properties, data and inputs (46 %); results, performance and comparisons (39 %); method settings, hyperparameters, reaction mechanisms (9 %). Tables of literature values state the source in the caption or in a footnote ("Source: Adapted from …", reference footnotes per column).
+
+**Captions**
+- Figure captions: median 14 words (quartiles 8–42; up to 163). About a third are several sentences long: a title-like first phrase, then what is plotted, the conditions (often with numbers) and the meaning of panels, lines or colours. 36 label panels ((a), (b)). Short captions are noun phrases: "Flow diagram of …", "Comparison of …", "Effect of … on …", "Evolution of …".
+- Table captions: median 10 words (7–15), a noun phrase above the table: "Parameters of …", "Summary of …", "Comparison of …", "Results of …"; explanations go into table footnotes.
+- Elsevier layout: "Fig. 1." in bold with a full stop, "Table 1" on its own line above the caption. Author manuscripts use "Figure 1:" (accepted-manuscript versions of two papers).
+
+**References in the text**
+- Every paper writes "Fig." in the running text (335 times against 16 for "Figure"); tables as "Table 1".
+- Most references are part of the sentence, not in parentheses: only 15 % of figure references and 9 % of table references are parenthetical.
+- Sentences that begin with the figure use present-tense verbs: shows (32, in 13 papers), presents (16), illustrates (7), compares, summarizes, lists, depicts, reports. "As shown in Fig. …" opens a sentence 24 times; "shown in Fig./Table" appears 103 times, "presented in" 18, "given in" and "summarized in" 10–12.
+- Each figure and table is mentioned in the text; in 260 of 279 checked cases the first mention is on the same page as the caption or before it.
+
+## 9. Equations [J-obs]
+
+All 418 numbered equations of the 20 papers were located in the PDFs (equation numbers at the right margin); the lead-in and follow-up of the equations on one equation-heavy page of 13 papers were read from the rendered page, because the Markdown conversion does not preserve equations.
+
+**Amount:** median 18 numbered equations per paper (0–80). Two papers (process simulation, ML sorting) have none; model-heavy papers 50–80 (MILP formulations, reactor balances, control proofs). Two papers continue in an appendix with "(A.1)".
+
+**Numbering and references:** consecutive "(1)", "(2)" for the whole paper, right-aligned; reactions can be numbered like equations (…0433) or collected in a table with their source (…4436). In the text: "Eq. (5)" in 13 papers, "Eqs. (1)–(2)" for ranges; a bare "(5)" in 2; "Equation (5)" at the start of a sentence. Supplementary equations as "Eq. (S1)".
+
+**Before the equation (lead-in)**
+- Most often a sentence naming the quantity, the phase or unit, and the principle, ending in a colon: "The mass balance of species i in the [phase] is [defined / derived] as:", "The [cost term] is calculated as:", "… are expressed as follows:".
+- The source of an adopted equation is cited in the lead-in sentence, before the colon.
+- A forward reference by number is also common: a sentence such as "… is given by Eq. (1)." or "Eq. (4) expresses …", with the equation displayed after it.
+- Some authors let the sentence run into the equation without a colon ("… the score is", then the equation, then "where …"); one uses imperatives ("Write …", "compute").
+
+**After the equation**
+- A "where" clause defining every new symbol in one sentence, separated by commas or semicolons, often with "respectively" at the end; units or values are added in the clause when they matter (a time step and its value in this study; parameter values with their source). 14 of the 18 papers with equations use it.
+- Alternatives: a separate sentence after a group of equations that defines their variables, "in which …", or a pointer to the nomenclature or an appendix table that lists all variables with units and values.
+- The best-written model sections add one or two sentences on what the term or the equation does physically and why it has this form (sign conventions, which term carries the coupling, what is assumed).
+
+**Typesetting conventions seen**
+- Equations treated as part of the sentence (comma or full stop at the end) in about 5 of 13 papers read; the others leave equations unpunctuated. Either is accepted; be consistent.
+- Long equations broken before an operator, with the operator at the start of the continuation line; one number for the whole block.
+- Optimization models: domain of each constraint written after it ("∀r, t", "∀i ∈ I"); sets defined in the text or in a display; upper and lower bounds marked with overline and underline.
+- Vectors and matrices in bold (data-driven and control papers); descriptive subscripts upright in the better-typeset papers, italic in others; multi-letter variable names (NPV, CCTotal) occur but are hard to read.
+- Units are given in the where-clause, the nomenclature or a parameter table, not inside the equation; an empirical correlation with numeric coefficients states the units of its variables in the text.
+- Nomenclature or abbreviation list: 6 of 20 papers, mostly model-heavy ones.
+- Algorithms as numbered pseudocode boxes ("Algorithm 1", with Input/Output lines) in data-driven papers.
+

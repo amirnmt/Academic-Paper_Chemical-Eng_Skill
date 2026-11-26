@@ -67,20 +67,21 @@ Focused variant (aim first):
 > This work proposes [method] for [task] in [system]. [Method] combines [component A] with [component B] so that [capability]. It is applied to [case, data size]. [Main result with number, compared with baseline]. [Second result]. [Scope or limitation in one clause]. [Implication].
 
 ### 1.9 Abstracts in process-systems papers [J-obs]
-From 19 readable abstracts of *Computers & Chemical Engineering* research articles (one abstract could not be read from its PDF):
+From all 20 research abstracts of *Computers & Chemical Engineering* papers analysed (one read from the PDF page; full table in `resources/journals/computers-and-chemical-engineering/section_models.md` §2):
 
 | Feature | Observed |
 |---|---|
-| Length | median 184 words (157–244), 9 sentences (7–9; 3–12); sentences of about 26 words |
-| Opening | background (often with the difficulty) 12; a problem or a pointed claim 2; the aim itself 5 |
-| Problem or gap stated | 12 of 19: in the same sentence as the background ("X is important for …, yet …"; 5), as a "However, existing …" sentence (3), or as "Existing [models] [assume / neglect] …" (2) |
-| Aim sentence | 18 of 19; subject "This work" (6), "This paper" (4), "This study" (3), "We" (4), passive (1); verb mostly *propose(s)* (7) or *present(s)* (4) |
-| Method | 2–5 sentences; detail introduced with "Specifically, …"; names the methods, the data and its size |
-| Results with numbers | 11 of 19 (percent changes, R², errors, cost or time reductions, data sizes) |
-| Closing | an implication or conclusion in 13 of 19 ("These results demonstrate …", "… provide guidance for …", "Overall, …"); the others end on the last result or on a limitation |
-| Limitation or scope | 6 of 19, mostly in the most recent papers ("…, despite limited data informativeness, …"; "… needs a simulator") |
-| Citations | 3 of 20, each to the earlier study the paper extends |
-| Tense | present for method and results in most; past for what was done and found in 3; consistent within each abstract |
+| Length | median 184 words (86 to about 250), 8–9 sentences (3–13); sentences of about 26 words |
+| Opening | context, often with the difficulty, 13; a pointed claim or finding 2; the work itself 5 |
+| Problem or gap stated | 11 of 20: in the same sentence as the context ("X is important for …, yet …"), as a "However, existing …" sentence, or as "Existing [models] [assume / neglect] …" |
+| Aim sentence | 19 of 20; subject "This work", "This paper", "This study" or "We"; verb mostly *propose(s)* or *present(s)* |
+| Method | 1–5 sentences; detail introduced with "Specifically, …"; names the methods, the data and its size |
+| Validation or application named | 7 of 20 |
+| Results with numbers | metric values in 10 of 20 (percent changes, R², errors, cost or time reductions), with the baseline named in 9; data sizes or scenario levels only in 2; qualitative only in 8 |
+| Closing | significance in 11 ("These findings provide …", "Overall, …"); a result in 7; a recommendation or a scope statement in 2 |
+| Limitation or scope | 6 of 20 |
+| Citations | 2 of 20, each to the study the paper builds on or contrasts with |
+| Tense | present for method and results in most; past in the few that narrate the steps; consistent within each abstract |
 | "We" | 6 of 20 |
 
 How these abstracts stay short [G]:
@@ -129,6 +130,9 @@ Examples (illustrative):
 - Add a broader or a narrower term than the title (e.g. title has "methanol synthesis" → keyword "CO2 hydrogenation" or "packed-bed heat transfer").
 - Use the journal's controlled list if it has one; look at keywords of similar papers.
 - Stay within the journal's limit; fewer is allowed.
+- Observed in *Computers & Chemical Engineering* [J-obs] (20 papers, 104 keywords): median 5 (2–7); about 40 % only repeat title words, 40 % add new terms. A useful mix: one or two method terms, the system or process, and one task or application term (`section_models.md` §2a).
+
+**Titles observed in the same journal** [J-obs]: median 13 words (10–17); mostly a noun phrase naming method and system; a quarter use a colon; half name the concrete industrial system or material; a statement title (the finding as a sentence) is rare (`section_models.md` §2a).
 
 ## 4. Highlights, nontechnical summaries, graphical abstract
 

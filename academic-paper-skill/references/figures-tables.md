@@ -108,6 +108,16 @@ fig.savefig("fig_temperature_profile.pdf")
 - Each figure and table must be discussed in the text; a figure that is never discussed should be removed or moved to supplementary material.
 - Figures and tables can also present methods: flowcharts of the procedure or workflow, diagrams of the apparatus or model domain, tables of operating conditions and parameters.
 
+## 7b. What Computers & Chemical Engineering papers do [J-obs]
+
+From all 181 figure and 138 table captions and every in-text reference in 20 papers (details: `resources/journals/computers-and-chemical-engineering/section_models.md` §8):
+- **How many:** median 8.5 figures and 5.5 tables per paper, about 0.9 per page; roughly half of the figures in two-column papers are full width.
+- **Which figures:** a scheme of the framework or process early (Fig. 1 or 2) in nearly every paper; then comparisons with data or baselines (28 % of figures), profiles and time series (14 %), error and uncertainty distributions (13 %), sensitivity or importance (12 %), optima and Pareto fronts (10 %).
+- **Which tables:** parameters, properties and input data (46 %), results and comparisons (39 %), method settings and reaction mechanisms (9 %); sources of literature values in the caption or a footnote.
+- **Captions:** figures median 14 words (a third are several sentences: title phrase, what is plotted, conditions with values, meaning of panels and symbols); tables median 10 words, a noun phrase, explanations in footnotes.
+- **In the text:** always "Fig. 3" in running text; "Table 2". Most references sit inside the sentence (85 % of figure references are not in brackets): "Fig. 3 shows …" (the most common opener), "presents", "illustrates", "compares"; "as shown in Fig. 3". The general advice in §7a (finding first, figure in brackets) is equally accepted and usually shorter; use it for results, and "Fig. X shows …" when introducing a figure that the reader must study.
+- **Order:** the first mention comes before or on the page of the figure in 93 % of cases.
+
 ## 8. Common errors
 
 - Missing units or axis labels; units in different systems.

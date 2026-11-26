@@ -588,6 +588,21 @@ Rules for use:
 - These findings provide a basis for …
 - The main limitation is …; future work will …
 
+### 6.1 Stems for each move of the Conclusion [J-obs pattern, own wording]
+
+| Move (see `section_models.md` §6 of the C&CE profile) | Stems |
+|---|---|
+| C1 Restate the work | This work developed [model / framework] for [task] in [system]. · To [address the gap], this study [verb]ed … · The aim was to …; to this end, … |
+| C2 Recap the method | The model combines [A], [B] and [C] and was [calibrated / validated] on [data]. |
+| C3 Answer the stated objectives | The [three] objectives stated in Section 1 are answered as follows. · Each of the limitations identified in the Introduction is addressed: [limitation 1] by …, [limitation 2] by … |
+| C4 Findings with numbers | The model reproduces [quantity] with [metric] of [value] on [data]. · Compared with [baseline], [method] reduces [metric] by [value] % under [conditions]. · Four conclusions follow. First, … Second, … |
+| C5 Comparison | … against [value] for [baseline] under the same [data / conditions]. |
+| C6 Condition or explanation | This holds for [range / regime]; outside it, … · The improvement is attributable to …, as the ablation in Section [x] shows. |
+| C7 Significance, bounded | For [type of plant / process], these results indicate that … · The approach can support [decision] where [condition]. |
+| C8 Novelty (only if a search supports it) | To our knowledge, no [model type] of an industrial [system] has been [validated / combined with] … before. |
+| C9 Limitations | The study has [two] limitations. First, …; second, … · The model was validated on [simulation / one plant / one campaign] only; … · The results apply to [range] and should not be extrapolated to … |
+| C10 Specific future work | Next steps are [specific extension], [specific data or validation], and [specific method change]. · Validation on [plant / experimental] data from [campaign] would establish whether … |
+
 ## 7. General functions
 
 ### 7.1 Being cautious

@@ -168,6 +168,8 @@ Rules: no new data, no new citations, no word-for-word repetition of the abstrac
 
 Tense: present perfect for what the study achieved ("This study has shown …"), past for what was done and found, present for what the findings mean.
 
+**Observed in Computers & Chemical Engineering** [J-obs] (19 conclusions, details in `resources/journals/computers-and-chemical-engineering/section_models.md` §6): a separate section titled "Conclusions" or "Conclusion", median about 330 words in 3 paragraphs (140–1,000). Typical order: restatement of the work or aim (16) → method recap → findings (numerical in 11) and comparison with the baseline (11) → significance bounded by the tested system (16) → limitations (explicit in 8) → specific future work (12). Five link back to the objectives or challenges named in the Introduction and answer them one by one; four enumerate the findings. Literature is cited in only 2. Weaknesses to avoid, seen in some: no numbers at all, unbounded claims of generality, no limitation, and "future work" that names nothing specific.
+
 ## 13. Worked example (structure annotated; content illustrative)
 
 > [Revisit + main finding] This study shows that wall heat-transfer correlations derived for tube-to-particle ratios above 10 overpredict the hot-spot temperature of a low-ratio methanol synthesis tube by up to [value] K, whereas the correlation of [Author] predicts it within [value] K.

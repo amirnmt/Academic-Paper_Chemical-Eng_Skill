@@ -67,7 +67,8 @@ academic-paper-skill/
 │   ├── guides/                      your own converted guides (git-ignored)
 │   ├── field-papers/                your own converted papers from your field (git-ignored)
 │   └── journals/                    one profile per target journal
-│       └── computers-and-chemical-engineering/   example profile
+│       └── computers-and-chemical-engineering/   example profile (20 papers: every section, abstracts,
+│                                                  conclusions, titles, keywords, figures, tables, equations)
 └── scripts/
     ├── journal_profile.py           start, check and list journal profiles
     ├── convert_to_markdown.py       PDFs → Markdown (MarkItDown, PyMuPDF or pypdf)

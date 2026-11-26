@@ -160,7 +160,7 @@ Two placements, both common [J-obs]: a **list at the start of the model** (bulle
 
 ### 5.1 The sentence before the equation
 
-The equation is part of the sentence. In the analysed papers, most lead-in sentences run straight into the display without punctuation, about one in six ends with a colon, and fewer with a full stop. Lead-in verbs, by the number of papers using them [J-obs]: *defined as* (11), *obtained as/by* (10), *calculated as/by* (9), *as follows* (8), *expressed as* (7), *computed as*, *given by* (6 each), *formulated as* (5).
+The equation is part of the sentence. Over all 341 equation blocks in the 20 analysed papers, about half of the lead-in sentences run straight into the display without punctuation, about a fifth end with a colon and a fifth with a full stop after a complete sentence; reading the equation pages of 13 papers shows that each paper keeps mainly one style (`resources/journals/computers-and-chemical-engineering/section_models.md` §9). Lead-in verbs, by the number of papers using them [J-obs]: *defined as* (11), *obtained as/by* (10), *calculated as/by* (9), *as follows* (8), *expressed as* (7), *computed as*, *given by* (6 each), *formulated as* (5).
 
 | Function | Templates |
 |---|---|
@@ -171,7 +171,9 @@ The equation is part of the sentence. In the analysed papers, most lead-in sente
 | Introduce an adopted equation | "Following [ref], the rate of reaction *j* is expressed as" |
 | Introduce a modified equation | "Compared with [ref], Eq. (7) contains an additional term for …" |
 
-Punctuate displayed equations as part of the sentence (comma or full stop after the equation) if the journal's style does; be consistent.
+Punctuate displayed equations as part of the sentence (comma or full stop after the equation) if the journal's style does; be consistent. In C&CE about 5 of 13 papers read punctuate their equations and the others do not [J-obs]; either is accepted.
+
+**Other conventions observed in C&CE** [J-obs]: equations numbered (1), (2) through the paper and (A.1) in appendices, referred to as "Eq. (5)" and "Eqs. (1)–(2)"; the source of an adopted equation cited in the lead-in; long equations broken before an operator; the domain of each optimization constraint after it (∀*i* ∈ *I*); vectors and matrices bold; units in the where-clause, nomenclature or parameter table, not in the equation; a nomenclature list in 6 of 20 papers, mostly model-heavy ones; pseudocode as a numbered "Algorithm" box. Median 18 numbered equations per paper (0–80).
 
 ### 5.2 The sentence after the equation: defining symbols and explaining terms
 
