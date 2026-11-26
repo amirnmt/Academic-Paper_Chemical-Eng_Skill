@@ -2,6 +2,8 @@
 
 Many engineering papers have a separate literature review section between the Introduction and the Methods. In a cross-disciplinary analysis of 433 empirical articles, the most common structure was Introduction – Literature review – Method – Results and Discussion – Conclusion (ILM[RD]C), not plain IMRD. Some fields want a short, selective review inside the Introduction; others expect an extended review almost like a review article. Follow the conventions of your target journal: look at recent papers there.
 
+In computational and process-systems chemical engineering the review usually sits inside the Introduction. In 20 recent *Computers & Chemical Engineering* papers, only two had a separate "Related work" part, and only 2–4 of 90 reactor-modelling and surrogate-modelling papers had a separate literature review section. Their Introductions are correspondingly long (often 1,000–2,500 words) and organized by families of approaches (see `introduction.md` §5a). Everything in this file still applies; the review then forms the middle of the Introduction instead of its own section.
+
 The review shows the state of knowledge, compares approaches, and makes the gap inevitable.
 
 ## 1. What a literature review is and is not

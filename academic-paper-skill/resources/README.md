@@ -55,3 +55,4 @@ Phrases shared by many papers are the conventional language of the journal and f
 - It reads the summaries in `references/` first.
 - When a question needs more detail or the user asks what a guide says, it runs `search_resources.py` and reports what it found, with file and line, in its own words.
 - When `journal-papers/` contains papers, it runs `build_section_phrases.py` and prefers the journal's own conventions over the general phrase bank.
+- A journal profile kept in `journal-papers/` (for example `<JOURNAL>_journal_requirements.md` summarizing the Guide for Authors, `<JOURNAL>_section_models.md` with the section structure of the journal's papers, and the phrase list) is read at the start and overrides the general defaults.

@@ -16,6 +16,7 @@ tables and some layouts: check numbers and equations against the original.
 """
 import argparse
 import os
+import re
 import sys
 from pathlib import Path
 
@@ -65,6 +66,8 @@ LIGATURES = {"\ufb00": "ff", "\ufb01": "fi", "\ufb02": "fl", "\ufb03": "ffi", "\
 
 def tidy(text):
     """Replace typographic ligatures (\ufb01 -> fi) and soft hyphens so words can be searched."""
+    # a soft hyphen at a line end splits a word ("in\u00ad\ncreases"): join the parts
+    text = re.sub(r"\u00ad[ \t]*\r?\n[ \t]*", "", text)
     for a, b in LIGATURES.items():
         text = text.replace(a, b)
     return text

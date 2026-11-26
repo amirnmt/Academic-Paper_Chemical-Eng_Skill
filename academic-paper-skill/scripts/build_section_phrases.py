@@ -163,7 +163,7 @@ def classify_heading(line):
     return None, None
 
 
-def split_sections(text, min_words=40):
+def split_sections(text, min_words=40, boilerplate=frozenset()):
     lines = text.splitlines()
     # running heads and footers repeat on every page: drop lines seen 3+ times
     norm = [re.sub(r"\d+", "#", l.strip().lower()) for l in lines]
@@ -188,7 +188,7 @@ def split_sections(text, min_words=40):
                     i += 1
             blocks.append([name, [rest] if rest else [], top])
             continue
-        if blocks and n and freq[n] < 3 and not JUNK_LINE_RX.search(line):
+        if blocks and n and freq[n] < 3 and n not in boilerplate and not JUNK_LINE_RX.search(line):
             blocks[-1][1].append(line)
     # headings before the Abstract or Introduction belong to the title page
     # (keywords, journal section labels): drop them
@@ -229,6 +229,8 @@ def clean_block(lines):
         else:
             text += (" " if text and not text.endswith("\n") else "") + line
     text = re.sub(r"\s+", " ", text)
+    # running heads such as "Computers and Chemical Engineering 210 (2026) 109716"
+    text = re.sub(r"\b[A-Z][A-Za-z&,.\- ]{5,80}? \d{1,4} \((?:19|20)\d\d\) [\d\u2013\-]+", " ", text)
     for a, b in ABBREV:
         text = text.replace(a, b)
     for rx in CITE_RXS:
@@ -253,6 +255,9 @@ def looks_unspaced(text):
 def keep_ngram(g):
     if g[0] in BAD_START or g[-1] in BAD_END:
         return False
+    # author names left over from citations ("zheng et al")
+    if any(g[i] == "et" and g[i + 1] == "al" for i in range(len(g) - 1)) or g[-1] == "et":
+        return False
     # single letters are symbols or pieces of formulas (c # h, t # s)
     if any(len(t) == 1 and t not in ("a", "#") for t in g):
         return False
@@ -274,7 +279,7 @@ def count_section(docs):
         for n_sent, toks in enumerate(sentences(text)):
             if n_sent == 0 and toks[0] != "#":
                 start_df[tuple(toks[:3])] += 1
-            if toks[0] != "#":
+            if toks[0] != "#" and not any(toks[i:i + 2] == ["et", "al"] for i in range(4)):
                 for k in (3, 4):
                     o = tuple(toks[:k])
                     open_tf[o] += 1
@@ -367,10 +372,17 @@ def main():
     files = gather(args.inputs)
     if not files:
         sys.exit("No .md or .txt files found.")
+    # lines repeated across many papers (journal mastheads, licence notes) are boilerplate
+    texts = {f: unicodedata.normalize("NFKC", read_text(f)) for f in files}
+    line_df = Counter()
+    for raw in texts.values():
+        line_df.update({re.sub(r"\d+", "#", l.strip().lower()) for l in raw.splitlines() if l.strip()})
+    cut = max(3, math.ceil(0.3 * len(files)))
+    boilerplate = frozenset(l for l, n in line_df.items() if n >= cut and len(l.split()) <= 12)
     papers, report = [], []
     for f in files:
-        raw = unicodedata.normalize("NFKC", read_text(f))
-        secs, found = split_sections(raw)
+        raw = texts[f]
+        secs, found = split_sections(raw, boilerplate=boilerplate)
         cleaned = {k: clean_block(v) for k, v in secs.items()}
         joined = " ".join(cleaned.values())
         if looks_unspaced(joined or raw):

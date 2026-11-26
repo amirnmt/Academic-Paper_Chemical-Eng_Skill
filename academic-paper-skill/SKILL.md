@@ -25,10 +25,11 @@ This file is the core. Detailed guidance lives in `references/`; full texts that
 |---|---|
 | Planning the work: target journal, writing order, drafting, revising rounds, co-authors, AI use | `references/writing-process.md` |
 | Searching for missing papers, reading them, notes, theme map, comparison matrix, what and how to cite | `references/evidence-base.md` |
-| Introduction: functions, first sentence, moves, gap, objective, contributions, worked example | `references/introduction.md` |
+| Introduction: functions, first sentence, moves, gap, objective, contributions, worked example; the long, literature-rich Introduction of computational journals (§5a) | `references/introduction.md` |
 | Literature review: organization, synthesis, critical comparison, reporting verbs, planning a large citation count | `references/literature-review.md` |
 | Methods: content by study type, order, language that shows care, LaTeX equations, units, chemistry, nomenclature | `references/methods-latex.md` |
 | Results: structure, reporting pattern, language of sequence, frequency, quantity and causality, numbers and statistics | `references/results-language.md` |
+| Combined Results and Discussion: section and subsection pattern (R1–R7), paragraph templates for validation, model comparison, sensitivity, case studies, optimization, computational performance, limitations | `references/results-and-discussion-combined.md` |
 | Figures and tables: choice of form, design rules, chart types, matplotlib style, captions, booktabs, referring to them in the text | `references/figures-tables.md` |
 | Discussion and Conclusion: structure, explanation, comparison with literature, hedging and modal verbs, limitations | `references/discussion-hedging.md` |
 | Abstract, title, keywords, highlights, graphical abstract | `references/abstract-title-keywords.md` |
@@ -46,7 +47,7 @@ This file is the core. Detailed guidance lives in `references/`; full texts that
 
 Read `style-grammar.md` and `avoid-ai-signs.md` once at the start of any drafting session.
 
-**For every section you draft, read four things:** the section file; its part of `paragraphs-and-sentences.md` (first sentence and paragraph template); its part of `vocabulary-by-section.md`; and its part of `phrasebank.md`. If a phrase list built from papers of the field or target journal exists (a `section_phrases*.md` file, for example in `resources/journal-papers/`), use its openers and phrases first and the general phrase bank second.
+**For every section you draft, read four things:** the section file (for a combined Results and discussion, `results-and-discussion-combined.md` plus `results-language.md`); its part of `paragraphs-and-sentences.md` (first sentence and paragraph template); its part of `vocabulary-by-section.md`; and its part of `phrasebank.md`. If a phrase list built from papers of the field or target journal exists (a `*section_phrases*.md` file, for example in `resources/journal-papers/`), use its openers and phrases first and the general phrase bank second.
 
 ## Resources and helper scripts
 
@@ -68,6 +69,7 @@ When the summaries in `references/` do not answer a question, or the user asks w
 ## Workflow
 
 ### 1. Intake (ask once, briefly)
+- A journal profile, if `resources/journal-papers/` has one (`*journal_requirements*.md`, `*section_models*.md`, `*section_phrases*.md`): read it first; its rules and section models override the defaults below.
 - Target journal and its author guidelines: article type, word and page limits, abstract type and limit, highlights, graphical abstract, reference style, figure limits, template. If none is chosen, default to an Elsevier-style engineering journal with numbered references, and say so.
 - Output: LaTeX (default, in the journal template) or Word.
 - Location of the paper repository and of the results (data, figures, tables, code, notes).

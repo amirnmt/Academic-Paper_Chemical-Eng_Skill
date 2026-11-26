@@ -135,7 +135,7 @@ Present simple "unlocks" an interpretation from your study and presents it as ge
 
 ## 13. Combined Results and Discussion
 
-Allowed and common in engineering. In every paragraph, make clear what was measured or computed (the evidence) and what is inferred (the interpretation): present the finding first, then the comment. Keep comparisons with literature specific and cited. Do not let the interpretation hide the data.
+Allowed and common in engineering. In every paragraph, make clear what was measured or computed (the evidence) and what is inferred (the interpretation): present the finding first, then the comment. Keep comparisons with literature specific and cited. Do not let the interpretation hide the data. Structure, subsection pattern and paragraph templates: `results-and-discussion-combined.md`.
 
 ## 14. Supplementary material
 

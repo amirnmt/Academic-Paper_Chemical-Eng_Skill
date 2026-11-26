@@ -11,6 +11,7 @@ It guides Claude through the whole article and its publication:
   - Literature review (thematic synthesis, critical comparison, reporting verbs, planning a large citation count honestly),
   - Methods (content checklists for experimental, mechanistic-model and data-driven studies; LaTeX equations, `siunitx`, `mhchem`, nomenclature),
   - Results (reporting pattern; language of sequence, frequency, quantity and causality; numbers and statistics),
+  - Combined Results and discussion (subsection pattern and paragraph templates, based on an analysis of recent *Computers & Chemical Engineering* papers),
   - Figures and tables (design rules, chart types, matplotlib style, captions, `booktabs`, referring to them in the text),
   - Discussion and Conclusion (explaining, comparing with the literature, hedging and modal verbs, limitations),
   - Abstract, title, keywords, highlights.
@@ -35,6 +36,7 @@ academic-paper-skill/
 │   ├── literature-review.md
 │   ├── methods-latex.md
 │   ├── results-language.md
+│   ├── results-and-discussion-combined.md   one-section Results and discussion
 │   ├── figures-tables.md
 │   ├── discussion-hedging.md        Discussion and Conclusion
 │   ├── abstract-title-keywords.md

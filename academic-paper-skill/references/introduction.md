@@ -94,6 +94,25 @@ Engineering research is usually problem-solving and incremental. An introduction
 
 **Chemical and process engineering** (move analysis of five engineering fields): introductions often give a short statement of established knowledge and then move quickly to previous research; background and literature review may alternate several times. Many papers have a separate literature review section; then the Introduction stays short.
 
+## 5a. Computational and process-systems papers
+
+Based on 20 recent research articles in *Computers & Chemical Engineering* (methods applied to processes: modelling, surrogates, optimization, control, soft sensing). The literature review is part of the Introduction, which is therefore long (often 1,000–2,500 words).
+
+| Move | Content | How common |
+|---|---|---|
+| I1 Territory | Importance of the process, product or property (scale, uses, energy, cost, safety) | Opening move in most papers; a few open with the method or with a striking claim |
+| I2 Problem | Why modelling, prediction or control of this system is hard (coupled phenomena, unknown parameters, scarce data, delays) | Nearly all |
+| I3 Literature by approach family | First-principles → data-driven → hybrid, or "Regarding A … Regarding B …"; chronological within a family; mostly narrative citations, one study per sentence with its method and result | All |
+| I4 Evaluation | Strength and limit of each family, closing each group | Common |
+| I5 Gap | Focus mismatch (A studied, not B); scale gap (no industrial data); combination gap (no approach handles A, B and C together); integration gap; enumerated limitations ("First … Second … Finally …") | All |
+| I6 Present work | "In this work, we …"; "To address these challenges, this paper proposes …" | All |
+| I7 Approach in steps | "First, … Second, … Finally, … is compared with …" | Common in method papers |
+| I8 Contributions | Numbered list, often 3–4 items | About half |
+| I9 Scope | What is and is not claimed: virtual plant vs. real plant, operating range, validation data | Several industrial and data-driven papers |
+| I10 Roadmap | "The remainder of this paper is organized as follows …" | About half |
+
+The usual section order that follows is: Introduction → process, system or data description → methodology (one or more sections) → case study → Results and discussion (combined in about half) → Conclusions.
+
 ## 6. Paragraph-by-paragraph plan
 
 A typical engineering Introduction has 4–6 paragraphs (about 1–1.5 pages, or 300–700 words).
