@@ -2,7 +2,7 @@
 
 ## 1. Before writing: decisions
 
-- **Target journal:** choose it before writing; scope, readership, article types, length limits and style all shape the paper. Read several recent papers in it and copy their structure.
+- **Target journal:** choose it before writing; scope, readership, article types, length limits and style all shape the paper. Read several recent papers in it and follow their structure; record the rules in a journal profile (`journal-profile.md`).
 - **Article type:** full research article, short communication, review. A review article has no Methods/Results structure; it is organized by themes and needs its own plan.
 - **Authorship:** agree on authors and order early; everyone listed must have contributed substantially and approve the final version.
 - **Data and code availability:** decide what will be shared and where.

@@ -4,6 +4,7 @@ A [Claude skill](https://docs.claude.com/en/docs/agents-and-tools/agent-skills/o
 
 It guides Claude through the whole article and its publication:
 
+- **Any target journal:** send the journal's Guide for Authors at the start (and, if possible, 10–20 recent papers from it). The skill turns it into a journal profile (limits, structure, reference style, figures, required statements, and how the journal's papers are built) that overrides its defaults. Without a guide it uses a default profile and tells you which defaults apply. One profile per journal, so you can switch journals for the next paper.
 - **Writing process:** choosing the journal first, the order in which to write the sections, drafting without blocking, revising in rounds, working with co-authors, using AI responsibly.
 - **Evidence base:** search for missing papers, read papers rather than abstracts, turn a folder of papers into notes, a `refs.bib`, a theme map and a comparison matrix, and cite only verified sources at the strength they support.
 - **Every section, from first sentence to last:** what the section does, how it starts, which moves it makes and in what order, how its paragraphs are built, its tenses, and worked examples:
@@ -48,14 +49,18 @@ academic-paper-skill/
 │   ├── avoid-ai-signs.md
 │   ├── self-review.md
 │   ├── submission-and-reviewers.md
+│   ├── journal-profile.md       turning a Guide for Authors into rules; template; default profile
 │   ├── checklists.md
 │   └── sources.md
 ├── resources/
 │   ├── README.md                    how to add, search and mine full texts
 │   ├── open/                        openly licensed guides (Lövei 2021, CC BY 4.0) + NOTICE
 │   ├── guides/                      your own converted guides (git-ignored)
-│   └── journal-papers/              your own converted papers (git-ignored)
+│   ├── field-papers/                your own converted papers from your field (git-ignored)
+│   └── journals/                    one profile per target journal
+│       └── computers-and-chemical-engineering/   example profile
 └── scripts/
+    ├── journal_profile.py           start, check and list journal profiles
     ├── convert_to_markdown.py       PDFs → Markdown (MarkItDown, PyMuPDF or pypdf)
     ├── search_resources.py          search the full texts in resources/
     ├── build_section_phrases.py     section-by-section phrase list from papers
@@ -65,7 +70,7 @@ academic-paper-skill/
 
 `SKILL.md` stays short. Claude opens the detailed reference files only when it works on that section, and searches `resources/` only when it needs more.
 
-The guidance in `references/` is distilled, in our own words, from established writing guides and genre studies of engineering research articles (see `references/sources.md`). Apart from the openly licensed text in `resources/open/`, those sources are not included here. Copyrighted guides and papers you own can be added to `resources/guides/` and `resources/journal-papers/`; git ignores them so they stay on your computer.
+The guidance in `references/` is distilled, in our own words, from established writing guides and genre studies of engineering research articles (see `references/sources.md`). Apart from the openly licensed text in `resources/open/`, those sources are not included here. Copyrighted guides and papers you own can be added to `resources/guides/`, `resources/field-papers/` and a journal profile's `papers/` folder; git ignores them so they stay on your computer.
 
 ## Install
 
@@ -81,15 +86,14 @@ cp -R academic-paper-skill/academic-paper-skill ~/.claude/skills/
 
 Then ask Claude, for example: *"Use the academic-paper-skill to build the evidence base from the papers in this folder, then outline the introduction."*
 
-## Building a phrase list from your target journal
+## Starting a paper for a new journal
 
 ```bash
-pip install pymupdf            # or: pip install 'markitdown[pdf]'
-python academic-paper-skill/scripts/convert_to_markdown.py my_journal_pdfs academic-paper-skill/resources/journal-papers
-python academic-paper-skill/scripts/build_section_phrases.py academic-paper-skill/resources/journal-papers --out section_phrases.md
+pip install pymupdf            # or: pip install 'markitdown[pdf]', or pypdf
+python academic-paper-skill/scripts/journal_profile.py init "Journal Name" --guide guide_for_authors.pdf --papers sample_papers/
 ```
 
-The list contains only openers and phrases shared by several different papers, i.e. the conventions of the field, not any single author's sentences.
+Then ask Claude to write the journal profile from `resources/journals/<journal>/requirements_draft.md`, or simply send Claude the guide and let the skill run these steps. `journal_profile.py check "Journal Name"` reports missing fields. The phrase list built from the sample papers contains only openers and phrases shared by several different papers, i.e. the conventions of the journal, not any single author's sentences.
 
 ## Author
 

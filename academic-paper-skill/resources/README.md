@@ -1,58 +1,67 @@
-# Resources: full texts the skill can search
+# Resources: journal profiles and full texts the skill can search
 
-The files in `references/` are short, structured summaries. This folder holds full texts that the skill searches when a summary is not enough, for example "how do the guides suggest ending an Introduction?" or "which phrases do papers in my target journal use to introduce a validation?".
+The files in `references/` are short, structured summaries. This folder holds what is specific to you and your target journal, and full texts the skill searches when a summary is not enough.
 
 | Folder | Content | In the public repository? |
 |---|---|---|
+| `journals/<journal>/` | One **journal profile** per target journal: requirements from its Guide for Authors, and (optional) section models and phrases from its papers | The profile files yes; the converted guide and papers no |
 | `open/` | Openly licensed writing guides, converted to Markdown | Yes (see `open/NOTICE.md`) |
 | `guides/` | Your own converted writing guides and books | No: kept on your computer only |
-| `journal-papers/` | Your own converted papers, ideally recent papers from the target journal | No: kept on your computer only |
+| `field-papers/` | Your own converted papers from your research field (e.g. your reference repository) | No: kept on your computer only |
 
-`.gitignore` keeps everything in `guides/` and `journal-papers/` out of the repository except their README files. Most writing guides and all journal papers are copyrighted; keep them for your own use and do not publish or share them.
+`.gitignore` keeps `guides/`, `field-papers/` and each profile's `guide.md`, `requirements_draft.md` and `papers/` out of the repository. Writing guides and journal papers are usually copyrighted; keep them for your own use and do not publish or share them.
 
-## 1. Add your own material
+## 1. Start with the target journal
+
+Send the skill the journal's Guide for Authors (and, if you can, 10–20 recent papers from the journal). The skill then builds a profile:
+
+```bash
+python scripts/journal_profile.py init "Journal Name" --guide guide.pdf --papers sample_papers/
+python scripts/journal_profile.py check "Journal Name"
+python scripts/journal_profile.py list
+```
+
+`init` converts the guide, sorts its lines by requirement field into `requirements_draft.md`, converts the papers and builds their phrase list. Claude then writes `journal_requirements.md` (template in `references/journal-profile.md` §3) and, from the papers, `section_models.md`. Without a guide, the skill uses the default profile (`references/journal-profile.md` §4) and tells you so. To write for another journal later, build another profile; the old one stays. `journals/computers-and-chemical-engineering/` is an example.
+
+## 2. Add your own material
 
 Convert PDFs to Markdown and put them in the right folder:
 
 ```bash
-pip install 'markitdown[pdf]'
+pip install pymupdf            # or: pip install 'markitdown[pdf]', or pypdf
 python scripts/convert_to_markdown.py path/to/guide_pdfs resources/guides
-python scripts/convert_to_markdown.py path/to/journal_paper_pdfs resources/journal-papers
+python scripts/convert_to_markdown.py path/to/field_paper_pdfs resources/field-papers
 ```
 
-The converter keeps the text but damages equations, tables and multi-column layouts. Always check numbers, equations and quotations against the original PDF.
+The converter keeps the text but damages equations, tables and some layouts. Always check numbers, equations and quotations against the original PDF.
 
-Good sources for `guides/`: writing guides and books you own or have access to through your library; open-access genre studies of research articles (for example Maswana et al. 2015 in *Ampersand*, CC BY-NC-ND). Good sources for `journal-papers/`: 15–30 recent research articles from the target journal, on topics close to yours.
+Good sources for `guides/`: writing guides and books you own or have access to through your library; open-access genre studies of research articles (for example Maswana et al. 2015 in *Ampersand*, CC BY-NC-ND).
 
-## 2. Search the texts
+## 3. Search the texts
 
 ```bash
 python scripts/search_resources.py "topic sentence"
 python scripts/search_resources.py "first sentence" introduction --context 4
 python scripts/search_resources.py hedging --dir resources/guides --max 5
+python scripts/search_resources.py "it can be seen" --dir resources/journals/<journal>/papers
 python scripts/search_resources.py --list          # files and sizes
 python scripts/search_resources.py --headings      # section headings of each file
 ```
 
 Several terms must all occur within the context window (default ±3 lines). Quoted terms are matched as phrases; matching ignores case. The output gives file, line number and the nearest heading, so a passage can be checked in the original.
 
-Use what you find as guidance, in your own words. Do not copy passages from the guides into a paper.
+Use what you find as guidance, in your own words. Do not copy passages from the guides or papers into a paper.
 
-## 3. Build a phrase list from the target journal
+## 4. Build a phrase list
 
 ```bash
-python scripts/build_section_phrases.py resources/journal-papers --out section_phrases.md
+python scripts/build_section_phrases.py resources/field-papers --out resources/field-papers/section_phrases_field.md
 ```
 
-The script splits each paper into Abstract, Introduction, Literature review, Methods, Results, Discussion and Conclusion by its headings, then lists for each section:
-- the most common sentence openers (first words of sentences), and
-- recurring 3–6-word phrases used by several different papers.
+(`journal_profile.py init --papers` does this automatically for a journal's sample papers.) The script splits each paper into Abstract, Introduction, Literature review, Methods, Results, Results and Discussion, Discussion and Conclusion by its headings, then lists for each section how it begins, the most common sentence openers, phrases typical of the section, common phrases and recurring terms, counted by the number of papers that use them. Phrases from a single paper are not listed, so the output is a list of shared conventions, not of anyone's sentences. Papers whose headings could not be recognized are reported at the end of the file.
 
-Phrases shared by many papers are the conventional language of the journal and field, which is what reviewers expect to read. Phrases from a single paper are not listed, so the output is a list of shared conventions, not of anyone's sentences. Papers whose headings could not be recognized are reported at the end of the file.
+## 5. How the skill uses this folder
 
-## 4. How the skill uses this folder
-
-- It reads the summaries in `references/` first.
-- When a question needs more detail or the user asks what a guide says, it runs `search_resources.py` and reports what it found, with file and line, in its own words.
-- When `journal-papers/` contains papers, it runs `build_section_phrases.py` and prefers the journal's own conventions over the general phrase bank.
-- A journal profile kept in `journal-papers/` (for example `<JOURNAL>_journal_requirements.md` summarizing the Guide for Authors, `<JOURNAL>_section_models.md` with the section structure of the journal's papers, and the phrase list) is read at the start and overrides the general defaults.
+- At intake it asks for the target journal's guide and reads or builds that journal's profile; the profile overrides the skill's defaults.
+- It reads the summaries in `references/` first. When a question needs more detail or the user asks what a guide says, it runs `search_resources.py` and reports what it found, with file and line, in its own words.
+- While drafting it uses the journal's `section_phrases.md` first, the field's phrase list second and the general phrase bank third.

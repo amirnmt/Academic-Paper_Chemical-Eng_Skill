@@ -108,7 +108,7 @@ How to self-edit: let the draft rest for at least a day, print it or change the 
 - [ ] `scripts/check_citations.py` run: no RETRACTED, DOI NOT FOUND or MISMATCH entries; no cited keys missing; uncited entries removed or justified; no open `[CHECK]` items.
 - [ ] Each cited source supports the sentence that cites it, at the same strength.
 - [ ] Self-review done in all five roles (`self-review.md`); every major comment fixed, acknowledged as a limitation, or answered with evidence.
-- [ ] Journal guidelines met: template, length, reference style, figure format and resolution, declarations (funding, conflicts, data availability, author contributions, AI use).
+- [ ] Journal guidelines met, item by item against the journal profile (`resources/journals/<journal>/journal_requirements.md`): template, length, abstract, keywords, highlights, reference style, figure format and resolution, declarations (funding, conflicts, data availability, author contributions, AI use).
 - [ ] Eight Cs checked:
   - compliance (journal instructions followed),
   - completeness (nothing needed is missing; nothing unneeded is present),

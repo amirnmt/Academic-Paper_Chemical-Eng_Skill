@@ -4,7 +4,7 @@ Experienced writers plan extensively, write in a set order, revise in rounds, an
 
 ## 1. Before writing
 
-- **Choose the target journal first.** Its scope, readership, article types, length limits, abstract type, reference style and template shape the paper. Read several recent papers in it; note their structure (IMRD or ILM[RD]C), the length and detail of each section, and how paragraphs are built.
+- **Choose the target journal first.** Its scope, readership, article types, length limits, abstract type, reference style and template shape the paper. Read several recent papers in it; note their structure (IMRD or ILM[RD]C), the length and detail of each section, and how paragraphs are built. Record all of it in a journal profile (`journal-profile.md`): send the Guide for Authors and sample papers at the start.
 - **Know the audience.** Decide which terms and procedures need definition and which can be assumed known. Write for researchers in neighbouring fields, not only for the few working on exactly your problem.
 - **Have a provisional title and an outline** with one-line purposes for each paragraph. Without a plan you will write in several directions at once.
 - **Set up a reference manager** (Zotero, EndNote, JabRef/BibTeX) before you start.

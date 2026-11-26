@@ -1,12 +1,17 @@
 # Personal, usually copyrighted material: keep it local
 academic-paper-skill/resources/guides/*
 !academic-paper-skill/resources/guides/README.md
-academic-paper-skill/resources/journal-papers/*
-!academic-paper-skill/resources/journal-papers/README.md
+academic-paper-skill/resources/field-papers/*
+!academic-paper-skill/resources/field-papers/README.md
+# Journal profiles: the converted guide and sample papers stay local;
+# the requirements, section models and phrase lists may be shared
+academic-paper-skill/resources/journals/*/guide.md
+academic-paper-skill/resources/journals/*/papers/
+academic-paper-skill/resources/journals/*/requirements_draft.md
 
-# Script outputs
-citation_report.md
-section_phrases.md
+# Script outputs in the working folder
+/citation_report.md
+/section_phrases.md
 
 # Python
 __pycache__/
