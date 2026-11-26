@@ -63,6 +63,8 @@ One or two of these words in a paper is normal. A cluster of them in one paragra
 
 **Elegant variation.** Changing the term for the same thing to avoid repetition ("the reactor … the unit … the system … the vessel"). In technical writing, repeat the same term; varying it suggests different objects.
 
+**One template for every section.** Each subsection built the same way (claim sentence, three points, summary sentence). Let the structure follow the content: Methods can be procedural, Results led by the main finding, Discussion exploratory. Parallel structure is right only where it helps comparison (for example, the same order for each case study).
+
 **Uniform sentences.** Every sentence the same length and shape. Mix short statements of fact with longer explanatory sentences.
 
 **Formulaic transitions.** "Additionally," "Furthermore," "Moreover," "Notably," opening most sentences. Most sentences need no connector; use one only for a real logical relation (contrast, cause, concession).

@@ -16,6 +16,8 @@ A simulated review is not peer review. It cannot confirm that experiments were p
 - **No vague praise or vague criticism.** "The discussion is weak" is useless; "Section 5.2 attributes the deviation to sintering without evidence; no characterization supports it" is useful.
 - **Check the claims, not only the prose.** Recompute a key number from a table; check one equation's units; open one cited paper and confirm it says what the text claims.
 
+Before the roles: mark each failure mode F1–F7 in `research-integrity.md` §2, and score the Introduction and literature review with `literature-review.md` §16. The methods reviewer (Role 2) checks the Methods settings against the code and the results log (F6); the devil's advocate (Role 4) looks for right scores for the wrong reason (F4) and errors reported as findings (F5).
+
 ## 2. The five reviewer roles
 
 ### Role 1: Editor (desk screen)

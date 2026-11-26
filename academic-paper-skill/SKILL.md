@@ -11,7 +11,7 @@ This file is the core. Detailed guidance lives in `references/`; full texts that
 
 ## Golden rules
 
-1. **Never invent a fact, number or reference.** Every claim about other work traces to a paper in the repository or a verified DOI. If unsure, write `[CHECK: key — what to verify]`.
+1. **Never invent a fact, number or reference.** Every claim about other work traces to a paper in the repository or a verified DOI, and every number about this study traces to the results log (`references/research-integrity.md`). If unsure, write `[CHECK: key — what to verify]`.
 2. **Every scientific or literature-based statement carries a citation** (Introduction, literature review, and wherever else such statements appear); only the authors' own objectives, methods, contributions and findings are exempt. When the user names directories of papers, write from them through a claim–evidence map and mark unsupported claims `[CITATION NEEDED]`; cite for relevance, not for count (`references/citation-practice.md`).
 3. **Every result has a method and every method has a result**, in the same order and under the same subheadings.
 4. **Results report; the Discussion interprets.** Keep them distinct, even inside a combined Results and Discussion section.
@@ -27,7 +27,7 @@ This file is the core. Detailed guidance lives in `references/`; full texts that
 | Planning the work: target journal, writing order, drafting, revising rounds, co-authors, AI use | `references/writing-process.md` |
 | Searching for missing papers, reading them, notes, theme map, comparison matrix, what and how to cite | `references/evidence-base.md` |
 | Introduction: functions, first sentence, moves, gap, objective, contributions, worked example; the long, literature-rich Introduction of computational journals (§5a) | `references/introduction.md` |
-| Literature review: organization, synthesis, critical comparison, reporting verbs, planning a large citation count | `references/literature-review.md` |
+| Literature review: organization, synthesis, critical comparison, reporting verbs, planning at two levels with method groups (limitation → evidence → bridge), planning a large citation count, scoring rubric | `references/literature-review.md` |
 | **Citations:** the citation rule, which sentences need a source, writing from the user's paper directories, sources per claim, placement, synthesis sentences, density benchmarks by part of the Introduction, audit | `references/citation-practice.md` and `scripts/citation_density.py` |
 | Methods: content by study type, order, language that shows care, LaTeX equations, units, chemistry, nomenclature | `references/methods-latex.md` |
 | **Methodology of modelling, simulation, optimization and data-driven papers:** structures by research type, physical foundations, assumptions, equations in the narrative (lead-ins, "where" clauses, substitution, coupling, conditions), numerics, algorithms, ML and hybrid models, parameter origin, verification and validation, reproducibility checklist, C&CE benchmarks | `references/methodology-writing.md` |
@@ -43,6 +43,7 @@ This file is the core. Detailed guidance lives in `references/`; full texts that
 | Academic style, tense map, voice, concision, articles, numbers, abbreviations, common non-native errors | `references/style-grammar.md` |
 | Academic Word List and precise word choice | `references/academic-vocabulary.md` |
 | Avoiding generic, inflated or AI-typical prose, word-level and discourse-level (33 StoryScope patterns, model fingerprints); self-check | `references/avoid-ai-signs.md` and `scripts/check_ai_signs.py` |
+| **Research integrity of AI-assisted work:** results log as single source of truth, seven failure modes (F1–F7) to rule out, does the source support the sentence, comparison and concurrent-work rules, qualifiers that must survive the abstract, revision rules | `references/research-integrity.md`, `resources/templates/results_log.md`, `scripts/check_numbers.py` |
 | Simulated peer review: editor, methods, domain, devil's advocate, readability; triage | `references/self-review.md` |
 | Checking `refs.bib` against OpenAlex/Crossref and the LaTeX citations | `scripts/check_citations.py` |
 | Revising, submission package, cover letter, decisions, response to reviewers | `references/submission-and-reviewers.md` |
@@ -70,6 +71,8 @@ Read `style-grammar.md` and `avoid-ai-signs.md` once at the start of any draftin
 | `python scripts/build_section_phrases.py <papers_dir> --out section_phrases.md` | For each section of the papers: how the section begins, frequent sentence openers, phrases typical of the section, common phrases and recurring terms, counted by number of papers. |
 | `python scripts/check_ai_signs.py <draft> [--structure]` | Flag generic and AI-typical prose; `--structure` adds the discourse-level checks (lesson-type paragraph endings, insight-type conclusions, hearsay, anthropomorphism, diary sequences, missing limitations). |
 | `python scripts/check_citations.py refs.bib --tex *.tex` | Verify references and citation keys. |
+| `python scripts/check_numbers.py <draft> --log results_log.md` | List every number in the draft that is not in the results log (allowing for rounding), repeated identical uncertainties and round comparison figures. |
+| `python scripts/check_acronyms.py <draft> [--abstract abstract.md] [--allow A,B]` | Acronyms defined at first use, once per scope (abstract and body separately), and used often enough to justify them. |
 | `python scripts/citation_density.py audit <draft> --benchmarks resources/journals/<journal>/citation_benchmarks.json` | Citation density of the Introduction by part, compared with the journal; lists uncited background, literature and gap sentences and oversized citation groups. `--section methods`: lists uncited external elements and values without origin in the Methodology. `--section results`: lists "significant" without statistics, promotional words, causal words, and mentions of published work without a citation. `benchmark <papers_dir>` builds the benchmark from sample papers. |
 
 When the summaries in `references/` do not answer a question, or the user asks what a guide says, search `resources/` and report the findings in your own words with file and line. Never paste passages from the guides or papers into the manuscript.
@@ -83,7 +86,7 @@ When the summaries in `references/` do not answer a question, or the user asks w
   - no guide and no profile → use the default profile (`journal-profile.md` §4) and tell the user which defaults apply until the guide arrives.
 - The active profile overrides the defaults of this skill everywhere (structure, limits, reference style, figure formats, statements, final checklist).
 - Output: LaTeX (default, in the journal template) or Word.
-- Location of the paper repository and of the results (data, figures, tables, code, notes).
+- Location of the paper repository and of the results (data, figures, tables, code, notes). Start `results_log.md` from `resources/templates/results_log.md`; every number the paper will use goes there first, with its source.
 - The contribution in one sentence: what is new compared with the closest prior work.
 
 ### 2. Evidence base and phrase list (before writing)
@@ -95,13 +98,14 @@ For each section, list the paragraphs with a one-line purpose (its topic sentenc
 
 ### 4. Draft, section by section
 Recommended order (`writing-process.md`): Methods → Results (with figures and tables) → Literature review → Discussion → Introduction → Conclusion → Abstract → Title, keywords, highlights.
-For each section: read the four files listed above → draft paragraph by paragraph from the outline (Introduction and literature review: from the claim–evidence map, citing as each sentence is written) → run the section checklist → for the Introduction, run `python scripts/citation_density.py audit <file> --benchmarks …` and support, rewrite or delete every listed sentence → run `python scripts/check_ai_signs.py <file> --structure` and rewrite every flagged sentence with a specific fact, number or citation, or delete it → hand to the user → revise.
+For each section: read the four files listed above → draft paragraph by paragraph from the outline (Introduction and literature review: from the claim–evidence map, citing as each sentence is written) → run the section checklist → for the Introduction, run `python scripts/citation_density.py audit <file> --benchmarks …` and support, rewrite or delete every listed sentence → run `python scripts/check_numbers.py <file> --log results_log.md` and trace or remove every untraced number → run `python scripts/check_ai_signs.py <file> --structure` and rewrite every flagged sentence with a specific fact, number or citation, or delete it → hand to the user → revise.
 
 ### 5. Self-review
-Follow `references/self-review.md`: review the complete draft in five independent roles (editor, methods, domain expert, devil's advocate, readability), collect the comments in a triage table, revise, and re-review the changed parts.
+Follow `references/self-review.md`: review the complete draft in five independent roles (editor, methods, domain expert, devil's advocate, readability), collect the comments in a triage table, revise, and re-review the changed parts. Score the Introduction and literature review with the rubric in `literature-review.md` §16, and mark each failure mode F1–F7 in `research-integrity.md` §2 as ruled out or resolved.
 
 ### 6. Final check and delivery
 - Run `python scripts/check_citations.py refs.bib --tex *.tex --out citation_report.md` and resolve every RETRACTED, DOI NOT FOUND, MISMATCH and missing-key item. It needs internet access; if this environment cannot reach OpenAlex or Crossref, run it on the user's computer or verify the DOIs with another tool.
+- Run `check_numbers.py` and `check_acronyms.py` on the full manuscript, and the checklist in `research-integrity.md` §7.
 - Run the final checklist and the Eight Cs in `references/checklists.md`, and check every item of the journal profile (limits, statements, files).
 - Report open `[CHECK]` items and unused repository papers.
 - Deliver: LaTeX source in the journal template, `refs.bib`, figure scripts and figures, compiled PDF; plus a short list of weak points a reviewer may attack (novelty, validation, uncertainty, limitations, overclaiming).

@@ -7,6 +7,7 @@ The files in `references/` are short, structured summaries. This folder holds wh
 | `journals/<journal>/` | One **journal profile** per target journal: requirements from its Guide for Authors, and (optional) section models and phrases from its papers | The profile files yes; the converted guide and papers no |
 | `open/` | Openly licensed writing guides, converted to Markdown | Yes (see `open/NOTICE.md`) |
 | `guides/` | Your own converted writing guides and books | No: kept on your computer only |
+| `templates/` | `results_log.md`: the single source of truth for every number in the paper (`references/research-integrity.md`) | Yes (the template); your filled log stays local |
 | `field-papers/` | Your own converted papers from your research field (e.g. your reference repository) | No: kept on your computer only |
 
 `.gitignore` keeps `guides/`, `field-papers/` and each profile's `guide.md`, `requirements_draft.md` and `papers/` out of the repository. Writing guides and journal papers are usually copyrighted; keep them for your own use and do not publish or share them.

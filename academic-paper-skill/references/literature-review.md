@@ -129,20 +129,46 @@ Other closing forms:
 - "Taken together, these studies show that … [refs], but none of them …"
 The closing paragraph cites the closest studies again where it names their limitation.
 
-## 12. Planning a large citation count (e.g. 70+)
+## 12. Planning the review before searching: two levels and method groups
+
+Plan what each part of the front matter must establish before searching, so the Introduction and the literature review do not cite the same papers for the same purpose. (Idea adapted from the outline stage of PaperOrchestra, Song et al., 2026; written for engineering articles.)
+
+**Introduction: the broad level** (typically 10–20 sources)
+- The context and why the problem matters, with numbers: production scale, energy use, emissions, cost, safety (each cited).
+- One or two recent reviews of the field.
+- The foundational papers of each sub-field the study draws on.
+- The gap, stated only as widely as your own results can answer it.
+
+**Literature review: the technical level** (typically 30–50 sources in a full article)
+Divide the prior work closest to yours into **2–4 groups of methods** (for example: first-principles reactor models; data-driven surrogates; hybrid models; sensitivity and optimization studies). For each group, write down before searching:
+
+| Item | Content | Example (EO reactor) |
+|---|---|---|
+| Group | the methodological category | transient fixed-bed reactor models |
+| What it does well | established strengths, cited | accurate steady-state profiles against plant data [refs] |
+| Suspected limitation | what you expect is missing, from your own study's idea | few validated transient models of industrial reactors |
+| Searches for evidence | narrow queries that would document that limitation (or refute it) | "transient" AND "ethylene oxide" AND "reactor model"; papers that state their steady-state assumption |
+| Bridge | how your study addresses it, limited to what your results show | transient model benchmarked against [plant data] |
+
+Rules:
+- A limitation enters the paper only when the papers found support it, with citations (§11). If the search does not support it, change the limitation, not the evidence.
+- The bridge column may contain only claims that the results log supports (`research-integrity.md` §1, §4).
+- Do not search for new competitors after your results are fixed in order to claim you beat them; later papers are concurrent work (`research-integrity.md` §4).
+
+## 13. Planning a large citation count (e.g. 70+)
 
 - Allocate citations per theme from the theme map (`evidence-base.md` §3), not per paragraph.
 - Cover each theme with 1–2 reviews, the foundational papers, the most recent strong papers, and the closest competitors.
 - One claim normally needs 1–3 citations; more only for "widely studied" statements.
 - Every citation must be relevant and verified. If the repository cannot support the target, report the thin themes to the author instead of padding.
 
-## 13. Paraphrase and quotation
+## 14. Paraphrase and quotation
 
 - Paraphrase in your own words and sentence structure; changing a few words is not paraphrasing.
 - Quote only when the exact wording matters (definitions, a disputed claim). Rare in engineering; use quotation marks and the source.
 - Cite ideas, not only words. Reusing your own earlier text without citation is self-plagiarism.
 
-## 14. Checklist
+## 15. Checklist
 
 - [ ] Organized by themes linked to the research question, broad → narrow; organization announced at the start.
 - [ ] Each theme opens with a claim and is synthesized (grouped, compared, evaluated), not listed.
@@ -153,3 +179,22 @@ The closing paragraph cites the closest studies again where it names their limit
 - [ ] Every sentence about other work cited; limitations attributed to the works; citations placed where their claims are; no handwaving references; no unseen papers.
 - [ ] Ends with a gap that the Introduction's objective answers.
 - [ ] All citations verified; thin themes reported, not padded.
+- [ ] Introduction and literature review planned at their two levels (§12); each method group has a cited limitation and a bridge supported by the results.
+- [ ] Scored with the rubric in §16; every axis below 56 revised.
+
+## 16. Scoring rubric for the literature review (self-review)
+
+Score the Introduction and the literature review together, as a sceptical reviewer would, and only on what is written. (Axes and caps adapted from the literature-review rater of PaperOrchestra, Song et al., 2026; rewritten for engineering articles.)
+
+**Scale (0–100 per axis):** up to 20, not publishable; 21–40, major gaps; 41–55, usable with clear weaknesses; 56–70, sound; 71–85, convincing; 86–92, outstanding; above 92, rare. Expect most drafts at 45–70; a score above 85 needs explicit evidence on every axis.
+
+| Axis | What is judged | Cap |
+|---|---|---|
+| 1. Coverage | all relevant threads, foundational and recent work, no obvious omission; citation count compared with the journal's typical count (`citation_density.py` benchmarks) | count below half the journal's typical count for a broad problem: ≤ 55 |
+| 2. Relevance and focus | citations serve the research question; no padding or tangents | – |
+| 3. Critical analysis and synthesis | grouped by theme, compared, evaluated; trade-offs and disagreements discussed | mostly paper-by-paper description: ≤ 60 |
+| 4. Positioning | a gap grounded in cited work; explicit difference from the closest studies; why it matters | novelty asserted without comparison to the closest work: ≤ 60 |
+| 5. Organization and language | logical order (broad → narrow), signposting, defined terms | – |
+| 6. Citation practice | key claims cited; sources credible and verified; balance of foundational and recent | many citations but poorly integrated: ≤ 65 |
+
+Overall score: rarely above 75 if any axis is below 50. Write two sentences of evidence for each score, then revise the lowest axis first. A high citation count alone never raises a score; relevance and synthesis must justify it.

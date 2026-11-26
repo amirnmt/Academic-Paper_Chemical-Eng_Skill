@@ -20,6 +20,7 @@ Two models of informative abstract (the journal usually decides):
 - Every statement and conclusion in the abstract must also appear in the body of the paper.
 - Concentrate on results, with numbers; do not list what was done.
 - No evaluative or judgemental remarks ("surprisingly …").
+- Keep the body's qualifiers when shortening [Rule]: scope ("for the tested operating range", "on plant data"), strength ("suggests", not "proves") and conditions of each number. The abstract may be shorter than the body, not stronger (`research-integrity.md` §5).
 - Respect the word limit (often 150–250 words; many are 80–150). Do not exceed it: the editor may cut it in a way that misrepresents the work. Using fewer words is fine.
 - Usually a single paragraph unless the journal requires headings.
 - Avoid empty endings: "The results are discussed", "More research is needed", "Implications are considered".
@@ -145,3 +146,4 @@ Examples (illustrative):
 - [ ] Keywords specific and not repeating title words.
 - [ ] Highlights concrete and within the character limit.
 - [ ] Objective wording consistent with Introduction and Conclusion.
+- [ ] Every claim in the abstract and highlights has the same scope and strength as in the body.

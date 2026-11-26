@@ -125,7 +125,11 @@ How to self-edit: let the draft rest for at least a day, print it or change the 
 - [ ] Numbers identical wherever they appear (abstract, text, tables, figures, conclusion).
 - [ ] All symbols defined, units SI, significant figures consistent, abbreviations defined once.
 - [ ] `scripts/check_citations.py` run: no RETRACTED, DOI NOT FOUND or MISMATCH entries; no cited keys missing; uncited entries removed or justified; no open `[CHECK]` items.
-- [ ] Each cited source supports the sentence that cites it, at the same strength.
+- [ ] Each cited source supports the sentence that cites it, at the same strength (location noted; `research-integrity.md` §3).
+- [ ] Every number traced to `results_log.md`; `check_numbers.py` clean; failure modes F1–F7 ruled out (`research-integrity.md`).
+- [ ] No claim to outperform a method not compared in this work; later papers treated as concurrent work.
+- [ ] Abstract, highlights and conclusion keep the body's scope and strength.
+- [ ] `check_acronyms.py` clean: each acronym defined at first use, once, separately in abstract and body.
 - [ ] Self-review done in all five roles (`self-review.md`); every major comment fixed, acknowledged as a limitation, or answered with evidence.
 - [ ] Journal guidelines met, item by item against the journal profile (`resources/journals/<journal>/journal_requirements.md`): template, length, abstract, keywords, highlights, reference style, figure format and resolution, declarations (funding, conflicts, data availability, author contributions, AI use).
 - [ ] Eight Cs checked:

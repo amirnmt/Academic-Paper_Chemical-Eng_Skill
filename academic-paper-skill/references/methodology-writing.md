@@ -341,7 +341,19 @@ Every value has a traceable origin. Distinguish six origins and say which one ap
 
 ## 11. Citations in the Methodology [Rule, J-obs]
 
-Every externally sourced equation, model, correlation, parameter, dataset, method, algorithm, software or methodological claim is cited; the authors' own implementation, procedures, derivations and decisions need no external citation but must be traceable to equations, evidence or validation. Full rules: `citation-practice.md` §12. Observed in C&CE: about 10 % of Methodology sentences carry a citation (median 9 unique references per Methodology), mostly for facts and justifications, parameter and property values, adopted models, datasets and named methods.
+Every externally sourced equation, model, correlation, parameter, dataset, method, algorithm, software or methodological claim is cited; the authors' own implementation, procedures, derivations and decisions need no external citation but must be traceable to equations, evidence or validation. Full rules: `citation-practice.md` §12.
+
+**Inventory before drafting** (idea adapted from the outline stage of PaperOrchestra, Song et al., 2026). List every external element the study uses and attach a citation to each before writing the Methodology. In a chemical-engineering modelling paper the list usually includes:
+- reaction network and kinetic model (rate expressions and their parameters);
+- transport correlations: pressure drop (e.g. Ergun), heat- and mass-transfer coefficients, effective conductivity and dispersion, wall heat transfer;
+- physical and thermodynamic property data or methods (equations of state, mixing rules, property databases);
+- reactor, plant or experimental data used for validation or training, with the source and the table or figure;
+- numerical methods: discretization scheme, ODE/DAE/PDE solver, optimization algorithm, sampling design;
+- sensitivity and explanation methods (Sobol indices and the estimator used, SHAP and the explainer variant);
+- machine-learning architectures, training algorithms and optimizers, metrics if not standard;
+- software and packages with versions (simulator, Python libraries, solvers).
+
+Where the exact source of an element is not known, find it before writing; never write a citation from memory. Observed in C&CE: about 10 % of Methodology sentences carry a citation (median 9 unique references per Methodology), mostly for facts and justifications, parameter and property values, adopted models, datasets and named methods.
 
 ---
 
