@@ -137,6 +137,13 @@ Examples (illustrative):
 ## 4. Highlights, nontechnical summaries, graphical abstract
 
 - **Highlights:** usually 3–5 bullet points, each within a character limit (often 85 characters including spaces). Main results and contributions, not background. Concrete: "Five wall heat-transfer correlations compared at low d_t/d_p" rather than "Heat transfer was studied".
+- **Observed in Computers & Chemical Engineering** [J-obs] (Highlights of 7 published papers, 29 bullets, read from the article pages; details in `section_models.md` §2a of the C&CE profile):
+  - 3–5 bullets per paper (median 4); median 77 characters (48–215). 9 of 29 bullets in 3 papers exceed the 85-character limit, so the limit is not always enforced, but stay within it.
+  - **No bullet contains a number.** Most describe what was done (18 of 29); findings appear in 3 papers only (6 bullets); 2017-era bullets also spend space on background ("X has become an important …").
+  - Forms: full sentences in the present or present perfect (19, about half passive: "… is proposed", "… are identified"), noun phrases (6), or sentences without a subject in the past tense ("Developed a …", 4). Each paper keeps one form.
+  - Novelty words in 2 papers ("A new … formulation", "First application of …").
+  - One submitted pre-proof had four labelled bullets of 250–340 characters each: far beyond the limit.
+- **Doing better than the average** [G, with the observation above]: use the 85 characters for one method contribution and two or three results with numbers and their condition, e.g. "Transient model reproduces plant outlet temperature within 2 K" (62 characters). Drop background bullets. One form for all bullets, no labels, no abbreviations the reader cannot decode.
 - **Nontechnical summary or statement of significance:** some journals request one; write it for an educated non-specialist.
 - **Graphical abstract:** one image summarizing the main message (often the system, the method and the key result in one panel). Prefer a new, simple figure; reuse a paper figure only if it already shows the main result clearly. Readable at small size; little text.
 
@@ -148,6 +155,6 @@ Examples (illustrative):
 - [ ] Within the word limit; contains the search terms readers use.
 - [ ] Title accurate, specific, searchable, without waste words; word order, prepositions and "using" checked; no abbreviations.
 - [ ] Keywords specific and not repeating title words.
-- [ ] Highlights concrete and within the character limit.
+- [ ] Highlights concrete and within the character limit (count characters, spaces included); at least two carry a result with a number; no background bullet.
 - [ ] Objective wording consistent with Introduction and Conclusion.
 - [ ] Every claim in the abstract and highlights has the same scope and strength as in the body.

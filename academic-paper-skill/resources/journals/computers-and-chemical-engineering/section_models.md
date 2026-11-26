@@ -5,7 +5,7 @@ A move analysis of 21 papers from the journal (2006–2026), made to model a man
 ## 0. What was analysed
 
 - 21 papers: 4 on ethylene and ethylene oxide plants (…0433, …2326, …3434 and an ANN model of an industrial EO plant, 2022) and 17 recent papers from 2026 on various topics. The review on kinetic Monte Carlo (…4187) was left out of the section analysis because reviews are organized differently, which leaves 20 research articles.
-- Method: top-level and second-level headings of all 20 papers; sentence-by-sentence analysis of all 20 abstracts and Introductions up to the methods (citations counted per sentence and per part, §3), of their Methodology parts (§4) and of their Results and Discussion parts (§5); subsection-level reading of the Results and Discussion of 6 papers on modelling and data-driven methods (…4321 hybrid GNN, …4448 data-augmented MPC, …4436 industrial propylene reactor model, …4357 robustness benchmarking of data-driven models, …4497 industrial soft sensing, and the EO-plant ANN paper); sentence-by-sentence coding of all 20 abstracts and all conclusions (19; the short communication …4473 has none) (§2, §6); titles and keywords of all 20 (§2a); all 181 figure and 138 table captions and every in-text reference to them (§8); all 418 numbered equations, with the equation pages of 13 papers read from the rendered PDF (§9); and phrase counts from `scripts/build_section_phrases.py`. Where the Markdown conversion lost or scrambled text (one abstract, captions of one paper, all equations), the PDF page itself was read.
+- Method: top-level and second-level headings of all 20 papers; sentence-by-sentence analysis of all 20 abstracts and Introductions up to the methods (citations counted per sentence and per part, §3), of their Methodology parts (§4) and of their Results and Discussion parts (§5); subsection-level reading of the Results and Discussion of 6 papers on modelling and data-driven methods (…4321 hybrid GNN, …4448 data-augmented MPC, …4436 industrial propylene reactor model, …4357 robustness benchmarking of data-driven models, …4497 industrial soft sensing, and the EO-plant ANN paper); sentence-by-sentence coding of all 20 abstracts and all conclusions (19; the short communication …4473 has none) (§2, §6); titles and keywords of all 20 and the Highlights of 7 papers read from their article pages (§2a); all 181 figure and 138 table captions and every in-text reference to them (§8); all 418 numbered equations, with the equation pages of 13 papers read from the rendered PDF (§9); and phrase counts from `scripts/build_section_phrases.py`. Where the Markdown conversion lost or scrambled text (one abstract, captions of one paper, all equations), the PDF page itself was read.
 - Counts below refer to these papers. With 20 papers they show conventions, not rules.
 - The papers, for traceability (the review on kinetic Monte Carlo is not listed):
 
@@ -84,7 +84,21 @@ Observed in all 20 research abstracts [J-obs] (one abstract, scrambled in the co
 
 **Keywords** (n = 20, 104 keywords): median 5 (2–7) [J-req: 1–7]. 41 of 104 only repeat title words, 23 overlap partly, 40 add terms that are not in the title. Typical mix per paper: one or two method terms (e.g. "Parameter estimation", "Model predictive control"), the system or process ("Industrial polymerization reactor", "Reheating furnace") and one application or task term ("Process monitoring"). Capitalization varies (sentence case in 18, lower case in 2).
 
-**Highlights** [J-req]: required, 3–5 bullets of at most 85 characters each. They are published on the article web page and are not part of the PDFs, so they could not be analysed here; follow the requirement and `references/abstract-title-keywords.md` §4.
+**Highlights** [J-req]: required, 3–5 bullets of at most 85 characters each, published on the article web page (not in the PDF).
+
+Observed [J-obs] in 7 published papers (29 bullets, read from the article pages; the 2006 paper has none) and one submitted pre-proof:
+
+| Feature | Observed |
+|---|---|
+| Number of bullets | 3–5 (median 4) |
+| Length | median 77 characters (48–215); 9 of 29 over 85, in 3 papers (one older paper has every bullet at 118–215) |
+| Content | what was done 18; findings 6 (in 3 papers: …431X, …4321, …4217); background 3 (one 2017 paper); scope or what is discussed 2; novelty wording 2 |
+| Numbers | none in any bullet |
+| Form | full sentences 19 (about half passive: "… is proposed", "… are identified"); noun phrases 6; past-tense verb without subject 4 ("Developed …", "Incorporated …"); one form per paper |
+| Order | method first, then findings; a review lists what is reviewed, organized and identified |
+| Pre-proof as submitted (…4412) | 4 bullets, each a bold label plus a 250–340-character sentence: far over the limit |
+
+What this means: the journal's highlights are usually short method statements without numbers. A highlight list that stays within 85 characters and states two or three results with numbers and conditions is both compliant and more informative than the average.
 
 ## 3. Introduction (up to the first methods section) [J-obs]
 
@@ -304,7 +318,7 @@ Further observations:
 - Methodology: choose the structure by the type of work (§4.1); describe the physical picture before the balances; list the assumptions with their sources and justifications; give every closure, parameter and dataset its origin; give more numerical detail (discretization, solver, tolerances, independence checks, versions) than the journal average; check with `citation_density.py audit … --section methods` and `references/methodology-writing.md` §15.
 - Use a combined Results and discussion with the R1–R7 pattern in every subsection (see `references/results-and-discussion-combined.md` and `references/results-discussion-writing.md`): validation before use, then analysis, then application; compare with your own baselines under equal conditions and, for a reactor model, with published data and models wherever they exist; report variability; label each interpretation by its evidence; end with computational performance, positioning against prior work, implications and limitations; check with `citation_density.py audit … --section results`.
 - Conclusion: C1–C10 (§6): restate, recap, link back to the stated objectives, give the key numbers with their baseline (the same as the abstract), significance bounded by the tested system, explicit limitations and specific future work.
-- Title, keywords, highlights: §2a. Figures and tables: §8. Equations: §9.
+- Title, keywords, highlights: §2a. Highlights within 85 characters, with numbers for the results. Figures and tables: §8. Equations: §9.
 
 ## 8. Figures and tables [J-obs]
 
