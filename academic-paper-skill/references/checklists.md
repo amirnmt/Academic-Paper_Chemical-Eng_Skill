@@ -61,6 +61,11 @@ How to self-edit: let the draft rest for at least a day, print it or change the 
 - [ ] Choices justified where a reviewer could ask "why this one?".
 - [ ] Past tense, mostly passive for procedures; present for equations and what the model is.
 - [ ] Every later result has a method here, under the same subheadings.
+- [ ] Structure matches the type of work (system → model → solution; overview → modules; problem → formulation → strategy); opening paragraph maps the section (`methodology-writing.md` §1).
+- [ ] Every displayed equation has a lead-in, numbered, with every new symbol defined after it; established, modified and new equations marked.
+- [ ] Each assumption justified, with validity range and consequence; adopted vs introduced marked.
+- [ ] Every external equation, correlation, parameter, dataset, method and software cited; every own value has an origin or a reason (`citation-practice.md` §12).
+- [ ] Reproducibility checklist in `methodology-writing.md` §15 passed.
 
 ## Results
 - [ ] Same order and subheadings as Methods.

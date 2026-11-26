@@ -102,6 +102,18 @@ Best practice: build your own list from your field. For each section, collect th
 - Different (state the change): loosely based on, partly based on, with the following modifications, extended to, in contrast to [n], a new step was added.
 - Name the method even when citing it: "the catalyst was reduced in diluted H2 as described in [8]", not "as described in [8]" alone.
 
+**Models and equations**
+- Lead-ins to displayed equations, by frequency in C&CE Methodology sections [J-obs]: defined as, obtained as/by, calculated as/from, as follows, expressed as, computed as, given by, formulated as, reads, is described by, is written as.
+- Symbols after the equation: where … is/are, denotes, represents, stands for, refers to, corresponds to; let … denote.
+- Linking equations: substituting … into, inserting, combining, using Eq. (…), from Eqs. (…)–(…), reduces to, simplifies to, yields, gives, it follows that, is coupled with/through, is closed by, subject to.
+- Status of a model element: adopted from, follows, is taken from, adapted from, extended to, modified by adding, combined with, introduced here, proposed in this work.
+
+**Assumptions:** is assumed (to be), is considered, is taken as, is neglected, is negligible, is lumped, is approximated by, is treated as, is idealized as, for simplicity, to keep the problem tractable, holds for, is valid when, is justified by, may lead to, overestimates, underestimates.
+
+**Numerics:** discretized, collocation points, finite volumes, method of lines, stiff, implicit, explicit, integrated, solved, converged, tolerance, optimality gap, warm start, initialized, sequential, simultaneous, decomposition, reformulated, relaxed, independence, refinement.
+
+**Data-driven methods:** curated, synchronized, aggregated, filtered, imputed, normalized, scaled on the training set, split chronologically, held out, leakage, trained, validated, tuned, early stopping, seed, ensemble, baseline, ablation.
+
 **Reporting problems in the procedure**
 - Minimizing the problem honestly: slight, small, minor, negligible, only approximate, within the measurement uncertainty, did not affect the results (state why).
 - Explaining it: inevitably, unavoidable, limited by, it was not possible to, could not be measured, difficult to control, beyond the scope of this study.

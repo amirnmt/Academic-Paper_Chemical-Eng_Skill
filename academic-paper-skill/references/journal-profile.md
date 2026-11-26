@@ -10,6 +10,7 @@ The references and profiles distinguish four levels. Label statements with them 
 |---|---|---|---|
 | **[G]** | General scientific and academic writing | `references/*.md` | Default for any paper |
 | **[D]** | Chemical and process engineering conventions | `references/*.md`, marked [D] | Default within the discipline |
+| **[M]**, **[PB]**, **[NUM]**, **[ML]** | Sub-levels used in the Methodology references: general scientific methodology; physics-based modelling; numerical and computational modelling; machine-learning and hybrid modelling | `methodology-writing.md`, `methods-latex.md` | Defaults for that kind of method |
 | **[J-obs]** | Patterns observed in the target journal's published papers | `section_models.md`, `section_phrases.md`, `citation_benchmarks.json` of the profile | Convention inferred from a sample, with counts; not binding |
 | **[J-req]** | Explicit requirements of the target journal | `journal_requirements.md` (from the Guide for Authors) | Binding for submission |
 

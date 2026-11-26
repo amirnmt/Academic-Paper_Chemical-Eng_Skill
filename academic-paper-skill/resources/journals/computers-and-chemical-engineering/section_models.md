@@ -5,7 +5,7 @@ A move analysis of 21 papers from the journal (2006–2026), made to model a man
 ## 0. What was analysed
 
 - 21 papers: 4 on ethylene and ethylene oxide plants (…0433, …2326, …3434 and an ANN model of an industrial EO plant, 2022) and 17 recent papers from 2026 on various topics. The review on kinetic Monte Carlo (…4187) was left out of the section analysis because reviews are organized differently, which leaves 20 research articles.
-- Method: top-level and second-level headings of all 20 papers; sentence-by-sentence analysis of all 20 abstracts and Introductions up to the methods (citations counted per sentence and per part, §3); subsection-level reading of the Results and Discussion of 6 papers on modelling and data-driven methods (…4321 hybrid GNN, …4448 data-augmented MPC, …4436 industrial propylene reactor model, …4357 robustness benchmarking of data-driven models, …4497 industrial soft sensing, and the EO-plant ANN paper); abstracts and conclusions of 8 papers; and phrase counts from `scripts/build_section_phrases.py`.
+- Method: top-level and second-level headings of all 20 papers; sentence-by-sentence analysis of all 20 abstracts and Introductions up to the methods (citations counted per sentence and per part, §3) and of their Methodology parts (§4); subsection-level reading of the Results and Discussion of 6 papers on modelling and data-driven methods (…4321 hybrid GNN, …4448 data-augmented MPC, …4436 industrial propylene reactor model, …4357 robustness benchmarking of data-driven models, …4497 industrial soft sensing, and the EO-plant ANN paper); abstracts and conclusions of 8 papers; and phrase counts from `scripts/build_section_phrases.py`.
 - Counts below refer to these papers. With 20 papers they show conventions, not rules.
 
 ## 1. Architecture of the paper
@@ -129,13 +129,57 @@ Types overlap. About 40 % of gap sentences cite the closest or the few existing 
 
 Per paper, medians: 27 words per sentence (16–35); "we/our" 0.9 per 1,000 words (0–6.7; first person is rare in about half of the papers); hedges (may, can, often, typically …) 7.5 per 1,000 words; present perfect in about one in eight background and literature sentences; past simple for individual studies (proposed, developed, used, indicated, showed, found). Paragraphs open mostly with a topic noun phrase (64 %), rarely with a connector (`references/paragraphs-and-sentences.md` §7a).
 
-## 4. Methods / model sections
+## 4. Methodology [J-req, J-obs]
 
-Observed conventions (from headings and openings):
-- A description section first when the system is industrial: the process, the plant and its data (sampling, number of records, measured variables).
-- Model sections ordered from the governing equations to closures, numerical solution and parameter estimation; algorithms written as numbered steps.
-- Data-driven parts: data sources, preprocessing and splits, model architecture, training, hyperparameters, evaluation metrics (sometimes a separate "Evaluation metrics" section).
-- Implementation details (software, solver, hardware) appear either at the end of the methods or as the first paragraph of the results.
+Required [J-req, `journal_requirements.md`]: numbered sections and subsections (2.1, 2.1.1), cross-referenced by number; SI units; equations as editable text, numbered consecutively in the order cited, variables in italics, exp for powers of e, solidus for small fractions, simple formulas inline; appendices lettered A, B with equations (A.1), (B.1); supplementary files cited in the text with captions; research-data Option C (deposit the data or explain why not). The guide describes optional Theory and Calculation sections (theory extends the background of the Introduction; calculation develops it practically). It does not prescribe the content of the Methodology.
+
+What was analysed [J-obs]: the Methodology part of all 20 research articles, from the end of the Introduction to the first results section (case-study sections that mainly report results were cut at their start; methodological text inside them was not analysed). Layout-aware extraction; equations counted by their numbers; citations, voice and tense counted per sentence; reading of the structure, the first sentence of every subsection, and samples of sentences on assumptions, model adoption, parameters, numerics, data, metrics and appendices. Details: `references/methodology-writing.md`; numbers: `citation_benchmarks.json` → `methods`.
+
+### 4.1 Structure
+
+| Structure | Papers |
+|---|---|
+| System or problem description → model → solution or estimation | …0433, …2326, …4217, …4436, …4473, sgbs4 |
+| Overview (workflow figure or list of stages) → one subsection per module → evaluation metrics | …431X, …4321, …4357, …4370, …4400, …4412, …4448, …4497 |
+| Problem statement → formulation (sets, objective, constraints by category) → solution strategy | …3434, …4369, …4382, …4424, …4485 |
+| Problem statement → preliminaries (definitions, lemmas) → theorems with proofs and remarks | …4394 |
+
+- Opening: a description of the system or problem in about 12 of 20; an overview of the stages, often with a workflow figure, in about 9.
+- A separate "Evaluation metrics" section or subsection in several data-driven and hybrid papers; a "Computation and verification" subsection in one optimization paper; a section on assumptions inherited from earlier work in one.
+- Subsections are linked by forward maps ("as described in the following subsections"), backward links in first sentences, and step numbers of the workflow figure.
+- Main text vs elsewhere: 12 of 20 refer to an appendix or supplementary file for full parameter tables, per-component equations, algorithm listings, process-block details, datasets or networks, and implementation or verification details.
+
+### 4.2 Size and density
+
+| Measure (per paper) | Median | IQR | Range |
+|---|---|---|---|
+| Words | 2,676 | 2,118–3,714 | 555–6,619 |
+| Sentences | 123 | 99–210 | 22–329 |
+| Words per sentence | 20.9 | 19.8–22.7 | 12.5–33.3 |
+| Subsections | 4 | 3–8 | 0–16 |
+| Numbered equations | 15.5 | 4–22 | 0–75 |
+| Equations per 1,000 words | 5.5 | 2.8–7.3 | 0–30.5 |
+| "Eq. (n)" references in the text | 1 | 0–5 | 0–41 |
+| Figures / tables first referred to here | 2 / 1 | 2–3 / 0–2 | 1–7 / 0–6 |
+| Citation instances | 15.5 | 7–24 | 1–51 |
+| Unique references | 9 | 6–15 | 1–35 |
+| Share of sentences cited | 0.10 | 0.03–0.14 | 0.01–0.28 |
+| Citations per sentence | 0.13 | 0.05–0.21 | 0.01–0.45 |
+| Sentences with a passive verb | 0.46 | 0.42–0.57 | 0.16–0.66 |
+| Sentences with present / past markers | 0.56 / 0.04 | 0.46–0.65 / 0.01–0.12 | – |
+
+By type: first-principles and process simulation (…0433, …2326, …4217, …4436, …4473) about 1,100 words and 21 % of sentences cited, but equation counts from 0 (simulator-based) to 75 (…4436); optimization and control (…3434, …4369, …4382, …4394, …4424, …4485) about 4,100 words, 22 equations, 13 equation references, 7 % cited; data-driven (…4357, …4370, …4400, …4412, …4497, sgbs4) about 3,200 words, 9 equations, 3 % cited; hybrid (…431X, …4321, …4448) about 2,700 words, 17 equations, 11 % cited. Citation share by subsection type (pooled): system and case description 14 %, data-driven components 10 %, physical model 8 %, evaluation 7 %, numerics and solution 6 %.
+
+### 4.3 Writing conventions observed
+
+- **Physical model** (…4436 is the closest to a reactor-modelling paper): the reactor and reaction system in prose with a schematic; a bulleted list of model assumptions taken from the source model; a justification of the chosen variant against plant data; species and energy balances introduced with lead-ins that name their conditions; each closure (velocities, transfer coefficients, phase fractions) with its source in the lead-in; all symbols and parameter values with units in appendices.
+- **Equations:** lead-ins mostly run into the display ("is defined as", "is calculated as", "as follows"); symbols defined in a following "where" clause (14 of 20 papers); equations referred to by number in 12; one control paper uses definitions, lemmas, theorems, proofs and remarks.
+- **Assumptions:** stated in 17 of 20, either as a list at the start of the model or inline; justifications by plant documentation, by comparison with data, by purpose; one paper states that its simplifications may make the estimate optimistic.
+- **Adopted vs new:** "adapted from [refs] … the original formulation is extended to …", "builds upon … and extends …", "the model proposed by … (hereafter …) is used", "we propose a … formulation, which we refer to as …".
+- **Numerics and implementation:** software named in 11 of 20, versions in 3, solvers in 6, tolerances or stopping criteria in 5, discretization in 9, hardware or run time in about 9; no grid- or time-step-independence study (no paper solved a PDE reactor model).
+- **Data-driven parts:** data provenance with sizes, periods and access restrictions; splits in 12; leakage control in 6 (fixed training length instead of early stopping, train–test overlap analysis, causal convolution); seeds or repetitions in 4–5; baselines defined in the Methodology with what each isolates; metrics defined with formulas in 12.
+- **Language:** present tense for the model and framework, past for data collection and runs; passive in about half of the sentences; "we" rare except in a few papers.
+- **Citations:** of 256 cited sentences, about 41 % support a fact or justification, 18 % parameters, properties or correlations, 14 % adopted models, 14 % datasets, 12 % named methods, 2 % software.
 
 ## 5. Results and Discussion (combined)
 
@@ -181,5 +225,6 @@ Conclusions rarely cite literature and are usually written as continuous prose, 
 - Put the literature review in the Introduction and organize it by approach family (I3–I4, patterns in §3.3); end with a gap of one of the types in §3.4, the present work linked back to it, its steps and a numbered contributions list that answers the stated limitations; add a scope sentence.
 - Cite every factual and literature-based sentence [Rule]; expect about 35–55 unique references in an Introduction of 1,200–1,800 words, and check the draft with `scripts/citation_density.py audit … --benchmarks citation_benchmarks.json`.
 - If the method is applied to a real or industrial system, add a description section (process, plant, data) before the methodology and a "Case study" section, or a case-study subsection in the results.
+- Methodology: choose the structure by the type of work (§4.1); describe the physical picture before the balances; list the assumptions with their sources and justifications; give every closure, parameter and dataset its origin; give more numerical detail (discretization, solver, tolerances, independence checks, versions) than the journal average; check with `citation_density.py audit … --section methods` and `references/methodology-writing.md` §15.
 - Use a combined Results and discussion with the R1–R7 pattern in every subsection (see `references/results-and-discussion-combined.md`); compare mainly with your own baselines and alternatives; use literature for validation data and benchmark values; state the range of validity; end with computational performance, implications and limitations where relevant.
 - Conclusion: C1–C6, with the same key numbers as the abstract.

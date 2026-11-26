@@ -485,5 +485,455 @@
    "cit_per_100_words": 3.81,
    "narrative_share": 0.348
   }
+ },
+ "methods": {
+  "source": "Methodology part (end of Introduction to first results section) of the same 20 papers; layout-aware extraction; equations counted by their numbers",
+  "papers": 20,
+  "overall": {
+   "sentences": {
+    "median": 122.5,
+    "q1": 98.5,
+    "q3": 210.25,
+    "n": 20
+   },
+   "words": {
+    "median": 2675.5,
+    "q1": 2117.75,
+    "q3": 3713.5,
+    "n": 20
+   },
+   "cit_instances": {
+    "median": 15.5,
+    "q1": 6.75,
+    "q3": 23.5,
+    "n": 20
+   },
+   "unique_refs": {
+    "median": 9.0,
+    "q1": 6.0,
+    "q3": 14.5,
+    "n": 20
+   },
+   "share_cited": {
+    "median": 0.1,
+    "q1": 0.031,
+    "q3": 0.144,
+    "n": 20
+   },
+   "cit_per_sentence": {
+    "median": 0.125,
+    "q1": 0.048,
+    "q3": 0.215,
+    "n": 20
+   },
+   "equations": {
+    "median": 15.5,
+    "q1": 4.0,
+    "q3": 22.25,
+    "n": 20
+   },
+   "eq_per_1000_words": {
+    "median": 5.45,
+    "q1": 2.775,
+    "q3": 7.3,
+    "n": 20
+   },
+   "eq_refs": {
+    "median": 1.0,
+    "q1": 0.0,
+    "q3": 5.0,
+    "n": 20
+   },
+   "subsections": {
+    "median": 4.0,
+    "q1": 2.75,
+    "q3": 7.75,
+    "n": 20
+   },
+   "words_per_sentence": {
+    "median": 20.85,
+    "q1": 19.8,
+    "q3": 22.725,
+    "n": 20
+   },
+   "passive_share": {
+    "median": 0.46,
+    "q1": 0.415,
+    "q3": 0.575,
+    "n": 20
+   },
+   "present_share": {
+    "median": 0.555,
+    "q1": 0.46,
+    "q3": 0.65,
+    "n": 20
+   },
+   "past_share": {
+    "median": 0.035,
+    "q1": 0.007,
+    "q3": 0.125,
+    "n": 20
+   }
+  },
+  "by_subsection_type": {
+   "system/case": {
+    "sentences": 575,
+    "share_cited": 0.14,
+    "cit_per_sent": 0.2,
+    "cit_per_100w": 0.99
+   },
+   "physical model": {
+    "sentences": 477,
+    "share_cited": 0.08,
+    "cit_per_sent": 0.1,
+    "cit_per_100w": 0.54
+   },
+   "data-driven": {
+    "sentences": 589,
+    "share_cited": 0.1,
+    "cit_per_sent": 0.14,
+    "cit_per_100w": 0.6
+   },
+   "numerics/solution": {
+    "sentences": 502,
+    "share_cited": 0.06,
+    "cit_per_sent": 0.1,
+    "cit_per_100w": 0.54
+   },
+   "evaluation": {
+    "sentences": 203,
+    "share_cited": 0.07,
+    "cit_per_sent": 0.08,
+    "cit_per_100w": 0.4
+   },
+   "other": {
+    "sentences": 655,
+    "share_cited": 0.05,
+    "cit_per_sent": 0.06,
+    "cit_per_100w": 0.33
+   }
+  },
+  "per_paper": {
+   "0098135406000433": {
+    "sentences": 51,
+    "words": 1070,
+    "cit_instances": 16,
+    "unique_refs": 11,
+    "share_cited": 0.275,
+    "cit_per_sentence": 0.31,
+    "equations": 4,
+    "eq_per_1000_words": 3.7,
+    "eq_refs": 0,
+    "subsections": 3,
+    "words_per_sentence": 21.0,
+    "passive_share": 0.55,
+    "present_share": 0.65,
+    "past_share": 0.02
+   },
+   "0098135417302326": {
+    "sentences": 56,
+    "words": 1138,
+    "cit_instances": 15,
+    "unique_refs": 9,
+    "share_cited": 0.214,
+    "cit_per_sentence": 0.27,
+    "equations": 0,
+    "eq_per_1000_words": 0.0,
+    "eq_refs": 0,
+    "subsections": 3,
+    "words_per_sentence": 20.3,
+    "passive_share": 0.62,
+    "present_share": 0.66,
+    "past_share": 0.2
+   },
+   "0098135420303434": {
+    "sentences": 220,
+    "words": 4463,
+    "cit_instances": 51,
+    "unique_refs": 35,
+    "share_cited": 0.136,
+    "cit_per_sentence": 0.23,
+    "equations": 16,
+    "eq_per_1000_words": 3.6,
+    "eq_refs": 4,
+    "subsections": 1,
+    "words_per_sentence": 20.3,
+    "passive_share": 0.46,
+    "present_share": 0.65,
+    "past_share": 0.0
+   },
+   "sgbs4": {
+    "sentences": 88,
+    "words": 1937,
+    "cit_instances": 25,
+    "unique_refs": 24,
+    "share_cited": 0.136,
+    "cit_per_sentence": 0.28,
+    "equations": 2,
+    "eq_per_1000_words": 1.0,
+    "eq_refs": 0,
+    "subsections": 1,
+    "words_per_sentence": 22.0,
+    "passive_share": 0.4,
+    "present_share": 0.65,
+    "past_share": 0.01
+   },
+   "0098135426004217": {
+    "sentences": 103,
+    "words": 2117,
+    "cit_instances": 13,
+    "unique_refs": 12,
+    "share_cited": 0.068,
+    "cit_per_sentence": 0.13,
+    "equations": 7,
+    "eq_per_1000_words": 3.3,
+    "eq_refs": 0,
+    "subsections": 4,
+    "words_per_sentence": 20.6,
+    "passive_share": 0.36,
+    "present_share": 0.46,
+    "past_share": 0.03
+   },
+   "009813542600431X": {
+    "sentences": 250,
+    "words": 5531,
+    "cit_instances": 35,
+    "unique_refs": 11,
+    "share_cited": 0.112,
+    "cit_per_sentence": 0.14,
+    "equations": 17,
+    "eq_per_1000_words": 3.1,
+    "eq_refs": 19,
+    "subsections": 11,
+    "words_per_sentence": 22.1,
+    "passive_share": 0.46,
+    "present_share": 0.5,
+    "past_share": 0.07
+   },
+   "0098135426004321": {
+    "sentences": 110,
+    "words": 2704,
+    "cit_instances": 23,
+    "unique_refs": 19,
+    "share_cited": 0.155,
+    "cit_per_sentence": 0.21,
+    "equations": 1,
+    "eq_per_1000_words": 0.4,
+    "eq_refs": 1,
+    "subsections": 7,
+    "words_per_sentence": 24.6,
+    "passive_share": 0.42,
+    "present_share": 0.46,
+    "past_share": 0.21
+   },
+   "0098135426004357": {
+    "sentences": 169,
+    "words": 2118,
+    "cit_instances": 6,
+    "unique_refs": 6,
+    "share_cited": 0.03,
+    "cit_per_sentence": 0.04,
+    "equations": 11,
+    "eq_per_1000_words": 5.2,
+    "eq_refs": 0,
+    "subsections": 16,
+    "words_per_sentence": 12.5,
+    "passive_share": 0.16,
+    "present_share": 0.27,
+    "past_share": 0.0
+   },
+   "0098135426004369": {
+    "sentences": 130,
+    "words": 2647,
+    "cit_instances": 7,
+    "unique_refs": 7,
+    "share_cited": 0.031,
+    "cit_per_sentence": 0.05,
+    "equations": 23,
+    "eq_per_1000_words": 8.7,
+    "eq_refs": 8,
+    "subsections": 6,
+    "words_per_sentence": 20.4,
+    "passive_share": 0.51,
+    "present_share": 0.56,
+    "past_share": 0.0
+   },
+   "0098135426004370": {
+    "sentences": 115,
+    "words": 3073,
+    "cit_instances": 22,
+    "unique_refs": 7,
+    "share_cited": 0.157,
+    "cit_per_sentence": 0.19,
+    "equations": 0,
+    "eq_per_1000_words": 0.0,
+    "eq_refs": 0,
+    "subsections": 2,
+    "words_per_sentence": 26.7,
+    "passive_share": 0.45,
+    "present_share": 0.48,
+    "past_share": 0.36
+   },
+   "0098135426004382": {
+    "sentences": 78,
+    "words": 2319,
+    "cit_instances": 2,
+    "unique_refs": 2,
+    "share_cited": 0.013,
+    "cit_per_sentence": 0.03,
+    "equations": 15,
+    "eq_per_1000_words": 6.5,
+    "eq_refs": 18,
+    "subsections": 3,
+    "words_per_sentence": 29.7,
+    "passive_share": 0.6,
+    "present_share": 0.72,
+    "past_share": 0.01
+   },
+   "0098135426004394": {
+    "sentences": 329,
+    "words": 4862,
+    "cit_instances": 23,
+    "unique_refs": 5,
+    "share_cited": 0.043,
+    "cit_per_sentence": 0.07,
+    "equations": 67,
+    "eq_per_1000_words": 13.8,
+    "eq_refs": 32,
+    "subsections": 4,
+    "words_per_sentence": 14.8,
+    "passive_share": 0.3,
+    "present_share": 0.35,
+    "past_share": 0.0
+   },
+   "0098135426004400": {
+    "sentences": 102,
+    "words": 3399,
+    "cit_instances": 1,
+    "unique_refs": 1,
+    "share_cited": 0.01,
+    "cit_per_sentence": 0.01,
+    "equations": 6,
+    "eq_per_1000_words": 1.8,
+    "eq_refs": 1,
+    "subsections": 7,
+    "words_per_sentence": 33.3,
+    "passive_share": 0.6,
+    "present_share": 0.81,
+    "past_share": 0.08
+   },
+   "0098135426004412": {
+    "sentences": 165,
+    "words": 3490,
+    "cit_instances": 3,
+    "unique_refs": 3,
+    "share_cited": 0.012,
+    "cit_per_sentence": 0.02,
+    "equations": 20,
+    "eq_per_1000_words": 5.7,
+    "eq_refs": 2,
+    "subsections": 10,
+    "words_per_sentence": 21.2,
+    "passive_share": 0.35,
+    "present_share": 0.5,
+    "past_share": 0.0
+   },
+   "0098135426004424": {
+    "sentences": 310,
+    "words": 6619,
+    "cit_instances": 37,
+    "unique_refs": 24,
+    "share_cited": 0.097,
+    "cit_per_sentence": 0.12,
+    "equations": 50,
+    "eq_per_1000_words": 7.6,
+    "eq_refs": 41,
+    "subsections": 15,
+    "words_per_sentence": 21.4,
+    "passive_share": 0.43,
+    "present_share": 0.58,
+    "past_share": 0.04
+   },
+   "0098135426004436": {
+    "sentences": 157,
+    "words": 2457,
+    "cit_instances": 19,
+    "unique_refs": 13,
+    "share_cited": 0.102,
+    "cit_per_sentence": 0.12,
+    "equations": 75,
+    "eq_per_1000_words": 30.5,
+    "eq_refs": 1,
+    "subsections": 4,
+    "words_per_sentence": 15.6,
+    "passive_share": 0.45,
+    "present_share": 0.6,
+    "past_share": 0.01
+   },
+   "0098135426004448": {
+    "sentences": 109,
+    "words": 2252,
+    "cit_instances": 9,
+    "unique_refs": 9,
+    "share_cited": 0.037,
+    "cit_per_sentence": 0.08,
+    "equations": 23,
+    "eq_per_1000_words": 10.2,
+    "eq_refs": 2,
+    "subsections": 13,
+    "words_per_sentence": 20.7,
+    "passive_share": 0.57,
+    "present_share": 0.63,
+    "past_share": 0.1
+   },
+   "0098135426004473": {
+    "sentences": 22,
+    "words": 555,
+    "cit_instances": 10,
+    "unique_refs": 8,
+    "share_cited": 0.273,
+    "cit_per_sentence": 0.45,
+    "equations": 4,
+    "eq_per_1000_words": 7.2,
+    "eq_refs": 1,
+    "subsections": 0,
+    "words_per_sentence": 25.2,
+    "passive_share": 0.59,
+    "present_share": 0.55,
+    "past_share": 0.05
+   },
+   "0098135426004485": {
+    "sentences": 207,
+    "words": 3793,
+    "cit_instances": 30,
+    "unique_refs": 27,
+    "share_cited": 0.14,
+    "cit_per_sentence": 0.14,
+    "equations": 22,
+    "eq_per_1000_words": 5.8,
+    "eq_refs": 2,
+    "subsections": 0,
+    "words_per_sentence": 18.3,
+    "passive_share": 0.66,
+    "present_share": 0.35,
+    "past_share": 0.35
+   },
+   "0098135426004497": {
+    "sentences": 230,
+    "words": 3687,
+    "cit_instances": 6,
+    "unique_refs": 6,
+    "share_cited": 0.026,
+    "cit_per_sentence": 0.03,
+    "equations": 21,
+    "eq_per_1000_words": 5.7,
+    "eq_refs": 0,
+    "subsections": 5,
+    "words_per_sentence": 16.0,
+    "passive_share": 0.55,
+    "present_share": 0.2,
+    "past_share": 0.4
+   }
+  }
  }
 }

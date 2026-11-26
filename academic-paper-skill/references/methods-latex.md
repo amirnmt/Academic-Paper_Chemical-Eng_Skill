@@ -6,7 +6,7 @@ Its message is: **this is exactly what we did, we did it carefully, and we had g
 
 Every result reported later needs a method here, and every method needs a result later. If a method is already published, summarize it and cite the original source; describe only what you changed.
 
-Use with `paragraphs-and-sentences.md`, `vocabulary-by-section.md` §4 and `phrasebank.md` (Methods).
+Use with `methodology-writing.md` (pattern-by-pattern guide for modelling, simulation, optimization and data-driven methodologies: architecture, physical foundations, assumptions, equations in the narrative, numerics, algorithms, ML and hybrid models, parameter origin, verification and validation, reproducibility checklist, journal benchmarks), `paragraphs-and-sentences.md`, `vocabulary-by-section.md` §4 and `phrasebank.md` (Methods).
 
 ## 1. Write it first
 
@@ -86,6 +86,7 @@ Engineering articles typically contain three groups of moves here: identifying t
 
 ## 6. Tense and voice: making your own contribution visible
 
+- In computational papers the model and the framework are usually described in the **present** ("The model consists of …", "The framework proceeds in three stages"), and the past is kept for what was actually carried out (data collection, runs, fitting); in 20 *Computers & Chemical Engineering* Methodology sections, present-tense markers appeared in about 55 % of sentences and past-tense markers in about 4 % [J-obs]. Either convention is correct; keep it consistent within a subsection.
 - **Past simple** for what you did: "The bed was discretized into 200 axial cells."
 - **Present simple** for standard procedures, how standard equipment works, equations, and what tables and figures show: "In this reactor type, heat is removed by boiling water"; "Eq. (3) describes …"; "Table 2 lists …".
 - The switch between them tells the reader what is standard and what you did. If a description of a standard procedure in the present suddenly changes to the past ("The pulses were then split …"), readers understand that this step was yours.

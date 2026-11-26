@@ -140,3 +140,25 @@ Close a group with an evaluation in your voice, attributed to the works evaluate
 - **Own earlier work:** cite it where it is relevant, as you would cite anyone else ("In our previous work (Lee et al., 2024), …"); state what is new relative to it. A paper that continues an earlier one ("Part 2") may refer to Part 1 for the full literature review, but still cites the sources of its own claims.
 - **Abstract:** no citations [G, J-obs: 3 of 20 abstracts had one, always to the earlier study the paper builds on].
 - **Reviews and secondary citations:** cite a review for a broad statement; cite the original for a specific finding. Never cite a paper only because another paper cites it; if unavoidable, write "(original, cited in source)".
+
+## 12. Citations in the Methodology [Rule, J-obs]
+
+The Methodology mixes material from others with the authors' own work, and citation follows the origin of each statement.
+
+| Statement | Citation |
+|---|---|
+| An established theory or principle stated as such | A standard textbook or review, once |
+| A governing equation taken from the literature | The source, in the lead-in sentence ("Following [ref], …") |
+| A kinetic expression, thermodynamic model, equation of state, property method | The original source, plus the source of the parameter values used |
+| An empirical or semi-empirical correlation | The original source, with its validity range |
+| A numerical method, solver or algorithm that is named | Its reference (and software and version) |
+| A machine-learning architecture, training algorithm, sampling design | The original source |
+| A parameter value | Its origin: reference, measurement, industrial source, calculation, estimation, or the reason for choosing it (`methodology-writing.md` §9) |
+| An assumption inherited from earlier work | That work; an own assumption carries its justification instead |
+| A dataset or validation data | The data source, and the paper that first reported it |
+| A framework from earlier work, including your own | That work, and a statement of what was changed |
+| Your implementation, procedure, derivation, decision | No external citation; traceable through equations, evidence, appendices or validation |
+
+For a method developed or modified in the paper, state which components come from the literature, which were modified and why, which are new, and how the whole differs from published approaches (`methodology-writing.md` §3.3).
+
+Observed in 20 *Computers & Chemical Engineering* Methodology sections [J-obs]: a median of 10 % of sentences carry a citation (IQR 3–14 %), 0.13 citations per sentence, 9 unique references (6–15). Of 256 cited sentences, about 41 % cite a fact or the justification of a choice, 18 % a parameter, property or correlation, 14 % an adopted model or framework, 14 % a dataset or data source, 12 % a named method or algorithm, 2 % software. Density was highest in system and case descriptions (14 % of sentences) and lowest in numerics and solution (6 %). Low density is normal here because most sentences describe the authors' own work; what matters is that no external element is uncited. `citation_density.py audit --section methods` lists sentences that name external elements without a citation.

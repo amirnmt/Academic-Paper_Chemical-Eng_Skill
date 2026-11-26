@@ -7,6 +7,9 @@ Two modes:
                    Prints the citation metrics, compares them with a benchmark file if given,
                    and lists the sentences in the background, literature and gap parts that
                    carry no citation, so that each one can be supported or rewritten.
+                   With --section methods (or any heading text), analyses that section instead
+                   and lists uncited sentences that name an external element (correlation,
+                   model of others, dataset, named method, solver) or give a value without origin.
 
   benchmark DIR    Build a benchmark from sample papers of a journal that were converted to
                    Markdown (for example with convert_to_markdown.py or journal_profile.py init).
@@ -21,6 +24,7 @@ the numbers alone.
 Examples
   python citation_density.py audit paper/main.tex --benchmarks ../resources/journals/<slug>/citation_benchmarks.json
   python citation_density.py audit draft_intro.md --list 40
+  python citation_density.py audit paper/main.tex --section methods --benchmarks …/citation_benchmarks.json
   python citation_density.py benchmark ../resources/journals/<slug>/papers --out ../resources/journals/<slug>/citation_benchmarks.json
 """
 import argparse
@@ -204,9 +208,27 @@ def strip_tex(t):
     return t
 
 
-def tex_parts(text):
+METHOD_RX = r"method|model|formulation|framework|problem statement|materials|approach|theory|data|process description|system description"
+RESULT_RX = r"result|discussion|case stud|experiment|conclusion|application|validation of"
+
+
+def tex_parts(text, section=None):
     text = strip_tex(text)
     ab = re.search(r"\\begin\{abstract\}(.*?)\\end\{abstract\}", text, re.S)
+    if section:
+        rx = METHOD_RX if section.lower() in ("methods", "methodology") else re.escape(section)
+        secs = list(re.finditer(r"\\section\*?\{([^}]*)\}", text))
+        start = next((i for i, m in enumerate(secs) if re.search(rx, m.group(1), re.I) and not re.search("introduction", m.group(1), re.I)), None)
+        if start is None:
+            return (ab.group(1) if ab else ""), []
+        end = len(text)
+        for m in secs[start + 1:]:
+            if section.lower() not in ("methods", "methodology") or re.search(RESULT_RX, m.group(1), re.I):
+                end = m.start(); break
+        body = text[secs[start].end():end]
+        body = re.sub(r"\\(sub)+section\*?\{[^}]*\}", "\n\n", body)
+        paras = [re.sub(r"\s+", " ", p).strip() for p in re.split(r"\n\s*\n", body)]
+        return (ab.group(1) if ab else ""), [p for p in paras if len(p.split()) >= 5]
     m = re.search(r"\\section\*?\{[^}]*Introduction[^}]*\}(.*?)(?=\\section\*?\{|\\end\{document\}|$)", text, re.S | re.I)
     body = m.group(1) if m else text
     body = re.sub(r"\\(sub)+section\*?\{[^}]*\}", "\n\n", body)
@@ -264,9 +286,35 @@ def md_parts(text, keep_related=True):
     return " ".join(abstract), [p for p in paras if len(p.split()) >= 5]
 
 
-def read_parts(path):
+def md_section(text, section):
+    """Paragraphs of a Markdown section: Methods (from the first method-like heading after the
+    Introduction to the first results-like heading) or the section whose heading contains `section`."""
+    lines = text.splitlines(); out = []; mode = None; seen_intro = False
+    methods = section.lower() in ("methods", "methodology")
+    for ln in lines:
+        h = HEAD.match(ln)
+        if h and (h.group(1) or h.group(2)) and len(ln.split()) <= 12 and not ln.rstrip().endswith("."):
+            title = h.group(4).strip().lower()
+            top = bool((h.group(1) and len(h.group(1).strip()) <= 2) or (h.group(2) and "." not in h.group(2).strip().rstrip(".")))
+            if "introduction" in title:
+                seen_intro = True; mode = None if mode != "in" else "done"; continue
+            if mode is None and top and (re.search(METHOD_RX, title) if methods else section.lower() in title) and (seen_intro or not methods):
+                mode = "in"; continue
+            if mode == "in" and top and (re.search(RESULT_RX, title) if methods else True):
+                break
+        if mode == "in":
+            out.append(ln)
+    blocks = re.split(r"\n\s*\n", "\n".join(out))
+    return [re.sub(r"\s+", " ", b).strip() for b in blocks if len(b.split()) >= 5]
+
+
+def read_parts(path, section=None):
     text = Path(path).read_text(encoding="utf-8", errors="replace")
-    return tex_parts(text) if path.suffix == ".tex" else md_parts(text)
+    if path.suffix == ".tex":
+        return tex_parts(text, section)
+    if section:
+        return md_parts(text)[0], md_section(text, section)
+    return md_parts(text)
 
 
 # --------------------------------------------------------------------------- benchmarks
@@ -284,9 +332,14 @@ METRICS = ["sentences", "paragraphs", "words", "cit_instances", "unique_refs", "
 
 def build_benchmark(folder, out):
     papers = sorted(Path(folder).glob("*.md"))
-    per, roles = {}, {r: [] for r in ROLES}
+    per, roles, meth = {}, {r: [] for r in ROLES}, {}
     for p in papers:
-        ab, paras = md_parts(p.read_text(encoding="utf-8", errors="replace"))
+        text = p.read_text(encoding="utf-8", errors="replace")
+        mp = md_section(text, "methods")
+        mrows = [{"s": s, "refs": refs_in(s), "n": len(refs_in(s)), "narr": 0} for q in mp for s in sentences(q)]
+        if len(mrows) >= 20:
+            meth[p.stem] = summary(mrows, len(mp))
+        ab, paras = md_parts(text)
         rows = analyse(paras)
         if len(rows) < 10:
             print(f"skip {p.name}: Introduction not found or too short", file=sys.stderr)
@@ -302,7 +355,9 @@ def build_benchmark(folder, out):
              "overall": {m: quartiles([v[m] for v in per.values()]) for m in METRICS},
              "by_role": {r: {m: quartiles([s[m] for s in L]) for m in ("share_cited", "cit_per_sentence", "multi_ref_share")}
                          for r, L in roles.items() if L},
-             "per_paper": per}
+             "per_paper": per,
+             "methods": {"papers": len(meth), "overall": {m: quartiles([v[m] for v in meth.values()]) for m in
+                         ("sentences", "words", "cit_instances", "unique_refs", "share_cited", "cit_per_sentence")} if meth else {}}}
     Path(out).write_text(json.dumps(bench, indent=1), encoding="utf-8")
     print(f"wrote {out} ({len(per)} papers)")
     for m in ("share_cited", "cit_per_sentence", "cit_per_cited_sentence", "multi_ref_share", "cit_per_100_words"):
@@ -311,7 +366,47 @@ def build_benchmark(folder, out):
 
 
 # --------------------------------------------------------------------------- audit
-def audit(path, bench_path, list_n):
+EXT = re.compile(r"\b(correlation|equation of state|model of|approach of|method of|proposed by|developed by|according to|taken from|obtained from|"
+                 r"reported (by|in)|literature|data ?set|database|kinetic (model|scheme|parameters|expression)|rate expression|Arrhenius|Peng|Soave|"
+                 r"Ergun|Langmuir|Hinshelwood|Hougen|Wilke|Fuller|Chilton|Colburn|Gnielinski|Sobol|SHAP|LSTM|transformer|XGBoost|random forest|"
+                 r"Adam\b|Runge|BDF|DASSL|IPOPT|CPLEX|Gurobi|BARON|is adopted|is adapted|adapted from|follows? (the )?(work|model|approach)|"
+                 r"well[- ]known|widely used|commonly used|standard (method|model|approach))", re.I)
+VALUE = re.compile(r"\b(set to|taken as|equal to|fixed at|value of|chosen as|assumed to be)\s*[-−]?\d", re.I)
+ORIGIN = re.compile(r"\b(because|since|estimated|measured|calibrated|fitted|Table|Appendix|chosen|selected|Section|so that|to ensure)\b", re.I)
+
+
+def audit_section(path, section, bench, list_n):
+    ab, paras = read_parts(Path(path), section)
+    rows = []
+    for pi, p in enumerate(paras):
+        for s in sentences(p):
+            ks = refs_in(s)
+            rows.append({"p": pi, "s": s, "refs": ks, "n": len(ks), "narr": narrative_count(s), "group": max_group(s)})
+    if not rows:
+        sys.exit(f"no '{section}' section found")
+    s = summary(rows, len(paras))
+    b = (bench or {}).get("methods", {}).get("overall") if section.lower() in ("methods", "methodology") else None
+    print(f"Section '{section}': {s['sentences']} sentences, {s['paragraphs']} paragraphs, {s['words']} words\n")
+    print(f"{'metric':26s} {'draft':>8s}   benchmark median (IQR)")
+    for m in ("sentences", "words", "cit_instances", "unique_refs", "share_cited", "cit_per_sentence"):
+        line = f"{m:26s} {s[m]:8.2f}" if isinstance(s[m], float) else f"{m:26s} {s[m]:8d}"
+        if b and m in b:
+            q = b[m]; line += f"   {q['median']:.2f} ({q['q1']:.2f}-{q['q3']:.2f})"
+        print(line)
+    ext = [r for r in rows if r["n"] == 0 and EXT.search(r["s"])]
+    val = [r for r in rows if r["n"] == 0 and VALUE.search(r["s"]) and not ORIGIN.search(r["s"])]
+    print(f"\nUncited sentences that name an external element ({len(ext)}): cite the source, or say it is your own:")
+    for r in ext[:list_n]:
+        print(f"  [P{r['p'] + 1}] {r['s'][:220]}")
+    print(f"\nValues without a stated origin ({len(val)}): give the reference, measurement, estimation or reason:")
+    for r in val[:list_n]:
+        print(f"  [P{r['p'] + 1}] {r['s'][:220]}")
+
+
+def audit(path, bench_path, list_n, section=None):
+    if section and section.lower() != "introduction":
+        bench = json.loads(Path(bench_path).read_text(encoding="utf-8")) if bench_path else None
+        return audit_section(path, section, bench, list_n)
     ab, paras = read_parts(Path(path))
     rows = analyse(paras)
     if not rows:
@@ -356,12 +451,13 @@ def main():
     a.add_argument("file")
     a.add_argument("--benchmarks", help="citation_benchmarks.json of the target journal")
     a.add_argument("--list", type=int, default=25, help="how many uncited sentences to print")
+    a.add_argument("--section", help="analyse this section instead of the Introduction, e.g. methods")
     b = sub.add_parser("benchmark", help="build a benchmark from converted sample papers")
     b.add_argument("folder")
     b.add_argument("--out", default="citation_benchmarks.json")
     args = ap.parse_args()
     if args.cmd == "audit":
-        audit(args.file, args.benchmarks, args.list)
+        audit(args.file, args.benchmarks, args.list, args.section)
     else:
         build_benchmark(args.folder, args.out)
 
