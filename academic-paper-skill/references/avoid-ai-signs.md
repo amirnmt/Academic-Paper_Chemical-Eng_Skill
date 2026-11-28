@@ -50,6 +50,8 @@ These words are heavily over-represented in AI-generated text, especially when s
 | meticulous(ly) | careful(ly), or describe the procedure |
 | seamless(ly), groundbreaking, renowned, vibrant | delete, or give evidence |
 | Additionally, (at the start of many sentences) | vary or delete; often no connector is needed |
+| as proved by the simulations, it is obvious that, it is very likely that (without data), has been proven | "the simulations show", or state the evidence and its limits |
+| powerful tool, remarkable success, paves the way, these results consistently demonstrate | state what the method does and how well, with a number |
 
 One or two of these words in a paper is normal. A cluster of them in one paragraph is the problem.
 

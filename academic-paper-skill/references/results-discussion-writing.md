@@ -107,6 +107,10 @@ Seen in: …3434 p15–17 (problem size per iteration, CPU time growth explained
 
 Seen in: …4217 p8–10 (scenarios defined, materials ranked, decision rule derived); …4394 p21 (single-parameter scans); …4424 p11 (two inputs varied because they dominate the score).
 
+Two strong forms of step 5 (instruction study, v2.11):
+- **Viability or break-even condition** against a stated, cited threshold: "If [metric] of [value] is taken as acceptable [ref], [option] becomes viable only if [price] exceeds [a] or [feed cost] falls below [b]." (…2326 with a cited 15 % ROI hurdle; …3434 with the price change at which the optimal design switches.) The condition tells the reader when the conclusion changes, which a single base case cannot.
+- **Binding constraint with the rejected candidates shown:** "Although [criterion A] gives [value], [phenomenon] already occurs at [B]; the tighter constraint [B] is therefore taken as the limit." (…0433 for every operating-zone boundary.) Report the weaker scenario that did not change the verdict before the one that did (…2326). For an EO reactor this is the form for hot-spot, selectivity and runaway limits.
+
 ### 2.5 Machine-learning evaluation paragraph [ML]
 1. Data split and what "test" means here.
 2. Metrics on each split; gap between training and test.
@@ -143,6 +147,12 @@ Seen in: …4321 p6 (experimental viscosities that increase on dilution, flagged
 4. What would remove it.
 
 Seen in: …4357 p8 ("conditional on the simulators, tasks, losses, references and seeds"); …4424 p15–17 (a structural limit stated as a bound, with what the small effect does not show); …4436 p14–15 (structural simplifications and unexcited parameter directions, with the experiment that would resolve them).
+
+Placement and wording [J-obs, instruction study]:
+- **At the point of use is fine.** In 18 of 20 analysed papers, limitations appear inside the Results where the result depends on them ("The analysis is restricted to energy targets; the exchanger network is a later step", …2326). Then name the main one once more in the Discussion or Conclusion.
+- **Rank them.** "The main limitation is [X]: [consequence]." (…4424, …4217) is more useful than an unranked list.
+- **Attribute precisely.** Separate a data limitation from a method limitation: "The barrier is the instrumentation of this dataset rather than a general limitation of mechanistic modelling." (…4400)
+- **Bound the observation.** "[Observation] is limited to [tested condition] and does not guarantee [Y]." (…4369; similar in …4424 and …4497)
 
 ### 2.9 Implication paragraph [D]
 1. The demonstrated result.
@@ -256,6 +266,8 @@ Agreement with calibration data is not validation [Rule]: say "the model fits th
 Close the validation subsection with what the model can and cannot be used for: "The model is therefore used below only within the validated range of …".
 
 ---
+- **Surrogates and reduced models:** check the optimum (or each operating point used for a decision) with the rigorous model and report the deviation for each output, not one aggregate error (…3434 validates the MILP optimum against the rigorous unit models component by component).
+- **What a test does not show:** a passed adequacy test, a high R² or small residuals show agreement with the data used, not that the model structure is right. …431X reports a wrong rate term that passed the χ² and t-tests. "[Test] was passed although [known error]; [test] alone therefore does not establish [structural correctness]." [J-obs, one source]
 
 ## 7. Error metrics and statistics [M, ML]
 

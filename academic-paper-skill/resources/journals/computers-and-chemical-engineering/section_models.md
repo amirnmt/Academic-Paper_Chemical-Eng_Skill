@@ -182,6 +182,12 @@ Types overlap. About 40 % of gap sentences cite the closest or the few existing 
 
 Per paper, medians: 27 words per sentence (16–35); "we/our" 0.9 per 1,000 words (0–6.7; first person is rare in about half of the papers); hedges (may, can, often, typically …) 7.5 per 1,000 words; present perfect in about one in eight background and literature sentences; past simple for individual studies (proposed, developed, used, indicated, showed, found). Paragraphs open mostly with a topic noun phrase (64 %), rarely with a connector (`references/paragraphs-and-sentences.md` §7a).
 
+### 3.7 Review articles (one in the sample)
+…4187 (a review) states the gap of a review as the way earlier reviews are organised (by application, by implementation class, by framework) and names its intended reader ("a practical entry point"). Its outline paragraph says what each section contributes rather than listing section numbers. Use this only for a review; a research article needs a research gap (§3.4).
+
+### 3.8 Instruction study (v2.11)
+All 21 Introductions were coded against the skill's instructions (introduction.md B1–B10). Confirmed: funnel 18/21, explicit objective 20/21, contributions explicit in 12/21, outline paragraph in 12/21. Below the skill's standard in many papers: generic first sentence in 7/21 ("With the rapid advancement of …"), author-by-author literature passages in 10/21, uncited factual sentences in 8/21. The best Introductions (…4424, …3434) open on a cited number, classify prior work by how it treats one key choice, and state what is standard and what is new.
+
 ## 4. Methodology [J-req, J-obs]
 
 Required [J-req, `journal_requirements.md`]: numbered sections and subsections (2.1, 2.1.1), cross-referenced by number; SI units; equations as editable text, numbered consecutively in the order cited, variables in italics, exp for powers of e, solidus for small fractions, simple formulas inline; appendices lettered A, B with equations (A.1), (B.1); supplementary files cited in the text with captions; research-data Option C (deposit the data or explain why not). The guide describes optional Theory and Calculation sections (theory extends the background of the Introduction; calculation develops it practically). It does not prescribe the content of the Methodology.
@@ -309,6 +315,10 @@ Further observations:
 - **Tense:** restatement in the past ("presented", "developed") in 8 and in the present ("proposes", "focuses") in 9; findings in the present or past.
 - **Strength of claims:** most significance sentences are bounded by the tested system or data; three make unbounded claims (that the method is proven or powerful in general), and one ends with an instruction to the reader.
 - **Data or validation limits stated as limitations:** simulation-only validation, a single plant, benchmark datasets only, no industrial experiment.
+
+**Bulleted conclusions** (variant): …4217 writes its Conclusion as 37 short items (1,256 words) and …4448 in 14 short paragraphs. This works for multi-case studies but turns easily into a list of results (…4217 repeats about 23 numbers). The prose model above (about 330 words, 3 paragraphs) is the safer default.
+
+**Limitations and future work by date:** the four older EO papers (2006–2022) have neither in the Conclusion; most 2026 papers have both. Follow the recent practice.
 
 ## 7. Applying this to a manuscript
 

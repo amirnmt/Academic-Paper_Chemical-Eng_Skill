@@ -130,6 +130,10 @@ How to self-edit: let the draft rest for at least a day, print it or change the 
 - [ ] No claim to outperform a method not compared in this work; later papers treated as concurrent work.
 - [ ] Abstract, highlights and conclusion keep the body's scope and strength.
 - [ ] `check_acronyms.py` clean: each acronym defined at first use, once, separately in abstract and body.
+- [ ] `check_figrefs.py` clean: every figure and table cited by number, in order, and each citation has a caption.
+- [ ] Every parameter **and every limit or threshold** has a stated origin (measured, fitted, from [ref], assumed); assumed values are labelled as assumptions.
+- [ ] The main limitation is named once in the Discussion or Conclusion (limitations at the point of use are fine in addition).
+- [ ] No overclaim: "as proved by", "it is obvious that", "significant" without a test (`check_ai_signs.py` flags them).
 - [ ] Self-review done in all five roles (`self-review.md`); every major comment fixed, acknowledged as a limitation, or answered with evidence.
 - [ ] Journal guidelines met, item by item against the journal profile (`resources/journals/<journal>/journal_requirements.md`): template, length, abstract, keywords, highlights, reference style, figure format and resolution, declarations (funding, conflicts, data availability, author contributions, AI use).
 - [ ] Eight Cs checked:

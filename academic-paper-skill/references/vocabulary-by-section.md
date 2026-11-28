@@ -263,6 +263,8 @@ Pair every such word with the number.
 
 ## 10. Commonly confused words
 
+Technical pairs (verification/validation, hot spot/runaway, surrogate/reduced-order model, Sobol/SHAP, selectivity/yield and more) are in `technical-terms.md`.
+
 - affect (verb) / effect (noun; as a verb "effect" = bring about).
 - amount (uncountable) / number (countable); less (uncountable) / fewer (countable).
 - varying (changing) / various (different).

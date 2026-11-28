@@ -26,6 +26,9 @@ It guides Claude through the whole article and its publication:
 - **Literature-review planning and scoring:** the Introduction and the literature review planned at two levels, prior work split into method groups (limitation → evidence → bridge), and a six-axis scoring rubric with caps against inflated self-assessment.
 - **Plagiarism and paraphrasing:** the forms of plagiarism as they appear in a modelling paper, the standard an acceptable paraphrase must meet (stricter than some tutorials, as the guides disagree), a note-taking and drafting workflow that prevents copying, step-by-step paraphrasing techniques with worked reactor-modelling examples, quoting and citation placement, reuse of your own thesis or methods text (COPE, Elsevier), and the journal's similarity check. `scripts/check_overlap.py` finds passages in a draft that repeat runs of words from your sources before the journal's check does.
 - **Acronyms:** `scripts/check_acronyms.py` checks definition at first use, once per scope (abstract and body), and use frequency.
+- **Figure and table references:** `scripts/check_figrefs.py` finds captions never cited, numbers cited without a caption, and citations out of order.
+- **Technical terms:** `references/technical-terms.md` lists about 60 terms of reactor modelling, estimation, validation, optimization and economics with the term each is confused with.
+- **Calibrated on published papers:** the instructions and script thresholds were tested against 21 published *Computers & Chemical Engineering* papers, instruction by instruction (v2.11). The skill keeps its own standard where published papers fall below it; the samples set the floor, not the ceiling.
 - **Simulated peer review:** review the full draft as an editor, a methods reviewer, a domain expert, a devil's advocate and a readability reviewer; triage the comments and revise.
 - **Citation checking:** `scripts/check_citations.py` checks `refs.bib` against OpenAlex and Crossref (DOI resolves; title, first author and year match; retractions) and against the `\cite` keys in the LaTeX files.
 - **Revision, cover letter and point-by-point response to reviewers.**
@@ -60,6 +63,7 @@ academic-paper-skill/
 │   ├── self-review.md
 │   ├── submission-and-reviewers.md
 │   ├── journal-profile.md       turning a Guide for Authors into rules; template; default profile
+│   ├── technical-terms.md       reactor, estimation, validation, optimization and economics terms
 │   ├── checklists.md
 │   └── sources.md
 ├── resources/
@@ -80,6 +84,7 @@ academic-paper-skill/
     ├── check_overlap.py             passages repeating runs of words from your sources
     ├── check_numbers.py             numbers in the draft that are not in the results log
     ├── check_acronyms.py            acronym definitions per scope
+    ├── check_figrefs.py             figure/table citations: missing, uncaptioned, out of order
     ├── check_citations.py           checks refs.bib against OpenAlex/Crossref and the .tex citations
     └── citation_density.py          citation density of Introduction, Methods or Results vs. the journal; uncited or unsupported claims
 ```

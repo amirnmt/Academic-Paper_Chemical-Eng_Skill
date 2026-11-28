@@ -35,6 +35,10 @@ Lu et al. (2026, *Nature* 651, 914–919) described these failures in a fully au
 
 Record for each mode: "ruled out by …" or "suspected: …". A suspected mode is resolved before submission, or stated as a limitation.
 
+Two further checks, from published C&CE practice (instruction study, v2.11):
+- **Anomalous data before anomalous model** (the reverse of F5): before attributing a large error to the model, check the data point. …4321 sets apart a mixture whose measured viscosity rises on dilution with a lighter solvent, calls it physically paradoxical, and reports it separately from the model error. Say why the point is suspect; never drop it silently.
+- **A passed test is not a proof of structure** (related to F4): …431X shows an incorrect rate term that passes both the χ² adequacy test and the t-tests. A high R², a passed adequacy test or a small validation error shows agreement with the data used, not physical correctness. Say which property a test establishes and which it does not.
+
 ---
 
 ## 3. Does the source support the sentence? [Rule]
@@ -78,6 +82,7 @@ Check: for every claim in the Abstract, Highlights and Conclusion, find the corr
 - State limitations openly; never hide one to make a revision easier.
 - If a reviewer asks for an analysis you have not done, either do it and add it to the log, or explain in the response why it is outside the scope; never write the text as if it had been done.
 - Every number added during revision enters `results_log.md` first (§1).
+- **Earlier versions of the same work** (conference paper, preprint, thesis chapter): state what is reused, what was corrected and against which primary source, and whether the earlier conclusions still hold. If a correction changes an earlier conclusion, say so in the paper (…4424 does this for its own conference abstract). Text reuse rules are in `plagiarism-and-paraphrasing.md` §9.
 
 ---
 

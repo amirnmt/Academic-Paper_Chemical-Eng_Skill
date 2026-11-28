@@ -149,6 +149,8 @@ Two placements, both common [J-obs]: a **list at the start of the model** (bulle
   - "These assumptions isolate the influence of …, but may lead to an [optimistic / conservative] estimate of …"
   - "Several simplifications are introduced to keep the problem tractable while preserving …"
   - "Assumptions inherited from [ref] that still affect the results are listed in Table …"
+  - "[Assumption] is made because [physical reason]; [alternative model] could be used instead [ref], at the cost of …" (name the alternative you did not use)
+  - "[Choice A] was preferred over [B] on the basis of [evidence: predictive performance against plant data, a test, a dimensionless number]." A choice made on evidence is stronger than one made for convenience (…4436 kept the simpler bubble-size model because it predicted the industrial data better).
 - **Example:** "Intraparticle temperature gradients are neglected, because the estimated Prater number is below 0.05 under all operating conditions (Appendix B); concentration gradients inside the pellet are retained."
 - **Cite:** the source of an inherited assumption set; the evidence behind a justification that is not your own calculation.
 - **Mistakes:** "It is assumed that … " with no reason; assumptions scattered so that the reader cannot find them; an assumption stated in Methods and contradicted by a result; an assumption whose consequence for the results is never discussed.
@@ -237,6 +239,10 @@ Mark the status of every displayed equation that is not textbook material: "(ref
 
 The analysed C&CE papers [J-obs] report software in 11 of 20 Methodology parts, but versions in only 3, solvers in 6, tolerances or stopping criteria in 5, discretization in 9 and hardware or run time in about 9 (some only in the Results). No paper in the sample solved a PDE reactor model, so no grid-independence study was observed. **For a transient multiscale reactor model, report more numerical detail than this average** [G, NUM]: reviewers of reactor-modelling papers expect discretization, solver, tolerances and an independence check.
 
+- **Stochastic steps** (sampling, training, stochastic optimization): report the number of repeat runs or seeds and the spread of the result, not one lucky run (…3434 repeats its sampling step).
+- **Numerical difficulties:** report them with the workaround **and what the workaround removes from the analysis**. "Since the simulation is very sensitive to [variable], [variable] was held at its set point; effects of [variable] on [output] are therefore excluded." (…0433 reports the first half of this sentence but not the second.)
+- **Changes to third-party code:** list them, mark them in the source and keep the original behaviour as the default (…4357 adds four switches to the original Fortran code, each off by default).
+
 ### 6.2 Justifying the numerical choice
 
 - **Templates:**
@@ -283,6 +289,8 @@ Give enough to rebuild the computation without reproducing the code: equations, 
 
 - Training, validation and test sets with sizes and the rule used (random, grouped, time-ordered); why that rule fits the use.
 - Leakage control: "Scaling parameters are computed on the training set only"; "The test period lies after all training data"; "The held-out data are used once, after all choices were fixed"; "Windows from the same trajectory are kept in the same set." In the analysed papers, 6 of 20 address leakage explicitly; under the rule of this skill, every data-driven method states how it was prevented.
+- **Disclose deviations from an earlier split** and the leakage that remains: if your partition differs from the original publication, give the reason and quantify the remaining overlap (…4321 states that 52.9 % of unique species still appear on both sides).
+- **Time series:** calendar features can reveal the period an hour belongs to; hold them constant or remove them when the test period lies in other months (…4400). Run the hyperparameter search inside the training period (nested), and use the held-out period once (…4400, …4497: chronological 6:2:2 split, all training samples before validation and test).
 
 ### 8.3 Model, training and selection
 
@@ -319,7 +327,12 @@ Every value has a traceable origin. Distinguish six origins and say which one ap
 
 - **Parameter table:** symbol, description, value, unit, origin (reference, measured, calibrated, assumed). Put it in the main text if short, in an appendix if long; refer to it where the parameters are first used.
 - **Honesty about provenance** [J-obs]: some papers state that data from different years were combined, which values are inherited and still matter, and which were calibrated with a proxy. Do the same.
-- **Mistakes:** a tolerance, weight or penalty "considered" without reason; values from a figure presented as if from a table; a parameter estimated and validated on the same data.
+- **Limits and thresholds have an origin too** [Rule]: an operating limit, a safety boundary, an acceptance criterion or a hurdle rate needs its source just like a kinetic constant (code formula, exposure limit, kinetic crossover temperature, cited minimum return). …0433 derives every zone boundary from a named criterion; …2326 leaves its decisive OCM selectivity and conversion without one. These are the positive and the negative example.
+- **Origin labels in table footnotes:** "measured", "fitted (Section 3.2)", "from [ref]", "estimated from [ref]", "assumed". One word per row is enough (…3434). Label an assumed value plainly as an assumption: "[Value] is a modelling assumption, not the [measured/current] value" (…4424 on a tax rate) [J-obs, one source].
+- **Non-transferable correlations:** when a literature correlation was fitted to another system and its validity for yours "cannot be assumed a priori", treat its coefficients as adjustable parameters and estimate them from your data instead of fixing them (…4436) [J-obs, one source; high value for reactor models]. Template: "Since the validity of [correlation] for [system] cannot be assumed a priori, [θ] are treated as adjustable parameters and estimated from [data] rather than fixed at their literature values."
+- **Reused models:** report the performance their authors reported. "[Model] was adopted from [ref], who reported [metric] of [value] on [data]." (…4370, …3434)
+- **Narrow data ranges:** Arrhenius parameters estimated from plant data over a narrow temperature window are strongly correlated (k0 and E compensate each other; …4436 states this as a limitation of its estimability result). State the correlation or the confidence region, and consider the reference-temperature form k = k_ref·exp[−(E/R)(1/T − 1/T_ref)] with T_ref inside the data range.
+- **Mistakes:** a tolerance, weight or penalty "considered" or "carefully selected" without a value or a reason (…4382); values from a figure presented as if from a table; a parameter estimated and validated on the same data; a standard method used without a reference (…4412).
 
 ---
 
@@ -337,6 +350,7 @@ Every value has a traceable origin. Distinguish six origins and say which one ap
 - Statistical tests: name, assumption, significance level ("a χ² test at α = 0.05 on the weighted residuals").
 - Uncertainty and sensitivity: method (local, Sobol, bootstrap, Monte Carlo, profile likelihood), sample sizes, ranges; identifiability or estimability analysis before parameter estimation.
 - **Templates:** "Model accuracy is quantified by …, defined as … (Eq. 20)."; "Validation uses [data] from [period/campaign], which was not used for calibration."; "Parameter uncertainty is expressed as 95 % confidence intervals computed from …"; "Global sensitivity is quantified by first-order and total Sobol indices estimated from [n] samples."
+- **When full validation is impossible** (optimization, scheduling, supply-chain or design models): state where the model was validated before ("model of [ref], validated there against …") **and** add at least a plausibility check against an independent record ("The corrected reference case is compared with the sector record as a plausibility check", …4424). 8 of 20 analysed papers show no validation at all [J-obs]; do not copy this.
 - **Mistakes:** a metric used in the Results but never defined; validation on training data; "good agreement" criteria not stated in advance.
 
 ---

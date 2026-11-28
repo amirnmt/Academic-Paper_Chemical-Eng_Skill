@@ -63,7 +63,7 @@ For each comparison:
 1. State your result briefly.
 2. Name the study and its result.
 3. Say whether they agree, and by how much.
-4. If they differ, give the most likely reason and how confident you are.
+4. If they differ, give the most likely reason and how confident you are. Explain **each** deviation with a specific cause (an assumption, a data source, a scope difference), not one general remark for all of them (…3434 attributes every difference from earlier studies to a named cause, e.g. fixed production rate instead of fixed feed).
 5. Say what the comparison means for the field.
 
 Choose names and studies carefully: readers use them to see how your work relates to and differs from existing research. A simple comparative is often the clearest way to show a difference: "more accurate than", "an order of magnitude faster than", "with a lower error than".
@@ -142,6 +142,10 @@ Pattern: acknowledge → explain the effect → bound or mitigate it → turn it
 > "The model assumes constant physical properties along the bed. Because the temperature varies by less than [value] K downstream of the hot spot, this assumption changes the predicted conversion by less than [value] % (Supplementary Material, Fig. S4). It may, however, matter at higher heat release, which future work will examine."
 
 Framing limitations as directions for future research shows that the field still has open questions, which supports the value of your work.
+
+Where limitations go [J-obs, instruction study v2.11]: in most analysed papers they appear at the point of use in the Results (18 of 20), and the 2026 papers name the main one again in the Conclusion with a specific next step (explicit limitations in 8 of 19 conclusions, specific future work in 12 of 19; the four older EO papers have neither). Do both: state each limitation where it applies, and summarise the main one once in the Conclusion.
+
+Templates: "The main limitation is [X]: [consequence for which result]."; "[Observation] is limited to [tested condition] and does not guarantee [Y]."; "The barrier is [specific data or instrument issue] rather than a general limitation of [method]."
 
 "Future work **will** …" or "we are currently …" states your own plan (and signals that you are working on it). "Future work **should** …" invites the research community. Choose deliberately.
 

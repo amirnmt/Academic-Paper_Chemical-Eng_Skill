@@ -51,6 +51,10 @@ PATTERNS = {
                          r"\bnot widely (?:documented|available)\b",
     "formulaic challenges": r"\bdespite (?:its|their|these) [\w\s,]{0,40}(?:faces?|challenges)\b|\bdespite these challenges\b|"
                             r"\bfuture (?:outlook|prospects)\b",
+    # Overclaims seen in published C&CE papers (instruction study, v2.11): strength of claim beyond the evidence.
+    "overclaim": r"\bas (?:proved|proven) by\b|\bit is (?:obvious|evident|clear) that\b|\bit is very likely that\b|"
+                 r"\b(?:clearly|undoubtedly|unequivocally) (?:proves?|demonstrates?|shows?)\b|\bhas been proven\b|"
+                 r"\bconsistently demonstrate\b|\bpaves? the way\b|\bpowerful tool\b|\bremarkable success\b",
     "section-summary opener": r"(?:^|\n)\s*(?:In summary|In conclusion|Overall|To summari[sz]e),",
     "chat leftover": r"\b(?:Certainly!|Of course!|I hope this helps|Let me know if|Here is (?:a|the) (?:revised|updated)|"
                      r"As an AI|as a large language model)\b",
@@ -104,6 +108,17 @@ def structure(text: str, summary_only: bool) -> Counter:
                              "[A1/A2] lesson-type paragraph end", last[:90] + ("…" if len(last) > 90 else "")))
     if unsupported:
         counts["[A1/A2] lesson-type paragraph end"] = unsupported
+    # Paragraph length: in 192 Introduction paragraphs of 21 published C&CE papers the median
+    # was 125 words, the 90th percentile 282 and the 95th 341; flag paragraphs above 300 words.
+    long_paras = 0
+    for p in paras:
+        n = len(re.findall(r"[A-Za-z]+", p))
+        if n > 300:
+            long_paras += 1
+            findings.append((text[:text.find(p)].count("\n") + 1, "long paragraph (> 300 words)",
+                             f"{n} words: split it by sub-topic"))
+    if long_paras:
+        counts["long paragraph (> 300 words)"] = long_paras
     words = len(re.findall(r"[A-Za-z]+", text))
     comp = len(re.findall(COMPLICATION_MARKERS, text, re.I))
     print("  -- discourse-level checks (avoid-ai-signs.md §8) --")
@@ -117,9 +132,15 @@ def structure(text: str, summary_only: bool) -> Counter:
     if words:
         rate = 1000 * comp / words
         print(f"  limitation / trade-off / contrast markers: {comp} ({rate:.1f} per 1000 words)")
-        if words > 800 and rate < 2:
-            print("  WARNING: few complications reported. Check A4, C2, C3, G4: are limitations,"
-                  " failures, trade-offs and disagreements with the literature stated?")
+        # Calibrated on 21 published Computers & Chemical Engineering papers (2006-2026):
+        # median 2.1 per 1000 words, quartiles 1.45-2.95, range 0.9-4.6.
+        if words > 800 and rate < 1.5:
+            print("  WARNING: few complications reported (below the lower quartile, 1.5, of published"
+                  " C&CE papers). Check A4, C2, C3, G4: are limitations, failures, trade-offs and"
+                  " disagreements with the literature stated?")
+        elif words > 800 and rate < 2.1:
+            print("  note: complication markers below the median of published C&CE papers (2.1 per 1000"
+                  " words); check that the main limitation and trade-offs are stated.")
     return counts
 
 
@@ -168,8 +189,13 @@ def check(path: str, summary_only: bool, struct: bool = False) -> Counter:
         print(f"  {n:>4}  {name}")
     watch_total = sum(n for k, n in counts.items() if k.startswith("watch-word"))
     if words:
-        print(f"  watch-words per 1000 words: {1000 * watch_total / words:.1f} "
+        ww = 1000 * watch_total / words
+        print(f"  watch-words per 1000 words: {ww:.1f} "
               "(a few is normal; clusters in one paragraph are the problem)")
+        # Published C&CE papers: median 0.4, upper quartile 0.7, maximum 1.3 per 1000 words.
+        if words > 800 and ww > 1.0:
+            print("  note: watch-word rate above 1.0 per 1000 words; only 1 of 21 published C&CE papers"
+                  " analysed exceeds this (max 1.3).")
     if struct:
         counts.update(structure(text, summary_only))
     return counts

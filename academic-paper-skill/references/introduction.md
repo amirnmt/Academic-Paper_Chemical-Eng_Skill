@@ -200,6 +200,10 @@ Forms of the gap sentence seen in process-systems papers [J-obs; templates in `p
 - **Focus mismatch:** "These studies focus on A, whereas B has received little attention."
 - **Closest-work gap:** "To our knowledge, no study has …; the closest are [refs], which …"
 
+Two forms that the strongest analysed Introductions use (instruction study, v2.11):
+- **Shared representation of prior models, and what it costs.** Show that studies which differ in method share one design choice, then name the physical quantity that this choice loses. "Although [prior models] differ in [method], they share [one representation]: [X]. This discards [Y], which determines [Z]." (…4400: every model aggregates slabs by zone, but fuel demand is the sum of the individual slabs; …4424: fronts compare solutions that deliver different amounts of service; …4448: data availability is treated as a given, not as part of the design.) EO analogue: lumped coolant-side or catalyst descriptions versus resolved ones.
+- **Fair credit first, then the built-in limitation of the closest study.** Acknowledge what the closest study does well, then name the assumption that limits it. "[Ref] gives one of the most complete … ; its correlations, however, are tied to [fixed assumption], so …" (…4473 on Luyben 2017; …4436 contrasts its contribution with Nogueira and Pontes 2017 by name).
+
 Justify the gap [G]: say what it costs (accuracy, safety margin, design decision, operating cost, computation) and for whom. In the analysed papers the justification is usually one sentence directly after the gap or folded into it ("…, so a prediction that cannot be explained is difficult to turn into an operating decision").
 
 Cite in the gap paragraph [Rule]: the few studies that exist, the closest studies and their limitation, or the review that supports a "widely assumed" claim. In the analysed papers about 40 % of gap sentences carried a citation.
@@ -215,7 +219,16 @@ Mirror the limitations [J-obs]: in papers with enumerated limitations, the contr
 Novelty, stated with care [G]:
 - Say exactly what is new and relative to what: "To our knowledge, this is the first … that both … and …"; "The novelty lies in combining … with …"; "The methods are established; what is new is their use on …". Overstated novelty invites the reviewer to find the counterexample.
 - "Novel" in every second sentence weakens the claim; state the new element instead.
+- Say which parts are standard. "The decomposition is a standard index method; what is new is its use for …" (…4424); "[X] — not a new sensitivity index — is applied at …" (…4436). This is credible and protects against the reviewer who knows the method.
+- Contrast the contribution with the closest study by name: "In contrast to [Author] ([year]), who [did A only], [B] is additionally [done] here." (…4436, …3434)
+- A contribution may be a **limiting finding**: …4400 lists among its contributions that its attention weights agree only weakly with an occlusion test, and therefore describes them as "where the model looks", not as attribution. Reporting this is integrity-positive and pre-empts the reviewer.
 - A preview of the main finding ("The analysis shows that …") is common in recent papers and helps the reader.
+
+Purpose contrast with neighbouring methods: "The aim is not to [X] (as in [approach]), but to [Y]." (…4382: not an optimal schedule under assumed uncertainty, but an evaluation of policies under realised disruptions; …4497 and …4485 use the same move for scope.)
+
+Several objectives: when there are three or more, enumerate them ((a)–(d), or First … Second …) and order the Results the same way (…2326, …4217, …4448).
+
+Data used for validation can be named in the Introduction as part of the scope: "The model is validated against an independent operating campaign of …" (…4436); "A virtual plant is used here; in experiments, [measurement] would take its place" (…4448).
 
 Scope [J-obs: 6 of 20 recent papers]: state what the study does not claim or cover ("The models describe associations within the observed operating range, not the mechanism"; "Environmental and safety constraints are outside the scope"; "A simulated plant is used; experimental validation is future work"). Put it after the approach or after the contributions.
 
@@ -224,7 +237,7 @@ Scope [J-obs: 6 of 20 recent papers]: state what the study does not claim or cov
 - Hypotheses: state what you expect and why, based on prior knowledge; keep them few (no more than about five). Statistical testing works through a null hypothesis; keep the scientific hypothesis and its null form distinct.
 - Contributions: 2–4 specific, checkable items. "(i) a comparison of …; (ii) a validation against …; (iii) a recommendation for …".
 - Justify the method briefly (why 2D, why pseudo-homogeneous, why this data-driven model). Details belong in Methods.
-- If a preliminary version (conference paper) or closely related papers exist, cite them here, usually near the end.
+- If a preliminary version (conference paper) or closely related papers exist, cite them here, usually near the end. Say (a) what is reused, (b) what was corrected and against which source, and (c) whether the earlier conclusions still hold. …4424 names its conference abstract, says that none of its numbers are reused, lists each correction with the primary source checked, and states that the earlier reading is not supported by the corrected case [Rule: see `research-integrity.md` §6].
 
 ## 9. Citations in the Introduction
 

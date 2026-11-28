@@ -81,6 +81,8 @@ fig.savefig("fig_temperature_profile.pdf")
 - Start with a short title-like statement, then the necessary details: conditions, symbols, what error bars mean, data sources.
 - Self-explanatory: a reader who sees only the figure and caption understands it.
 - Do not interpret in the caption; interpretation belongs in the text.
+- **Multi-panel figures:** name each panel's condition in the caption, "(a) nominal feed; (b) 23 % less ethylene; (c) …" (…0433), so that each panel can be read without searching the text. Give the fixed conditions too, not only the varied one (…2326 names what is varied but not what is held constant).
+- **Table footnotes for origin:** one word per row ("measured", "fitted", "from [ref]", "assumed") makes the provenance of every value visible (…3434; see `methodology-writing.md` §9).
 - Example: "Figure 4. Axial temperature profiles at the tube centreline: measurements (symbols) and predictions with five wall heat-transfer correlations (lines). Conditions: p = [value] bar, T_c = [value] K. Error bars show ± one standard deviation of three repeated runs."
 
 ## 6. Tables
@@ -106,6 +108,7 @@ fig.savefig("fig_temperature_profile.pdf")
 - When the figure is the subject, use a precise verb: shows, compares, summarizes, plots, illustrates, lists.
 - Do not repeat in words what the figure shows; add what the reader cannot see at once: the main trend, its size, the exception, and its meaning.
 - Each figure and table must be discussed in the text; a figure that is never discussed should be removed or moved to supplementary material.
+- Check numbering and citation order with `scripts/check_figrefs.py draft.md`: captions never cited, numbers cited without a caption, first citations out of order (ranges such as "Figs. 4–6" count for every item). In 21 published C&CE papers, 19 of 304 items appeared before their first mention and 20 were not cited by number [J-obs].
 - Figures and tables can also present methods: flowcharts of the procedure or workflow, diagrams of the apparatus or model domain, tables of operating conditions and parameters.
 
 ## 7b. What Computers & Chemical Engineering papers do [J-obs]
