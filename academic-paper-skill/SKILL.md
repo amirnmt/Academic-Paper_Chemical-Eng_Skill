@@ -1,6 +1,6 @@
 ---
 name: academic-paper-skill
-description: Write or revise a STEM/engineering journal article from the user's results and a repository of reference papers, adapted to the target journal. Builds a journal profile from the Guide for Authors and sample papers (defaults otherwise), then covers evidence base, introduction, literature review, methods with LaTeX, results, figures, discussion, conclusion, abstract and references, with paragraph structure, first sentences, phrases and vocabulary per section, phrase mining, searchable writing guides, avoiding AI-typical prose, simulated peer review, citation checking and reviewer responses.
+description: Write or revise a STEM or chemical-engineering journal article from your results and reference papers, adapted to the target journal, with citation, integrity and AI-style checks.
 ---
 
 # Academic Paper Skill (STEM)
@@ -17,7 +17,7 @@ This file is the core. Detailed guidance lives in `references/`; full texts that
 4. **Results report; the Discussion interprets.** Keep them distinct, even inside a combined Results and Discussion section.
 5. **One objective, worded the same way** in the title, abstract, Introduction, Results, Discussion and Conclusion.
 6. **Claim exactly as much as the data support.** No overclaiming, and no hedging of measured facts.
-7. **Paraphrase, never copy** from sources, guides or converted PDFs; check numbers and equations against the original PDF.
+7. **Paraphrase, never copy** from sources, guides or converted PDFs: your own structure and wording, the source cited at each claim, quotations rare and marked; check numbers and equations against the original PDF (`references/plagiarism-and-paraphrasing.md`).
 8. **Specific, not generic.** Replace inflated or vague statements with facts, numbers and citations (`references/avoid-ai-signs.md`). Check structure as well as wording: what the text explains, omits and emphasizes (`avoid-ai-signs.md` §8). Disclose AI assistance as the journal requires.
 
 ## Which reference to read
@@ -44,6 +44,7 @@ This file is the core. Detailed guidance lives in `references/`; full texts that
 | Academic Word List and precise word choice | `references/academic-vocabulary.md` |
 | Avoiding generic, inflated or AI-typical prose, word-level and discourse-level (33 StoryScope patterns, model fingerprints); self-check | `references/avoid-ai-signs.md` and `scripts/check_ai_signs.py` |
 | **Research integrity of AI-assisted work:** results log as single source of truth, seven failure modes (F1–F7) to rule out, does the source support the sentence, comparison and concurrent-work rules, qualifiers that must survive the abstract, revision rules | `references/research-integrity.md`, `resources/templates/results_log.md`, `scripts/check_numbers.py` |
+| **Plagiarism and paraphrasing:** forms of plagiarism in a modelling paper, the standard an acceptable paraphrase must meet, a workflow that prevents it, step-by-step paraphrasing and techniques, worked reactor-modelling examples, quoting, citation placement, reusing your own text (theses, methods), equations and figures, the journal's similarity check, AI tools | `references/plagiarism-and-paraphrasing.md` and `scripts/check_overlap.py` |
 | Simulated peer review: editor, methods, domain, devil's advocate, readability; triage | `references/self-review.md` |
 | Checking `refs.bib` against OpenAlex/Crossref and the LaTeX citations | `scripts/check_citations.py` |
 | Revising, submission package, cover letter, decisions, response to reviewers | `references/submission-and-reviewers.md` |
@@ -72,6 +73,7 @@ Read `style-grammar.md` and `avoid-ai-signs.md` once at the start of any draftin
 | `python scripts/check_ai_signs.py <draft> [--structure]` | Flag generic and AI-typical prose; `--structure` adds the discourse-level checks (lesson-type paragraph endings, insight-type conclusions, hearsay, anthropomorphism, diary sequences, missing limitations). |
 | `python scripts/check_citations.py refs.bib --tex *.tex` | Verify references and citation keys. |
 | `python scripts/check_numbers.py <draft> --log results_log.md` | List every number in the draft that is not in the results log (allowing for rounding), repeated identical uncertainties and round comparison figures. |
+| `python scripts/check_overlap.py <draft> --sources <papers_md_dir> [thesis.md] [--skip-references]` | Passages that repeat runs of 8 or more words from your sources (cited papers, your own earlier texts), with source file and line, and the share of the draft matched per source. |
 | `python scripts/check_acronyms.py <draft> [--abstract abstract.md] [--allow A,B]` | Acronyms defined at first use, once per scope (abstract and body separately), and used often enough to justify them. |
 | `python scripts/citation_density.py audit <draft> --benchmarks resources/journals/<journal>/citation_benchmarks.json` | Citation density of the Introduction by part, compared with the journal; lists uncited background, literature and gap sentences and oversized citation groups. `--section methods`: lists uncited external elements and values without origin in the Methodology. `--section results`: lists "significant" without statistics, promotional words, causal words, and mentions of published work without a citation. `benchmark <papers_dir>` builds the benchmark from sample papers. |
 
@@ -98,14 +100,14 @@ For each section, list the paragraphs with a one-line purpose (its topic sentenc
 
 ### 4. Draft, section by section
 Recommended order (`writing-process.md`): Methods → Results (with figures and tables) → Literature review → Discussion → Introduction → Conclusion → Abstract → Title, keywords, highlights.
-For each section: read the four files listed above → draft paragraph by paragraph from the outline (Introduction and literature review: from the claim–evidence map, citing as each sentence is written) → run the section checklist → for the Introduction, run `python scripts/citation_density.py audit <file> --benchmarks …` and support, rewrite or delete every listed sentence → run `python scripts/check_numbers.py <file> --log results_log.md` and trace or remove every untraced number → run `python scripts/check_ai_signs.py <file> --structure` and rewrite every flagged sentence with a specific fact, number or citation, or delete it → hand to the user → revise.
+For each section: read the four files listed above → draft paragraph by paragraph from the outline (Introduction and literature review: from the claim–evidence map, citing as each sentence is written) → run the section checklist → for the Introduction, run `python scripts/citation_density.py audit <file> --benchmarks …` and support, rewrite or delete every listed sentence → run `python scripts/check_overlap.py <file> --sources <papers> --skip-references` and quote or rewrite every flagged passage → run `python scripts/check_numbers.py <file> --log results_log.md` and trace or remove every untraced number → run `python scripts/check_ai_signs.py <file> --structure` and rewrite every flagged sentence with a specific fact, number or citation, or delete it → hand to the user → revise.
 
 ### 5. Self-review
 Follow `references/self-review.md`: review the complete draft in five independent roles (editor, methods, domain expert, devil's advocate, readability), collect the comments in a triage table, revise, and re-review the changed parts. Score the Introduction and literature review with the rubric in `literature-review.md` §16, and mark each failure mode F1–F7 in `research-integrity.md` §2 as ruled out or resolved.
 
 ### 6. Final check and delivery
 - Run `python scripts/check_citations.py refs.bib --tex *.tex --out citation_report.md` and resolve every RETRACTED, DOI NOT FOUND, MISMATCH and missing-key item. It needs internet access; if this environment cannot reach OpenAlex or Crossref, run it on the user's computer or verify the DOIs with another tool.
-- Run `check_numbers.py` and `check_acronyms.py` on the full manuscript, and the checklist in `research-integrity.md` §7.
+- Run `check_numbers.py`, `check_acronyms.py` and `check_overlap.py` (against all cited papers available and your own earlier texts) on the full manuscript, and the checklists in `research-integrity.md` §7 and `plagiarism-and-paraphrasing.md` §13.
 - Run the final checklist and the Eight Cs in `references/checklists.md`, and check every item of the journal profile (limits, statements, files).
 - Report open `[CHECK]` items and unused repository papers.
 - Deliver: LaTeX source in the journal template, `refs.bib`, figure scripts and figures, compiled PDF; plus a short list of weak points a reviewer may attack (novelty, validation, uncertainty, limitations, overclaiming).

@@ -146,5 +146,6 @@ How to self-edit: let the draft rest for at least a day, print it or change the 
 - [ ] Plain words where they are precise (is, has, used); academic words where they add precision; no decorative intensifiers.
 - [ ] Spell-check run, then each suggested change checked by eye (spell-checkers introduce wrong words).
 - [ ] A colleague in the field has read it; if possible a fluent English speaker from the field, since general editors may change technical terms.
-- [ ] AI assistance disclosed as the journal requires.
+- [ ] `scripts/check_overlap.py` run on the full manuscript (with `--skip-references`) against the cited papers available and your own earlier texts; every flagged passage quoted, rewritten or, for your own methods text, cited; checklist in `plagiarism-and-paraphrasing.md` §13 done.
+- [ ] AI assistance disclosed as the journal requires; no automated paraphrasing of sources.
 - [ ] Read aloud once from beginning to end.

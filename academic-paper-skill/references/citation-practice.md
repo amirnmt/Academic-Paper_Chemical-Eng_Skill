@@ -133,6 +133,7 @@ Close a group with an evaluation in your voice, attributed to the works evaluate
 - Do not reproduce another paper's sequence of sentences or arguments with small changes; similarity checks find it and reviewers recognize it.
 - Technical terms and names of methods are shared vocabulary and can be reused.
 - Quote word for word only when the wording itself matters (a definition, a contested claim), in quotation marks with the source and page.
+- The full standard, techniques, worked examples and the pre-check with `scripts/check_overlap.py` are in `plagiarism-and-paraphrasing.md`. A synonym swap or a voice change alone is not a paraphrase (§3 there).
 
 ## 11. Other points
 

@@ -86,6 +86,7 @@ Check: for every claim in the Abstract, Highlights and Conclusion, find the corr
 - [ ] Every number in the manuscript is in `results_log.md` with its source; `check_numbers.py` reports no untraced values.
 - [ ] F1–F7 each marked "ruled out by …" or resolved.
 - [ ] Every citation checked for existence (`check_citations.py`) and for support (§3), with the location noted.
+- [ ] No copied or closely paraphrased wording; `check_overlap.py` clean (`plagiarism-and-paraphrasing.md`).
 - [ ] No "outperforms", "better than" or "state of the art" against a method not compared in this work.
 - [ ] Abstract, Highlights and Conclusion keep the body's scope and strength.
 - [ ] Methods settings match the code and configuration files.

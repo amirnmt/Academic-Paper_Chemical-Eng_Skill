@@ -58,6 +58,13 @@ Source: Guide for Authors, saved 26 November 2026; https://www.sciencedirect.com
 - Acknowledgements in a separate section directly before the references (including help with language or proofreading).
 - Authorship changes after submission are rarely accepted and never after acceptance: fix the author list and order before submitting.
 
+## Originality, plagiarism and text reuse (publisher-level policies)
+
+- New submissions to many Elsevier journals are screened automatically with Crossref Similarity Check (iThenticate); editors interpret the report, and no fixed percentage applies. Duplicate submissions to the journal are checked separately (title, abstract, authors).
+- A thesis, an abstract or an electronic preprint does not count as prior publication (Elsevier policy on prior publication, 2016).
+- Reuse of your own published text follows COPE's text-recycling guidance: possible in Methods with citation; not in Results or Conclusions.
+- Details, sources and the pre-check: `references/plagiarism-and-paraphrasing.md` §9, §11.
+
 ## Submission and after acceptance
 - Checklist: corresponding author with full details; all files (figures, tables, captions, supplementary files); spelling and grammar checked; references complete in both directions; permissions for copyrighted material.
 - Optional: free SSRN preprint at submission; co-submission of a data or methods article to Data in Brief or MethodsX (those charge an APC).

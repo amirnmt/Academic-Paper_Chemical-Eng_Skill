@@ -167,6 +167,7 @@ Rules:
 - Paraphrase in your own words and sentence structure; changing a few words is not paraphrasing.
 - Quote only when the exact wording matters (definitions, a disputed claim). Rare in engineering; use quotation marks and the source.
 - Cite ideas, not only words. Reusing your own earlier text without citation is self-plagiarism.
+- Cite each claim; when several sentences summarize one study, name it at the start so its boundary is clear. Details and worked examples: `plagiarism-and-paraphrasing.md` §5–§8.
 
 ## 15. Checklist
 

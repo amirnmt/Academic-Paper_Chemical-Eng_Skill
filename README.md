@@ -24,6 +24,7 @@ It guides Claude through the whole article and its publication:
 - **Avoiding generic, AI-typical prose:** word-level patterns, plus 33 discourse-level patterns from the StoryScope study of 61,608 human and AI texts (Russell et al., COLM 2026), each turned into a rule and a check for research articles, with model fingerprints. `scripts/check_ai_signs.py --structure` flags what can be detected automatically.
 - **Research integrity of AI-assisted work:** a results log as the single source of truth for every number (template included), with `scripts/check_numbers.py` listing every number in a draft that is not in the log; seven failure modes of AI-assisted research to rule out before submission (after Lu et al., *Nature* 2026); checking that each cited source supports its sentence; rules for comparison claims and concurrent work; qualifiers that must survive the abstract.
 - **Literature-review planning and scoring:** the Introduction and the literature review planned at two levels, prior work split into method groups (limitation → evidence → bridge), and a six-axis scoring rubric with caps against inflated self-assessment.
+- **Plagiarism and paraphrasing:** the forms of plagiarism as they appear in a modelling paper, the standard an acceptable paraphrase must meet (stricter than some tutorials, as the guides disagree), a note-taking and drafting workflow that prevents copying, step-by-step paraphrasing techniques with worked reactor-modelling examples, quoting and citation placement, reuse of your own thesis or methods text (COPE, Elsevier), and the journal's similarity check. `scripts/check_overlap.py` finds passages in a draft that repeat runs of words from your sources before the journal's check does.
 - **Acronyms:** `scripts/check_acronyms.py` checks definition at first use, once per scope (abstract and body), and use frequency.
 - **Simulated peer review:** review the full draft as an editor, a methods reviewer, a domain expert, a devil's advocate and a readability reviewer; triage the comments and revise.
 - **Citation checking:** `scripts/check_citations.py` checks `refs.bib` against OpenAlex and Crossref (DOI resolves; title, first author and year match; retractions) and against the `\cite` keys in the LaTeX files.
@@ -54,6 +55,7 @@ academic-paper-skill/
 │   ├── style-grammar.md
 │   ├── academic-vocabulary.md
 │   ├── avoid-ai-signs.md
+│   ├── plagiarism-and-paraphrasing.md   forms, standard, method, worked examples, text reuse, similarity check
 │   ├── research-integrity.md    results log, failure modes F1–F7, claim–source check, comparison rules
 │   ├── self-review.md
 │   ├── submission-and-reviewers.md
@@ -75,6 +77,7 @@ academic-paper-skill/
     ├── search_resources.py          search the full texts in resources/
     ├── build_section_phrases.py     section-by-section phrase list from papers
     ├── check_ai_signs.py            flags generic or AI-typical prose (--structure: discourse level)
+    ├── check_overlap.py             passages repeating runs of words from your sources
     ├── check_numbers.py             numbers in the draft that are not in the results log
     ├── check_acronyms.py            acronym definitions per scope
     ├── check_citations.py           checks refs.bib against OpenAlex/Crossref and the .tex citations

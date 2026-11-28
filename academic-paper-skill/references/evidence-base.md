@@ -115,6 +115,7 @@ Rules:
 - Quote word for word only when the wording itself matters, in quotation marks with the citation. Quotations are rare in engineering papers.
 - Reusing your own published sentences without citation is self-plagiarism. Most journals run similarity checks.
 - Figures or tables taken from other papers need permission from the copyright holder unless the source licence allows reuse; redrawn figures still need the source cited ("adapted from [n]").
+- Note-taking that prevents accidental copying, the paraphrasing method, reuse of your thesis text, and the overlap pre-check: `plagiarism-and-paraphrasing.md`.
 
 ## 10. Verification before submission
 
