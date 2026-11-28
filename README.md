@@ -90,15 +90,25 @@ The guidance in `references/` is distilled, in our own words, from established w
 
 ## Install
 
-**Claude apps (claude.ai / desktop):** download `academic-paper-skill.zip` from the [latest release](https://github.com/amirnmt/academic-paper-skill/releases/latest), or zip the `academic-paper-skill` folder yourself. Then upload it under *Settings → Capabilities → Skills*. To include your own guides or a phrase list from your target journal, add them to `resources/` before zipping.
+**Claude apps (claude.ai / desktop):** download `academic-paper-skill.zip` from the [latest release](https://github.com/amirnmt/Academic-Paper_Chemical-Eng_Skill/releases/latest), or zip the `academic-paper-skill` folder yourself, and upload it under the skills section of *Settings*. If your app does not accept the zip, create or update a skill with only `academic-paper-skill/SKILL.md`: its first section tells Claude to fetch the reference files and scripts from this repository whenever they are not next to it, so the skill stays complete and up to date. To include your own guides or a phrase list from your target journal, add them to `resources/` before zipping.
 
-**Claude Code:**
+**Claude Code** (terminal or the Code tab of the desktop app): clone the repository and link (or copy) the skill folder into your skills directory.
 
 ```bash
-git clone https://github.com/amirnmt/academic-paper-skill.git
+git clone https://github.com/amirnmt/Academic-Paper_Chemical-Eng_Skill.git
 mkdir -p ~/.claude/skills
-cp -R academic-paper-skill/academic-paper-skill ~/.claude/skills/
+ln -s "$PWD/Academic-Paper_Chemical-Eng_Skill/academic-paper-skill" ~/.claude/skills/academic-paper-skill
+# or copy it: cp -R Academic-Paper_Chemical-Eng_Skill/academic-paper-skill ~/.claude/skills/
 ```
+
+On Windows (PowerShell), link without administrator rights:
+
+```powershell
+git clone https://github.com/amirnmt/Academic-Paper_Chemical-Eng_Skill.git
+cmd /c mklink /J "$env:USERPROFILE\.claude\skills\academic-paper-skill" "$PWD\Academic-Paper_Chemical-Eng_Skill\academic-paper-skill"
+```
+
+With a link, `git pull` in the clone updates the skill. Start Claude Code in the folder that holds your paper and its sources, then call `/academic-paper-skill`.
 
 Then ask Claude, for example: *"Use the academic-paper-skill to build the evidence base from the papers in this folder, then outline the introduction."*
 
