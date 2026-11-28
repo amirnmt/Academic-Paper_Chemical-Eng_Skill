@@ -48,6 +48,7 @@ This file is the core. Detailed guidance lives in `references/`; full texts that
 | **Plagiarism and paraphrasing:** forms of plagiarism in a modelling paper, the standard an acceptable paraphrase must meet, a workflow that prevents it, step-by-step paraphrasing and techniques, worked reactor-modelling examples, quoting, citation placement, reusing your own text (theses, methods), equations and figures, the journal's similarity check, AI tools | `references/plagiarism-and-paraphrasing.md` and `scripts/check_overlap.py` |
 | Simulated peer review: editor, methods, domain, devil's advocate, readability; triage | `references/self-review.md` |
 | Checking `refs.bib` against OpenAlex/Crossref and the LaTeX citations | `scripts/check_citations.py` |
+| **Connectors:** which connected tool to use for finding papers (OpenAlex), verifying and formatting references, retractions and open-access copies (Scholar Sidekick), reading online (Firecrawl, web fetch) and writing in the user's LaTeX/Overleaf project (MiLatexAI); rules and fallbacks | `references/connectors.md` |
 | Revising, submission package, cover letter, decisions, response to reviewers | `references/submission-and-reviewers.md` |
 | Journal profiles: how to turn a Guide for Authors into rules, the requirements template, the default profile | `references/journal-profile.md` |
 | Section and final checklists, the Eight Cs | `references/checklists.md` |
@@ -94,6 +95,7 @@ When the summaries in `references/` do not answer a question, or the user asks w
 - The contribution in one sentence: what is new compared with the closest prior work.
 
 ### 2. Evidence base and phrase list (before writing)
+- Check which connectors are available and use them as in `references/connectors.md` (database search, reference verification, open-access copies, LaTeX project).
 - Follow `references/evidence-base.md`: check the repository against a database search, note every paper, build `refs.bib`, the theme map and the comparison matrix of the closest studies. Identify the gap from the matrix. Report thin themes.
 - If papers from the field are available as PDFs, convert them into `resources/field-papers/` and run `build_section_phrases.py`. Keep the journal's and the field's phrase lists open while drafting.
 

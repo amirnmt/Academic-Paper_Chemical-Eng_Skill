@@ -26,6 +26,7 @@ It guides Claude through the whole article and its publication:
 - **Literature-review planning and scoring:** the Introduction and the literature review planned at two levels, prior work split into method groups (limitation → evidence → bridge), and a six-axis scoring rubric with caps against inflated self-assessment.
 - **Plagiarism and paraphrasing:** the forms of plagiarism as they appear in a modelling paper, the standard an acceptable paraphrase must meet (stricter than some tutorials, as the guides disagree), a note-taking and drafting workflow that prevents copying, step-by-step paraphrasing techniques with worked reactor-modelling examples, quoting and citation placement, reuse of your own thesis or methods text (COPE, Elsevier), and the journal's similarity check. `scripts/check_overlap.py` finds passages in a draft that repeat runs of words from your sources before the journal's check does.
 - **Acronyms:** `scripts/check_acronyms.py` checks definition at first use, once per scope (abstract and body), and use frequency.
+- **Connectors:** `references/connectors.md` says which connected tool to use for each step: OpenAlex for finding papers and citation links, Scholar Sidekick for verifying, formatting and retraction-checking references, Firecrawl and web fetch for open-access reading, MiLatexAI for writing in an Overleaf or Git LaTeX project. It gives the rules (metadata is not content, respect access limits, verify before citing) and the fallbacks when a connector is missing.
 - **Figure and table references:** `scripts/check_figrefs.py` finds captions never cited, numbers cited without a caption, and citations out of order.
 - **Technical terms:** `references/technical-terms.md` lists about 60 terms of reactor modelling, estimation, validation, optimization and economics with the term each is confused with.
 - **Calibrated on published papers:** the instructions and script thresholds were tested against 21 published *Computers & Chemical Engineering* papers, instruction by instruction (v2.11). The skill keeps its own standard where published papers fall below it; the samples set the floor, not the ceiling.
@@ -63,6 +64,7 @@ academic-paper-skill/
 │   ├── self-review.md
 │   ├── submission-and-reviewers.md
 │   ├── journal-profile.md       turning a Guide for Authors into rules; template; default profile
+│   ├── connectors.md            which connected tool for search, references, reading, LaTeX
 │   ├── technical-terms.md       reactor, estimation, validation, optimization and economics terms
 │   ├── checklists.md
 │   └── sources.md

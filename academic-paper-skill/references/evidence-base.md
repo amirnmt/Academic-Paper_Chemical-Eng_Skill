@@ -1,5 +1,7 @@
 # Evidence base: from a folder of papers to verified citations
 
+For which connected tools to use in the search, the verification of references and the LaTeX project, see `connectors.md`.
+
 Read this before writing any section that cites literature. The paper can only be as good as the notes behind it.
 
 ## 1. Fill the gaps in the repository
